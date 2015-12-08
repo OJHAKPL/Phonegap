@@ -1,7 +1,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.json" version="1.0.0">
-  <name>Json</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
-  <author href="http://phonegap.com" email="support@phonegap.com">PhoneGap Team</author>
+  <name>ND2NO</name>
+  <description>ND2NO</description>
+  <author href="http://www.nd2no.net/" email="kapil.of.ojha@gmail.com">GISLLP Team</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
