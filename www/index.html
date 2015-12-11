@@ -47,7 +47,7 @@
 						<input type="checkbox" name="keep_me_login" id="keep_me_login" value="" checked="">
                         <label for="keep_me_login">Keep me sign in</label>
 					</div>
-					<button id="home-login" class="ui-btn ui-btn-submit ui-corner-all">Login</button>
+					<button onClick="homeLogin()" class="ui-btn ui-btn-submit ui-corner-all">Login</button>
 					<div class="other-link">Don't have account? <a href="#register" data-direction="reverse" data-transition="slide">Click here</a></div>
 					<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 				</div>
@@ -127,7 +127,6 @@
 				</div>
 				
 				<div class="folder-list">
-					<p id="errorMsg" style="text-align:center; display:none;"></p>
 					<h3 class="title">My Folders <button class="add-btn"><span class="icon"></span> Add New</button></h3>
 					<div class="add-folder" style="display:none;">
 						<button id="folder_save" class="ui-btn ui-btn-submit ui-corner-all">Save</button>
@@ -430,9 +429,12 @@
 
 			<div role="main" class="ui-content jqm-content">  
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="EditProfile"></div>
-			</div><!-- /content -->
-            
+				<div class="EditProfileHtml">
+				
+				
+				
+				</div>
+			</div><!-- /content -->            
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -447,9 +449,6 @@
 		</div><!-- /page -->
  
 
-		
-		
-		
 		
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="update-card" data-url="update-card">        
 			<div data-role="header" class="jqm-header">                
