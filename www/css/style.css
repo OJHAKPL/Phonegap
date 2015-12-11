@@ -150,6 +150,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 .jqm-page .jqm-header{
 	background:#000;
 	border:0px;
+	padding-top: 18px;
 }
 .jqm-page .jqm-header .title{
 	color:#FFF;
