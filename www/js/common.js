@@ -1,7 +1,7 @@
 	/*--------- Login -----------*/  
 	function homeLogin() {
 		$.post(
-		"http://192.168.1.5/nd2no/admin/web-login",
+		"http://www.nd2nosmart.cards/nd2no/admin/web-login",
 		{
 		  email: $("#login-email").val(),
 		  password: $("#login-password").val()
@@ -20,7 +20,7 @@
 						localStorage.setItem('userid-2', field.id);
 					}				
 					$.post(
-						"http://192.168.1.5/nd2no/admin/web-show-folders",
+						"http://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
 						{
 						  user_id: field.id
 						},
@@ -53,7 +53,7 @@
 	function showFoldercards(folderId) {
 		$.mobile.changePage("#card-list");
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-folder-cards",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-folder-cards",
 			{
 			  folder_id: folderId,
 			},
@@ -63,7 +63,7 @@
 				if(!cardlistArr.error) {
 					$.each( cardlistArr, function(i, row1) {
 						$.each( row1, function(i, row) {
-							$('.cardslistHtml').append('<div class="card-box allcardlist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" id="cd_'+row.id+'" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="images/tick-icon-black.png" alt=""></a> <a href="javascript:void(0);" onClick="deleteMyfolder('+row.card_shared_id+')" class="tick-button ui-link"><img src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
+							$('.cardslistHtml').append('<div class="card-box allcardlist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" id="cd_'+row.id+'" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="images/tick-icon-black.png" alt=""></a> <a href="javascript:void(0);" onClick="deleteMyfolder('+row.card_shared_id+')" class="tick-button ui-link"><img src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
 						});
 					});
 				} else {						
@@ -79,7 +79,7 @@
 	function deleteMyfolder(card_shared_id){
 		
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-folder-delete",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-folder-delete",
 			{
 				shared_id: card_shared_id,
 			},
@@ -105,7 +105,7 @@
 	function cartDetailsNotification(cardId) {
 		
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-cards-detail",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-cards-detail",
 			{
 			  id: cardId
 			},
@@ -118,7 +118,7 @@
 				$(".allsociallink").remove();
 				
 				$.each( cardDetailsArr, function(i, firstRow) {	
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+firstRow[0].id+'"><div class="main-img"><img src="http://192.168.1.5/nd2no/upload/cards/large/'+firstRow[0].banner+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><a href="#shareCarddetails" data-rel="popup"><button class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow[0].title+'</h3></div><div class="card-icons"><a class="ui-link" href=""><img src="images/fb-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/twitter-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/instagram-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/globe-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video1-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video2-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video3-icon.png" alt=""></a></div>');
+					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+firstRow[0].id+'"><div class="main-img"><img src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+firstRow[0].banner+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><a href="#shareCarddetails" data-rel="popup"><button class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow[0].title+'</h3></div><div class="card-icons"><a class="ui-link" href=""><img src="images/fb-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/twitter-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/instagram-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/globe-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video1-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video2-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video3-icon.png" alt=""></a></div>');
 				});
 				
 				$.each( cardDetailsArr, function(i, row1) {
@@ -136,7 +136,7 @@
 		}	
 		if(user_id){
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-reset-notification",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-reset-notification",
 				{
 					card_id: cardId,
 					user_id: user_id
@@ -165,7 +165,7 @@
 			$.mobile.changePage("#shared-card-list");
 			$('.sharelistloader').show();
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-shared-cards",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-shared-cards",
 				{
 				  user_id: user_id,
 				},
@@ -190,7 +190,7 @@
 								if(alredyexist)
 									tickiconImg = 'images/tick-icon-black1.png';
 								
-								$('.cardslistHtml').append('<div class="card-box allcardlist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a> <a href="javascript:void(0);" class="tick-button ui-link"><img onClick="deleteCard('+row.card_shared_id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
+								$('.cardslistHtml').append('<div class="card-box allcardlist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a> <a href="javascript:void(0);" class="tick-button ui-link"><img onClick="deleteCard('+row.card_shared_id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
 							});
 						});
 						$('.sharelistloader').hide();
@@ -210,7 +210,7 @@
 	/*---------- Delete shared card ----------*/
 	function deleteCard(card_shared_id) { 
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-remove-shared-card",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-remove-shared-card",
 			{
 				shared_id: card_shared_id,
 			},
@@ -281,7 +281,7 @@
 		}
 
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-selected-cards",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-selected-cards",
 			{
 			  selected_card_ids: items
 			},
@@ -293,7 +293,7 @@
 			if(!cardlistArr.error) {
 					$.each( cardlistArr, function(i, row1) {
 						$.each( row1, function(i, row) {				
-							$('.ticked-list').append('<li class="Allselectedcards"><div class="card-option"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="removeSelected('+row.id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img src="http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></li>');
+							$('.ticked-list').append('<li class="Allselectedcards"><div class="card-option"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="removeSelected('+row.id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></li>');
 						
 						});
 					});
@@ -320,7 +320,7 @@
 	function cartDetails(cardId) {
 		
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-cards-detail",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-cards-detail",
 			{
 			  id: cardId
 			},
@@ -333,7 +333,7 @@
 				$(".allsociallink").remove();
 				
 				$.each( cardDetailsArr, function(i, firstRow) {	
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+firstRow[0].id+'"><div class="main-img"><img src="http://192.168.1.5/nd2no/upload/cards/large/'+firstRow[0].banner+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><a href="#shareCarddetails" data-rel="popup"><button class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow[0].title+'</h3></div><div class="card-icons"><a class="ui-link" href=""><img src="images/fb-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/twitter-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/instagram-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/globe-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video1-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video2-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video3-icon.png" alt=""></a></div>');
+					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+firstRow[0].id+'"><div class="main-img"><img src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+firstRow[0].banner+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><a href="#shareCarddetails" data-rel="popup"><button class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow[0].title+'</h3></div><div class="card-icons"><a class="ui-link" href=""><img src="images/fb-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/twitter-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/instagram-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/globe-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video1-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video2-icon.png" alt=""></a><a class="ui-link" href=""><img src="images/video3-icon.png" alt=""></a></div>');
 				});
 				
 				$.each( cardDetailsArr, function(i, row1) {
@@ -351,7 +351,7 @@
 	/*----------- card details ----------*/
 	function editCard(cardId){
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-update-card",{
+			"http://www.nd2nosmart.cards/nd2no/admin/web-update-card",{
 				card_id: cardId,
 			},
 			function(profiledetails, status){
@@ -363,7 +363,7 @@
 						var title   		= row.title;
 						var statusActive	= (row.status==1)?'selected':'';
 						var statusInactive	= (row.status==0)?'selected':'';
-						var banner			= (row.banner && row.banner!='')?'http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'':'images/card-thumb.png';
+						var banner			= (row.banner && row.banner!='')?'http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'':'images/card-thumb.png';
 						
 						var title_html	= '<div class="ui-input-text ui-body-inherit"><input type="text" value="'+row.title+'" id="title" placeholder="Title" name="title"></div>';
 						//var banner_html	= '<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input type="file" id="banner" name="banner"></div>';
@@ -408,7 +408,7 @@
 			},
 			submitHandler:function (form) {
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-update-card",{
+					"http://www.nd2nosmart.cards/nd2no/admin/web-update-card",{
 						card_id: jQuery('#edit_card').find('input[name="card_id"]').val(),
 						title: jQuery('#edit_card').find('input[name="title"]').val(),
 						status: jQuery('#edit_card').find('input[name="status"]').val(), 
@@ -443,7 +443,7 @@
 		sharecard_id = $('#sharecard_id').val();
 		
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-share-cards",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-share-cards",
 			{
 			  email: email,
 			  card_id: sharecard_id,
@@ -486,7 +486,7 @@
 		sharecard_id = localStorage.cartitem;			
 		
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-share-cards",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-share-cards",
 			{
 			  email: email,
 			  card_id: sharecard_id,
@@ -532,7 +532,7 @@
 		}
 		if(user_id){
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-user-info",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-user-info",
 				{
 				  id: user_id,
 				},
@@ -550,7 +550,7 @@
 							var zip         = (row.zip && row.zip!='')?row.zip+' ':'';
 							var country     = (row.name && row.name!='')?row.name+' ':'';
 							var addressUser = street_1+street_2+city+state+country+zip;
-							var photoUser   = (row.photo && row.photo!='')?'http://192.168.1.5/nd2no/upload/users/profile-photo/resized/'+row.photo+'':'images/blank_profile.png';
+							var photoUser   = (row.photo && row.photo!='')?'http://www.nd2nosmart.cards/nd2no/upload/users/profile-photo/resized/'+row.photo+'':'images/blank_profile.png';
 							var dob = (row.dob)?row.dob:'';
 							var about_you   = (row.about_you)?row.about_you:'';
 							var mobile      = (row.mobile)?row.mobile:'';
@@ -573,7 +573,7 @@
 
 	function changeProfile(id){
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-user-info",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-user-info",
 			{
 			  id: id,
 			},
@@ -585,7 +585,7 @@
 						var nameUser     	= row.first_name+' '+row.middle_name+' '+row.last_name;
 						var genderMale   	= (row.gender==1)?'selected':'';
 						var genderFemale 	= (row.gender==2)?'selected':'';
-						var photoUser    	= (row.photo && row.photo!='')?'http://192.168.1.5/nd2no/upload/users/profile-photo/resized/'+row.photo+'':'images/blank_profile.png';
+						var photoUser    	= (row.photo && row.photo!='')?'http://www.nd2nosmart.cards/nd2no/upload/users/profile-photo/resized/'+row.photo+'':'images/blank_profile.png';
 						var country_id_val 	= row.country_id;
 						var country_name_val= row.name;
 						var dob = (row.dob && row.dob!='')?row.dob:'';
@@ -601,7 +601,7 @@
 						$('.EditProfileHtml').append('<div class="Allprofileview"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+row.first_name+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+row.middle_name+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+row.last_name+'"><input type="text" name="dob" placeholder="DOB" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"></div><button onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
 					 
 						$.post(
-							"http://192.168.1.5/nd2no/admin/select-countries-data",
+							"http://www.nd2nosmart.cards/nd2no/admin/select-countries-data",
 							function(countryData,status){									
 								$('.Allcountryview').remove();
 								var countryArr = jQuery.parseJSON(countryData);									
@@ -665,7 +665,7 @@
 				//var formData = new FormData( this );
 
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-update-profile",
+					"http://www.nd2nosmart.cards/nd2no/admin/web-update-profile",
 					$("#editprofile").serialize(),
 					function(registerData,status){
 						var dataMsg = jQuery.parseJSON(registerData);	
@@ -713,7 +713,7 @@
 			$.mobile.changePage("#favorite-list");
 			$('.favoritelistloader').show();
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-show-favourites",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-show-favourites",
 				{
 				  user_id: user_id,
 				},
@@ -738,7 +738,7 @@
 									tickiconImg = 'images/tick-icon-black1.png';
 								 
 								
-								$('.favoritelistHtml').append('<div class="card-box allfavoritelist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img  onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" id="cd_'+row.id+'" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a> <a href="javascript:void(0);" onClick="removeFavorite('+row.card_favourite_id+');" class="tick-button ui-link"><img src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
+								$('.favoritelistHtml').append('<div class="card-box allfavoritelist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img  onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" id="cd_'+row.id+'" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a> <a href="javascript:void(0);" onClick="removeFavorite('+row.card_favourite_id+');" class="tick-button ui-link"><img src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
 							});
 						});
 						$('.favoritelistloader').hide();
@@ -760,7 +760,7 @@
 	/*---------- Delete favorite-list  ----------*/
 	function removeFavorite(card_favourite_id) { 
 		$.post(
-			"http://192.168.1.5/nd2no/admin/web-remove-favourite-card",
+			"http://www.nd2nosmart.cards/nd2no/admin/web-remove-favourite-card",
 			{
 				favourite_id: card_favourite_id,
 			},
@@ -793,7 +793,7 @@
 			$.mobile.changePage("#card-list");
 			$('.cardlistloader').show();
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-user-cards",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-user-cards",
 				{
 				  user_id: user_id,
 				},
@@ -803,7 +803,7 @@
 					if(!cardlistArr.error) {
 						$.each( cardlistArr, function(i, row1) {
 							$.each( row1, function(i, row) {
-								$('.cardslistHtml').append('<div class="card-box allcardlist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="editCard('+row.id+');" src="images/edit-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
+								$('.cardslistHtml').append('<div class="card-box allcardlist"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="editCard('+row.id+');" src="images/edit-icon.png" alt=""></a></div><div class="img"><img width="100%" src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></div>');
 							});
 						});
 						$('.cardlistloader').hide();
@@ -831,7 +831,7 @@
 		if(user_id){	
 			$('#movetofolder').popup('open');
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-folder-list",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-folder-list",
 				{
 				  user_id: user_id,
 				},
@@ -870,7 +870,7 @@
 			card_id = localStorage.cartitem;
 			
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-folder-moveto",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-folder-moveto",
 				{
 				  user_id: user_id,
 				  folder_id: folder_name,
@@ -959,7 +959,7 @@
 			},
 			submitHandler:function (form) {				
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-register",
+					"http://www.nd2nosmart.cards/nd2no/admin/web-register",
 					$("#register_form").serialize(),
 					function(registerData,status){
 						var dataMsg = jQuery.parseJSON(registerData);	
@@ -999,7 +999,7 @@
 			
 				if(localStorage.getItem('email')) {
 					$.post(
-						"http://192.168.1.5/nd2no/admin/web-show-folders",
+						"http://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
 						{
 						  user_id: user_id
 						},
@@ -1030,7 +1030,7 @@
 			}
 			if(user_id){
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-show-folders",
+					"http://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
 					{
 					  user_id: user_id
 					},
@@ -1061,7 +1061,7 @@
 			if(user_id){
 		
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-create-folder",
+					"http://www.nd2nosmart.cards/nd2no/admin/web-create-folder",
 					{
 					  user_id: user_id,
 					  folder_name: $("#folder_name").val()
@@ -1092,7 +1092,7 @@
 						
 						$("#folder_name").val('');
 						$.post(
-							"http://192.168.1.5/nd2no/admin/web-show-folders",
+							"http://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
 							{
 							  user_id: user_id
 							},
@@ -1118,7 +1118,7 @@
 		/*----------- Forgot Password -----------*/
 		$("#forgot-email-button").click(function(){
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-forget-password",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-forget-password",
 				{
 				  email: $("#forgot-email").val(),
 				},
@@ -1168,7 +1168,7 @@
 			}
 			if(user_id){
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-notification-total",
+					"http://www.nd2nosmart.cards/nd2no/admin/web-notification-total",
 					{
 					  user_id: user_id
 					},
@@ -1195,7 +1195,7 @@
 				$.mobile.changePage("#notification");
 				$('.notificationlistloader').show();
 				$.post(
-					"http://192.168.1.5/nd2no/admin/web-notification-list",
+					"http://www.nd2nosmart.cards/nd2no/admin/web-notification-list",
 					{
 					  user_id: user_id,
 					},
@@ -1206,9 +1206,9 @@
 							$.each( cardlistArr, function(i, row1) {
 								$.each( row1, function(i, row) {							
 									if (row.is_share_notify==1){
-									$('.notification-list').append('<li class="Allsharedcards"><div class="img"><img src="http://192.168.1.5/nd2no/upload/cards/thumb/'+row.banner+'" alt=""></div><div class="text">'+row.first_name+' '+row.middle_name+' '+row.last_name+' has shared his “<a href="javascript:void(0);" onClick="cartDetailsNotification('+row.id+');">'+row.title+'</a>” Card with you at '+row.updated_at+'</div></li>');
+									$('.notification-list').append('<li class="Allsharedcards"><div class="img"><img src="http://www.nd2nosmart.cards/nd2no/upload/cards/thumb/'+row.banner+'" alt=""></div><div class="text">'+row.first_name+' '+row.middle_name+' '+row.last_name+' has shared his “<a href="javascript:void(0);" onClick="cartDetailsNotification('+row.id+');">'+row.title+'</a>” Card with you at '+row.updated_at+'</div></li>');
 									} else {
-									$('.notification-list').append('<li class="Allsharedcards"><div class="img"><img src="http://192.168.1.5/nd2no/upload/cards/thumb/'+row.banner+'" alt=""></div><div class="text">'+row.first_name+' '+row.middle_name+' '+row.last_name+' has updated his “<a href="javascript:void(0);" onClick="cartDetailsNotification('+row.id+');">'+row.title+'</a>” Card at '+row.updated_at+'</div></li>');
+									$('.notification-list').append('<li class="Allsharedcards"><div class="img"><img src="http://www.nd2nosmart.cards/nd2no/upload/cards/thumb/'+row.banner+'" alt=""></div><div class="text">'+row.first_name+' '+row.middle_name+' '+row.last_name+' has updated his “<a href="javascript:void(0);" onClick="cartDetailsNotification('+row.id+');">'+row.title+'</a>” Card at '+row.updated_at+'</div></li>');
 									}
 									
 								});
@@ -1241,7 +1241,7 @@
 			}
 		
 			$.post(
-				"http://192.168.1.5/nd2no/admin/web-selected-cards",
+				"http://www.nd2nosmart.cards/nd2no/admin/web-selected-cards",
 				{
 				  selected_card_ids: items
 				},
@@ -1251,7 +1251,7 @@
 					if(!cardlistArr.error) {
 						$.each( cardlistArr, function(i, row1) {
 							$.each( row1, function(i, row) {				
-								$('.ticked-list').append('<li class="Allselectedcards"><div class="card-option"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="removeSelected('+row.id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img src="http://192.168.1.5/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></li>');
+								$('.ticked-list').append('<li class="Allselectedcards"><div class="card-option"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="removeSelected('+row.id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img src="http://www.nd2nosmart.cards/nd2no/upload/cards/large/'+row.banner+'" alt=""></div></li>');
 							
 							});
 						});
@@ -1302,7 +1302,7 @@
 				}
 				if(user_id){		
 					$.post(
-						"http://192.168.1.5/nd2no/admin/web-cahnge-password",
+						"http://www.nd2nosmart.cards/nd2no/admin/web-cahnge-password",
 						{
 						  current_password: $("#current_password").val(),
 						  password: $("#new_password").val(),
