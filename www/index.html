@@ -115,14 +115,14 @@
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<p class="errorMsgShow-2" style="text-align:center; display:none;"></p>
 				<div class="dashboard-link" style="border-bottom:0px;">
-					<a href="javascript:void(0);" onclick="cardlist()"><span class="img"><img src="images/card-icon.png" alt=""></span><br>My Cards</a>
-					<a href="javascript:void(0);" onclick="favoritelist()"><span class="img"><img src="images/favorite-icon.png" alt=""></span><br>My Favorites</a>
 					<a href="javascript:void(0);" onClick="viewProfile()"><span class="img"><img src="images/profile-icon.png" alt=""></span><br>My Profile</a>
+					<a href="#change-password"><span class="img"><img src="images/change-password.png" alt=""></span><br>Change Password</a>
+					<a href="javascript:void(0);" onclick="favoritelist()"><span class="img"><img src="images/favorite-icon.png" alt=""></span><br>My Favorites</a>
 				</div>
 				
 				<div class="dashboard-link">
+					<a href="javascript:void(0);" onclick="cardlist()"><span class="img"><img src="images/card-icon.png" alt=""></span><br>My Cards</a>
 					<a href="javascript:void(0);" onclick="sharedcardlist()"><span class="img"><img src="images/share.png" alt=""></span><br>Shared Cards</a>
-					<a href="#change-password"><span class="img"><img src="images/change-password.png" alt=""></span><br>Change Password</a>
 					<a href="javascript:void(0);" onClick="logout()"><span class="img"><img src="images/logout.png" alt=""></span><br>Logout</a>
 				</div>
 				
@@ -166,6 +166,39 @@
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">My Cards</h1>
+            </div><!-- /header -->
+
+			<div role="main" class="ui-content jqm-content"> 
+				<div class="loderimages cardlistloader"><img src="images/ajax-loader-list.gif"></div>
+                <div class="cards-list cardslistHtml">		
+					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
+				</div>                
+			</div><!-- /content -->
+            
+			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
+                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
+                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
+                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
+                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
+				</ul>
+			</div>
+		</div><!-- /page -->	
+		
+		<div data-role="page" class="jqm-demos jqm-page jqm-list" id="folder-cards" data-url="folder-cards">
+        
+        	<div data-role="header" class="jqm-header">                
+                <div class="left-icon">
+                	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
+                </div>
+                <div class="right-icon">
+                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
+                </div>
+                <h1 class="title" id="folderTitle"> Folder Cards</h1>
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
@@ -351,7 +384,9 @@
 
 			<div role="main" class="ui-content jqm-content">
                 <div class="card-link-details"></div>
-                <div class="card-link-details2"></div>
+                <div class="card-icons"></div>
+                <div class="card-link-details3"></div>
+               
 				
 				<div data-role="popup" id="shareCarddetails" data-theme="a" class="ui-corner-all">
 					<form>
@@ -527,7 +562,7 @@
 						<p class="errorMsgShow-2" style="text-align:center; display:none;"></p> 
 						<h3>Please select folder</h3>						
 						<div class="movetoHtml"></div> 						
-						<button type="button" onclick="moveTofoldersave()" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Share</button>
+						<button type="button" onclick="moveTofoldersave()" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Move</button>
 					</div>
 				</form>
 			</div>
