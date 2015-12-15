@@ -1274,9 +1274,9 @@
 		/*----------- Notifications Count -----------*/
 		$(document).on('pagebeforeshow', function(){
 			
-			setTimeout(function() {
+			
 				$('.errorMsgShow-2').hide();
-			}, 4000);
+			
 		
 			$(".errorMsgShow").hide();		
 			if (!localStorage.cartcount){
@@ -1305,7 +1305,7 @@
 				//$.mobile.changePage("#login");
 			}
 		});
-	
+
 		
 		/*----------- Notifications List -----------*/
 		$(".counter-notify").click(function(){
