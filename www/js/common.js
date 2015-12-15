@@ -60,6 +60,7 @@
 	function showFoldercards(folderId,folderName) {
 		$('.foldercardlist').empty();
 	 	$('.folderviewloder').show();
+	 	$('.allcardlist').show();
 		$.mobile.changePage("#folder-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:false,transition:"slide"});
 		$("#folderTitle").text(folderName);
 		$.post(
@@ -207,6 +208,7 @@
 	function sharedcardlist(){
 	    $('.allcardlist').empty();
 		$('.foldercardlist').empty();
+		
 		user_id = localStorage.getItem('userid');
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
