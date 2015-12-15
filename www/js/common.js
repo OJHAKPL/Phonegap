@@ -35,13 +35,6 @@
 										$('#folder_list').append('<li class="allfoldert"><a href="javascript:void(0);" onClick="showFoldercards('+row.id+',\''+row.folder_name+'\');"  class="folderhyper">'+row.folder_name+'<span class="counter">('+row.cards+')</span></a></li>');
 									});
 								});
-							}else {
-								$(".errorMsgShow").show();
-								$(".errorMsgShow").addClass("error");
-								$(".errorMsgShow").text(folderlistArr.error);
-								setTimeout(function() {
-								$('.errorMsgShow').hide();
-								}, 3000);	
 							}
 						}
 					);
@@ -1133,13 +1126,6 @@
 										$('#folder_list').append('<li class="allfoldert"><a href="javascript:void(0);" onClick="showFoldercards('+row.id+',\''+row.folder_name+'\');"  class="folderhyper">'+row.folder_name+'<span class="counter">('+row.cards+')</span></a></li>');
 									});
 								});
-							}else {
-								$(".errorMsgShow").show();
-								$(".errorMsgShow").addClass("error");
-								$(".errorMsgShow").text(folderlistArr.error);
-								setTimeout(function() {
-								$('.errorMsgShow').hide();
-								}, 3000);
 							}
 						}
 					);				
@@ -1175,13 +1161,6 @@
 										$('#folder_list').append('<li class="allfoldert"><a href="javascript:void(0);" onClick="showFoldercards('+row.id+',\''+row.folder_name+'\');"  class="folderhyper">'+row.folder_name+'<span class="counter">('+row.cards+')</span></a></li>');
 									});
 								});
-							}else {
-								$(".errorMsgShow").show();
-								$(".errorMsgShow").addClass("error");
-								$(".errorMsgShow").text(folderlistArr.error);
-								setTimeout(function() {
-								$('.errorMsgShow').hide();
-								}, 3000);
 							}
 					}
 				);				
@@ -1248,13 +1227,6 @@
 										$('#folder_list').append('<li class="allfoldert"><a href="javascript:void(0);" onClick="showFoldercards('+row.id+',\''+row.folder_name+'\');"  class="folderhyper">'+row.folder_name+'<span class="counter">('+row.cards+')</span></a></li>');
 									});
 								});
-							}else {
-								$(".errorMsgShow").show();
-								$(".errorMsgShow").addClass("error");
-								$(".errorMsgShow").text(folderlistArr.error);
-								setTimeout(function() {
-								$('.errorMsgShow').hide();
-								}, 3000);
 							}
 							}
 						);
