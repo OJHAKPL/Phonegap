@@ -58,9 +58,12 @@
 	
 	/*---------- Display cards in folder ----------*/
 	function showFoldercards(folderId,folderName) {
+		
 		$('.foldercardlist').empty();
+		$('.allcardlist').empty();	 
+		
 	 	$('.folderviewloder').show();
-	 	$('.allcardlist').show();
+	 	
 		$.mobile.changePage("#folder-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:false,transition:"slide"});
 		$("#folderTitle").text(folderName);
 		$.post(
