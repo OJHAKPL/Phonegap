@@ -98,30 +98,10 @@
   <gap:splash src="www/res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <access origin="*"/>
-<!--  <plugin name="cordova-plugin-inappbrowser"  /> -->
+  <plugin name="cordova-plugin-inappbrowser"  /> 
   <plugin name="cordova-plugin-statusbar"  />
   
-  <plugins>
-    <plugin name="Device" value="CDVDevice" />
-    <plugin name="Logger" value="CDVLogger" />
-    <plugin name="Compass" value="CDVLocation" />
-    <plugin name="Accelerometer" value="CDVAccelerometer" />
-    <plugin name="Camera" value="CDVCamera" />
-    <plugin name="NetworkStatus" value="CDVConnection" />
-    <plugin name="Contacts" value="CDVContacts" />
-    <plugin name="Debug Console" value="CDVDebugConsole" />
-    <plugin name="Echo" value="CDVEcho" />
-    <plugin name="File" value="CDVFile" />
-    <plugin name="FileTransfer" value="CDVFileTransfer" />
-    <plugin name="Geolocation" value="CDVLocation" />
-    <plugin name="Notification" value="CDVNotification" />
-    <plugin name="Media" value="CDVSound" />
-    <plugin name="Capture" value="CDVCapture" />
-    <plugin name="SplashScreen" value="CDVSplashScreen" />
-    <plugin name="Battery" value="CDVBattery" />
-    <plugin name="Globalization" value="CDVGlobalization" />
-    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
-</plugins>
+ 
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
