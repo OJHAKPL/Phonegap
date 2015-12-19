@@ -410,9 +410,9 @@
 				});
 				
 				if (userRole == 3 || userRole == 4) {
-				$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
+				$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_blank\', \'location=yes,enableViewportScale=yes\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
 				} else {
-				$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
+				$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_blank\', \'location=yes,enableViewportScale=yes\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
 				}
 				
 				$.each( cardDetailsArr, function(i, row1) {
