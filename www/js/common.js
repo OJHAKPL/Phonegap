@@ -462,19 +462,11 @@
 						var banner			= (row.card.banner && row.card.banner!='')?''+row.card.card_large_image_path+row.card.banner+'':'images/card-thumb.png';
 						
 						var title_html	= '<div class="ui-input-text ui-body-inherit"><input type="text" value="'+row.card.title+'" id="title" placeholder="Title" name="title"></div>';
-						//var banner_html	= '<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input type="file" id="banner" name="banner"></div>';
-						//var status_html = '<div class="ui-input-text ui-body-inherit"><select class="select_class" name="status" id="status"><option '+statusActive+' value="1">Active</option><option '+statusInactive+' value="0">Inactive</option></select></div>';
-						
-						//var title_html	= '<input type="text" value="'+row.title+'" id="title" placeholder="Title" name="title">';
-						//var status_html = '<select class="select_class" name="status" id="status"><option '+statusActive+' value="1">Active</option><option '+statusInactive+' value="0">Inactive</option></select>';
 						var banner_html	= ''; 
 						var editcard='<div class="Allprofileview"><div class="main-img"><img src="'+banner+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+title+'</h3></div><div style="display: flex; height: 47px;"><a style="width: 50%; text-decoration: none;" title="Card Link" href="javascript:void(0);" onclick="cardLink('+cardId+')" data-rel="popup"><button type="button" class="ui-btn ui-shadow ui-corner-all">Edit Link</button></a><a style="width: 50%; text-decoration: none;" title="Edit Scroller" href="javascript:void(0);" onclick="editscroller('+cardId+')" data-rel="popup"><button type="button" class="ui-btn ui-shadow ui-corner-all">Edit Scroller</button></a></div><form name="edit_card" id="edit_card" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="card_id" id="card_id" value="'+cardId+'">'+ title_html + banner_html +'';
 					
-						var obj=[];
-						$.each( row.links, function(i, row2) {
-						editcard +='<div class="ui-input-text ui-body-inherit link"><input type="text" value="'+row2.url+'" id="'+row2.id+'" placeholder="Link" name="obj['+row2.id+']"></div>';
-						});
-							editcard +='</div><button onClick="EditCardSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Card</button></form></div>';
+				 
+						editcard +='</div><button onClick="EditCardSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Card</button></form></div>';
 						$('.updateCard').append(editcard);
 					
 					});
