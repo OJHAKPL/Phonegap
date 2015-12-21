@@ -11,12 +11,13 @@
 		<script src="cordova.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
-		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>		
-		<!----------common js----------->
-		<script src="js/common.js"></script>	
-	</head>
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+		
+		<!---------- common js  ----------->
+		<script src="js/common.js"></script>
 	
-	<body>	
+	</head>
+	<body>
 	
 		<div data-role="page" class="jqm-demos jqm-home" id="index" data-url="index">
 			<div role="main" class="ui-content jqm-content">			
@@ -30,7 +31,8 @@
 				</div>
 				<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 			</div><!-- /content -->
-		</div><!-- /page -->		
+		</div><!-- /page -->
+		
 		
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="login" data-url="login">
 			<div role="main" class="ui-content jqm-content">
@@ -48,10 +50,11 @@
 					</div>
 					<button onClick="homeLogin()" class="ui-btn ui-btn-submit ui-corner-all">Login</button>
 					<div class="other-link">Don't have account? <a href="#register" data-direction="reverse" data-transition="slide">Click here</a></div>
-					<!--<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>-->
+					<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 				</div>
 			</div><!-- /content -->
-		</div><!-- /page -->		
+		</div><!-- /page -->
+		
 		
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="forgot-password" data-url="forgot-password">
 			<div role="main" class="ui-content jqm-content">
@@ -59,7 +62,7 @@
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				<div class="login-form">
-					<input type="text" name="text-basic" placeholder="Email ID" id="forgot-email" value=""/>
+					<input type="text" name="text-basic" placeholder="Email ID" id="forgot-email" value="">
 					<button id="forgot-email-button" class="ui-btn ui-btn-submit ui-corner-all">Forgot Password</button>
 					<div class="other-link">Don't have account? <a href="#login" data-direction="reverse" data-transition="slide">Click here</a></div>
 					<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
@@ -75,6 +78,9 @@
 				<div class="login-form register-form">
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 					<form id="register_form">
+						<input type="text" name="first_name" placeholder="First Name" id="first_name" value="">
+						<input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="">
+						<input type="text" name="last_name" placeholder="Last Name" id="last_name" value="">
 						<input type="text" name="email" placeholder="Email ID" id="email" value="">
 						<input type="password" name="password" placeholder="Password" id="password" value="">
 						<input type="text"  data-validation="number" name="phone" placeholder="Phone" id="phone" value="">
@@ -85,18 +91,18 @@
 						<button type="submit" class="ui-btn ui-btn-submit ui-corner-all">Register</button>
 					</form>
 					<div class="other-link">Already have account? <a href="#login" data-direction="reverse" data-transition="slide">Click here</a></div>
-					<!--<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>-->
+					<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 				</div>
 			</div><!-- /content -->
 		</div><!-- /page -->
 		
 		
-		<div data-role="page" class="jqm-demos jqm-page jqm-dashboard" id="dashboard" data-url="dashboard">			
+		<div data-role="page" class="jqm-demos jqm-page jqm-dashboard" id="dashboard" data-url="dashboard">
 			
 			<div data-role="header" class="jqm-header">                
 				<div class="left-icon">
 					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
 				</div>
 				<div class="right-icon">
 					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -111,22 +117,39 @@
 				<p class="errorMsgShow-2" style="text-align:center; display:none;"></p>
 				<div class="dashboard-link" style="border-bottom:0px;">
 					<a href="javascript:void(0);" onClick="viewProfile()"><span class="img"><img src="images/profile-icon.png" alt=""></span><br>My Profile</a>
-					<a href="javascript:void(0);" onclick="cardlist()"><span class="img"><img src="images/card-icon.png" alt=""></span><br>My Cards</a>
-					<a href="javascript:void(0);" onclick="sharedMycardlist()"><span class="img"><img src="images/share.png" alt=""></span><br>Share My Card</a>
+					<a href="#change-password"><span class="img"><img src="images/change-password.png" alt=""></span><br>Change Password</a>
+					<a href="javascript:void(0);" onclick="favoritelist()"><span class="img"><img src="images/favorite-icon.png" alt=""></span><br>My Favorites</a>
 				</div>
 				
 				<div class="dashboard-link">
-					<a href="javascript:void(0);" onClick="myFolderShare()"><span class="img"><img src="images/change-password.png" alt=""></span><br>My Folders /Shared Cards</a>
-					<a class="counter-notify-21" href="javascript:void(0);"><span class="img"><img src="images/scroll-icon.png" alt=""></span><br>Scrolling Message Ticker</a>
+					<a href="javascript:void(0);" onclick="cardlist()"><span class="img"><img src="images/card-icon.png" alt=""></span><br>My Cards</a>
+					<a href="javascript:void(0);" onclick="sharedcardlist()"><span class="img"><img src="images/share.png" alt=""></span><br>Shared Cards</a>
 					<a href="javascript:void(0);" onClick="logout()"><span class="img"><img src="images/logout.png" alt=""></span><br>Logout</a>
-					<!--<a href="#change-password"><span class="img"><img src="images/change-password.png" alt=""></span><br>Change Password</a>
-					<a href="javascript:void(0);" onclick="favoritelist()"><span class="img"><img src="images/favorite-icon.png" alt=""></span><br>My Favorites</a>-->
-				</div> 	
-			 			
-			</div><!-- /content --> 
+				</div>
+				
+				<button onclick="window.plugins.socialsharing.share('Message only')">message only</button>
+				<button onclick="window.plugins.socialsharing.share('Message and subject', 'The subject')">message and subject</button>
+				<button onclick="window.plugins.socialsharing.share(null, null, null, 'http://www.x-services.nl')">link only</button>
+				<button onclick="window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl')">message and link</button>
+				<button onclick="window.plugins.socialsharing.share(null, null, 'https://www.google.nl/images/srpr/logo4w.png', null)">image only</button>
+				<button onclick="window.plugins.socialsharing.share(null, 'Android filename', 'data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7', null)">base64 image only</button>
+				<button onclick="window.plugins.socialsharing.share('Message and image', null, 'https://www.google.nl/images/srpr/logo4w.png', null)">message and image</button>
+				<button onclick="window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, image and link</button>
+				<button onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, subject, image and link</button>
+				
+				<div class="folder-list">
+					<h3 class="title">My Folders <button class="add-btn"><span class="icon"></span> Add New</button></h3>
+					<div class="add-folder" style="display:none;">
+						<button id="folder_save" class="ui-btn ui-btn-submit ui-corner-all">Save</button>
+						<input type="text" name="folder_name" placeholder="Type folder name" id="folder_name" value=""/>
+					</div>
+					<ul class="folder-list-wrapper" id="folder_list">
+					</ul>
+				</div>
+			</div><!-- /content -->
 			
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
+				<div class="rewards-line"><a href="">Refer a Business</a></div>
 			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -147,7 +170,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -158,9 +181,8 @@
 
 			<div role="main" class="ui-content jqm-content"> 
 				<div class="loderimages cardlistloader"><img src="images/ajax-loader-list.gif"></div>
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 <div class="cards-list cardslistHtml">		
-					
+					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				</div>                
 			</div><!-- /content -->
             
@@ -181,7 +203,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -192,9 +214,8 @@
 
 			<div role="main" class="ui-content jqm-content"> 
 				<div class="loderimages folderviewloder"><img src="images/ajax-loader-list.gif"></div>
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 <div class="cards-list cardslistHtml">		
-					
+					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				</div>                
 			</div><!-- /content -->
             
@@ -215,7 +236,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -250,7 +271,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -261,9 +282,8 @@
 
 			<div role="main" class="ui-content jqm-content"> 
 				<div class="loderimages notificationlistloader"><img src="images/ajax-loader-list.gif"></div>
-                <p class="errorMsgShow" style="text-align:center; display:none;"></p> 
-				<ul class="notification-list">
-                	
+                <ul class="notification-list">
+                	<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 </ul>                
 			</div><!-- /content -->
             
@@ -289,7 +309,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -300,9 +320,8 @@
 
 			<div role="main" class="ui-content jqm-content"> 
 				<div class="loderimages favoritelistloader"><img src="images/ajax-loader-list.gif"></div>
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 <div class="favoritelistHtml cards-list">	
-					
+					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				</div>                
 			</div><!-- /content -->
             
@@ -325,7 +344,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""><span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -366,7 +385,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
 					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
 				</div>
 				<div class="right-icon">
 					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -376,9 +395,7 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">
-                
-				<div class="loderimages cardDetails"><img src="images/ajax-loader-list.gif"></div>
-				<div class="card-link-details"></div>
+                <div class="card-link-details"></div>
                 <div class="card-icons"></div>
                 <div class="card-link-details3"></div>
                
@@ -417,7 +434,7 @@
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
 					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
 				</div>
 				<div class="right-icon">
 					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -448,7 +465,7 @@
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
 					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
 				</div>
 				<div class="right-icon">
 					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -483,8 +500,8 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="update-card" data-url="update-card">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
-					<a href="#card-list" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
 				</div>
 				<div class="right-icon">
 					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -509,15 +526,19 @@
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
 			</div>
-		</div><!-- /page --> 
-		
+		</div><!-- /page -->
+ 
+ 
+ 
+ 
+ 
 
 		<div data-role="page" class="jqm-demos jqm-page jqm-ticked" id="selected-cards" data-url="selected-cards">
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
@@ -527,10 +548,11 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">
-                <div class="loderimages cardticklistloader"><img src="images/ajax-loader-list.gif"></div>
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
+                <div class="loderimages cardticklistloader"><img src="images/ajax-loader-list.gif"></div>            
                 <ul class="ticked-list">
-				</ul>                
+                	  <p class="errorMsgShow" style="text-align:center; display:none;"></p>               	
+                </ul>
+                
 			</div><!-- /content -->
 			
 			
@@ -575,150 +597,6 @@
 			</div>
 
 		</div><!-- /page -->
-		
-		
-		<div data-role="page" class="jqm-demos jqm-page jqm-dashboard" id="my-folder-share" data-url="my-folder-share">
-			
-			<div data-role="header" class="jqm-header">                
-				<div class="left-icon">
-					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
-				</div>
-				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
-					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
-				</div>
-				<h1 class="title">My Folders /Shared Cards</h1>
-			</div><!-- /header -->
-			
-			<div role="main" class="ui-content jqm-content">
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
-				<div class="folder-list">
-					<h3 class="title" style="cursor: pointer;" onclick="sharedcardlist()">Shared Cards</h3>
-					<h3 class="title" style="cursor: pointer;" onclick="favoritelist()">My Favorites</h3>
-					<h3 class="title">My Folders <button class="add-btn"><span class="icon"></span> Add New</button></h3>
-					<div class="add-folder" style="display:none;">
-						<button id="folder_save" class="ui-btn ui-btn-submit ui-corner-all">Save</button>
-						<input type="text" name="folder_name" placeholder="Type folder name" id="folder_name" value=""/>
-					</div>
-					<ul class="folder-list-wrapper folder_list" id="folder_list">
-					</ul>
-				</div>
-			</div><!-- /content --> 
-			
-			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
-			</div><!-- /footer -->
-            
-			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
-                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
-                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
-                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
-				</ul>
-			</div>
-		</div><!-- /page -->
-		
-		
-		<div data-role="page" class="jqm-demos jqm-page jqm-list" id="share-my-card" data-url="share-my-card">
-        
-        	<div data-role="header" class="jqm-header">                
-                <div class="left-icon">
-                	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
-                </div>
-                <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
-                	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
-                </div>
-                <h1 class="title">Share My Card</h1>
-            </div><!-- /header -->
-
-			<div role="main" class="ui-content jqm-content"> 
-				<div class="loderimages cardlistloader"><img src="images/ajax-loader-list.gif"></div>
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
-                <div class="cards-list cardslistHtml">		
-					
-				</div>                
-			</div><!-- /content -->
-            
-			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
-                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
-                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
-                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
-				</ul>
-			</div>
-		</div><!-- /page -->	
-		
-		
-		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="card-link" data-url="card-link">        
-			<div data-role="header" class="jqm-header">                
-               <div class="left-icon">
-					<a href="#card-list" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
-				</div>
-				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
-					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
-				</div>
-                <h1 class="title">Card Link</h1>
-            </div><!-- /header -->
-
-			<div role="main" class="ui-content jqm-content">  
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="updateCardLink"></div>
-			</div><!-- /content -->
-            
-            
-			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
-                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
-                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
-                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
-				</ul>
-			</div>
-		</div><!-- /page --> 
-		
-		
-		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="card-scroller" data-url="card-scroller">        
-			<div data-role="header" class="jqm-header">                
-               <div class="left-icon">
-					<a href="#card-list" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
-				</div>
-				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
-					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
-				</div>
-                <h1 class="title">Card Scroller</h1>
-            </div><!-- /header -->
-
-			<div role="main" class="ui-content jqm-content">  
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="updateCardScroller"></div>
-			</div><!-- /content -->            
-            
-			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
-                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
-                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
-                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
-				</ul>
-			</div>
-		</div><!-- /page --> 
 		
 		
 		<script src="js/index.js"></script>
