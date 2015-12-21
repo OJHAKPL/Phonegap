@@ -10,9 +10,9 @@
   <preference name="webviewbounce" value="true"/>
   <preference name="prerendered-icon" value="true"/>
   <preference name="stay-in-webview" value="false"/>
-  <preference name="StatusBarOverlaysWebView" value="false"/>
-  <preference name="StatusBarBackgroundColor" value="#FFFFFF"/>
- <preference name="StatusBarStyle" value="blacktranslucent" />
+	<preference name="StatusBarOverlaysWebView" value="false"/>
+	<preference name="StatusBarBackgroundColor" value="#000000"/>
+	<preference name="StatusBarStyle" value="lightcontent" />
   <preference name="detect-data-types" value="true"/>
   <preference name="exit-on-suspend" value="false"/>
   <preference name="show-splash-screen-spinner" value="true"/>

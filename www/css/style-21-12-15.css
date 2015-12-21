@@ -127,15 +127,20 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 	margin-top:30px;
 }
 
-.register-form .ui-input-text:nth-child(2) {
+.register-form .ui-input-text:nth-child(2),
+.register-form .ui-input-text:nth-child(3){
 	border-radius:0;
 	margin-bottom:1px;
-	
 }
-.register-form .ui-input-text:nth-child(3){
-	border-radius:0 0 4px 4px;
-} 
 .register-form .ui-input-text:nth-child(4){
+	border-radius:0;
+	margin-bottom:1px;
+}
+.register-form .ui-input-text:nth-child(5){
+	border-radius:0;
+	margin-bottom:1px;
+}
+.register-form .ui-input-text:nth-child(6){
 	border-radius:0 0 4px 4px;
 }
 .register-form .ui-btn-submit{
@@ -145,9 +150,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 .jqm-page .jqm-header{
 	background:#000;
 	border:0px;
-	position:fixed;
-	width:100%;
-	z-index:100;
+	padding-top: 18px;
 }
 .jqm-page .jqm-header .title{
 	color:#FFF;
@@ -281,11 +284,11 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 	top:0px;
 	bottom:0px;
 	left:15px;
-	/*border-left:1px solid #CCC;*/
+	border-left:1px solid #CCC;
 }
 .folder-list .title{
     font-size: 18px;
-	margin-left:16px;
+	margin-left:40px;
 }
 .folder-list .title .add-btn{
     display: inline-block;
@@ -312,7 +315,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 	background:url(../images/add-icon-white.png) 0 0 no-repeat;
 }
 .folder-list-wrapper{
-	margin:0 0 0 8px;
+	margin:0 0 0 31px;
 	list-style:disc;
 	padding:0px;
 	position:relative;
