@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.json" version="1.0.0">
-  <name>ND2NO</name>
-  <description>ND2NO</description>
+  <name>ND2NO Beta</name>
+  <description>ND2NO Beta</description>
   <author href="http://www.nd2no.net/" email="kapil.of.ojha@gmail.com">GISLLP Team</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
@@ -98,9 +98,10 @@
   <gap:splash src="www/res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <access origin="*"/>
-  <plugin name="cordova-plugin-inappbrowser"  /> 
-  <plugin name="cordova-plugin-statusbar"  />
-  <plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
+	<plugin name="cordova-plugin-inappbrowser" spec="1.1.1" />
+	<plugin name="cordova-plugin-statusbar" spec="2.0.0" />
+	<plugin name="nl.x-services.plugins.socialsharing" source="pgb" spec="4.3.8" />
+
   
  
   <allow-intent href="http://*/*"/>
