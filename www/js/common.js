@@ -402,9 +402,9 @@
 					
 					iconUrl = firstRow.card.icon_url_path;
 					uid = firstRow.card.uid;
-					userRole = firstRow.card.role_id;
+					userRole = firstRow.card.role_id;	
 					getACard = firstRow.card.getacard_icon;
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img"><img src="'+firstRow.card.card_large_image_path+firstRow.card.banner+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+firstRow.card.card_large_image_path+firstRow.card.banner+'\', null)"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
+					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img"><img src="'+firstRow.card.card_large_image_path+firstRow.card.banner+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+firstRow.card.card_large_image_path+firstRow.card.banner+'\', \''+firstRow.card.card_large_image_path+firstRow.card.banner+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
 				});
 		
 				$.each( cardDetailsArr, function(i, row1) {
