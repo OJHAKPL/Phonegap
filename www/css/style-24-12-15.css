@@ -148,6 +148,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 	position:fixed;
 	width:100%;
 	z-index:100;
+	padding-top: 15px;
 }
 .jqm-page .jqm-header .title{
 	color:#FFF;
@@ -248,7 +249,6 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
     vertical-align: middle;
 }
 .dashboard-link{
-	background: #4a4a4a none repeat scroll 0 0;
     border-bottom: 1px solid #CCC;
     margin: 0 -1em;
     display: flex;
@@ -256,12 +256,12 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 }
 .dashboard-link .ui-link{
 	float:left;
-	width: 24.333%;
+	width:32.3333%;
 	margin:0 .5%;
-	padding-top:20px;
+	/*padding:20px;*/
 	box-sizing:border-box;
 	text-align:center;
-	/*background:#eeeeee;*/
+	background:#eeeeee;
 	border-radius:5px;
 	color:#373737 !important;
 	text-decoration:none;
@@ -313,7 +313,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 	background:url(../images/add-icon-white.png) 0 0 no-repeat;
 }
 .folder-list-wrapper{
-	margin:0 0 0 25px;
+	margin:0 0 0 8px;
 	list-style:disc;
 	padding:0px;
 	position:relative;
@@ -727,61 +727,4 @@ color:#FFF;
 
 .loderimages {	
 	width: 100%; top: 0px; left: 0px; text-align: center; position: fixed; height: 45px; margin-top: 50%; padding: 0px;	display:none;
-}
-
-
-img.responsimg {
-	max-width: 98%;
-}
-
-.card-listnew {
-	background: #4a4a4a none repeat scroll 0 0;
-    display: flex;
-    margin: 0 -1em;
-    padding: 0px;
-}
-.card-listnew2 {
-	background: #4a4a4a none repeat scroll 0 0;
-    margin: 0 -1em;
-    padding: 1px 0em 0px;
-}
-
-.ui-icon-newedit {
- 	background: rgba(0, 0, 0, 0) url("../images/edit-icon.png") no-repeat scroll 95% 32% / 25px 21px !important;
-    border: 0 none !important;
-    color: #fff !important;
-    float: right;
-    padding-top: 4px;
-    width: 100%;
-  
-}
-.ui-icon-view {
-	background: rgba(0, 0, 0, 0) url("../images/view.png") no-repeat scroll 95% 32% / 25px 21px !important;
-	border: 0 none !important;
-	color: #fff !important;
-	float: right;
-	padding-top: 4px;
-	width: 100%;
-}
-.ui-icon-share {
-    background: rgba(0, 0, 0, 0) url("../images/share-icon2.png") no-repeat scroll 95% 32% / 25px 21px !important;
-    border: 0 none !important;
-    color: #fff !important;
-    float: right;
-    padding-top: 4px;
-    width: 100%;
-}
-.bgbuttonnew {
-    background: rgba(0, 0, 0, 0) url("../images/bar.png") repeat-x scroll 0 0;
-    height: 36px;
-    width: 100%;
-}
-.showhide-icon{
-	position: absolute; margin-left: 8px; margin-top: 5px; cursor:pointer;
-}
-.editshow-icon{
-	font-size: 14px; height: 15px; background-color: #ccc !important;
-}
-.margintoten {
-	margin-top:10px;
 }

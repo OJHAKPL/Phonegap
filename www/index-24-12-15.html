@@ -10,10 +10,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 		<script src="cordova.js"></script>
 		<script src="js/jquery.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
-		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>	
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/css/jquery.mobile.structure-1.2.0.min.css" />
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>		
 		<!----------common js----------->
 		<script src="js/common.js"></script>	
 	</head>
@@ -109,12 +107,12 @@
 			
 
 			<div role="main" class="ui-content jqm-content">
-			<!--<p class="errorMsgShow" style="text-align:center; display:none;"></p>
+				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<p class="errorMsgShow-2" style="text-align:center; display:none;"></p>
 				<div class="dashboard-link" style="border-bottom:0px;">
 					<a href="javascript:void(0);" onClick="viewProfile()"><span class="img"><img src="images/profile-icon.png" alt=""></span><br>My Profile</a>
 					<a href="javascript:void(0);" onclick="cardlist()"><span class="img"><img src="images/card-icon.png" alt=""></span><br>My Cards</a>
-					<a href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img src="images/share.png" alt=""></span><br>Share My Card</a>
+					<a href="javascript:void(0);" onclick="sharedMycardlist()"><span class="img"><img src="images/share.png" alt=""></span><br>Share My Card</a>
 				</div>
 				
 				<div class="dashboard-link">
@@ -122,16 +120,15 @@
 					<a class="counter-notify-21" href="javascript:void(0);"><span class="img"><img src="images/scroll-icon.png" alt=""></span><br>Scrolling Message Ticker</a>
 					<a href="javascript:void(0);" onClick="logout()"><span class="img"><img src="images/logout.png" alt=""></span><br>Logout</a>
 					<!--<a href="#change-password"><span class="img"><img src="images/change-password.png" alt=""></span><br>Change Password</a>
-					<a href="javascript:void(0);" onclick="favoritelist()"><span class="img"><img src="images/favorite-icon.png" alt=""></span><br>My Favorites</a>
-				</div>--> 	
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
+					<a href="javascript:void(0);" onclick="favoritelist()"><span class="img"><img src="images/favorite-icon.png" alt=""></span><br>My Favorites</a>-->
+				</div> 	
 			 			
+			<p style="border:1px solid black;margin:5px;">Swipe me in the left direction - do not swipe outside the border!</p>
 			</div><!-- /content --> 
+			
+			
+			
+			
 			
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
 				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
@@ -150,6 +147,40 @@
 		</div><!-- /page -->
 		
 		
+		<div data-role="page" class="jqm-demos jqm-page jqm-list" id="card-list" data-url="card-list">
+        
+        	<div data-role="header" class="jqm-header">                
+                <div class="left-icon">
+                	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                </div>
+                <div class="right-icon">
+                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
+                </div>
+                <h1 class="title">My Cards</h1>
+            </div><!-- /header -->
+
+			<div role="main" class="ui-content jqm-content"> 
+				<div class="loderimages cardlistloader"><img src="images/ajax-loader-list.gif"></div>
+				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
+                <div class="cards-list cardslistHtml">		
+					
+				</div>                
+			</div><!-- /content -->
+            
+			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
+                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
+                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
+                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
+                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
+				</ul>
+			</div>
+		</div><!-- /page -->	
+		
 		<div data-role="page" class="jqm-demos jqm-page jqm-list" id="folder-cards" data-url="folder-cards">
         
         	<div data-role="header" class="jqm-header">                
@@ -165,16 +196,9 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-				
-				<!--<div class="loderimages folderviewloder"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages folderviewloder"><img src="images/ajax-loader-list.gif"></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
-                <div class="cards-list myfolderDetailsHtml" style="margin-top: 10px;">		
+                <div class="cards-list cardslistHtml">		
 					
 				</div>                
 			</div><!-- /content -->
@@ -206,17 +230,9 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
-			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-			
-				<!--<div class="loderimages sharelistloader"><img src="images/ajax-loader-list.gif"></div>-->
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="cards-list cardsshareHtml" style="margin-top: 10px;">		
+				<div class="loderimages sharelistloader"><img src="images/ajax-loader-list.gif"></div>
+                <p class="errorMsgShow" style="text-align:center; display:none;"></p>
+				<div class="cards-list cardslistHtml">		
 					
 				</div>                
 			</div><!-- /content -->
@@ -249,15 +265,10 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-				<!--<div class="loderimages notificationlistloader"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages notificationlistloader"><img src="images/ajax-loader-list.gif"></div>
                 <p class="errorMsgShow" style="text-align:center; display:none;"></p> 
-				<ul class="notification-list margintoten">
+				<ul class="notification-list">
+                	
                 </ul>                
 			</div><!-- /content -->
             
@@ -293,17 +304,9 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
-				
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-				
-				<!--<div class="loderimages favoritelistloader"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages favoritelistloader"><img src="images/ajax-loader-list.gif"></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
-                <div class="favoritelistHtml cards-list" style="margin-top: 10px;">	
+                <div class="favoritelistHtml cards-list">	
 					
 				</div>                
 			</div><!-- /content -->
@@ -338,14 +341,7 @@
 		
 			<div role="main" class="ui-content jqm-content">
 			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-			
-				<div class="changepassword-form margintoten">
+				<div class="changepassword-form">
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 					<form id="changepassword_form">
 						<input type="password" name="current_password" placeholder="Current Password" id="current_password" value="">
@@ -385,16 +381,9 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">
-			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
                 
-				<!--<div class="loderimages cardDetails"><img src="images/ajax-loader-list.gif"></div>-->
-				<div class="card-link-details" style="margin-top:10px;"></div>
+				<div class="loderimages cardDetails"><img src="images/ajax-loader-list.gif"></div>
+				<div class="card-link-details"></div>
                 <div class="card-icons"></div>
                 <div class="card-link-details3"></div>
                
@@ -443,13 +432,7 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">   
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-				<div class="ProfileUpdate margintoten"></div>
+				<div class="ProfileUpdate"></div>
 			</div><!-- /content -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -479,16 +462,12 @@
                 <h1 class="title">Edit Profile</h1>
             </div><!-- /header -->
 
-			<div role="main" class="ui-content jqm-content">
-			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
+			<div role="main" class="ui-content jqm-content">  
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="EditProfileHtml margintoten">
+				<div class="EditProfileHtml">
+				
+				
+				
 				</div>
 			</div><!-- /content -->            
             
@@ -520,14 +499,8 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">  
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="updateCard margintoten"></div>
+				<div class="updateCard"></div>
 			</div><!-- /content -->
             
             
@@ -559,15 +532,9 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-                <!--<div class="loderimages cardticklistloader"><img src="images/ajax-loader-list.gif"></div>-->
+                <div class="loderimages cardticklistloader"><img src="images/ajax-loader-list.gif"></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-                <ul class="ticked-list margintoten">
+                <ul class="ticked-list">
 				</ul>                
 			</div><!-- /content -->
 			
@@ -630,21 +597,16 @@
 			</div><!-- /header -->
 			
 			<div role="main" class="ui-content jqm-content">
-			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-				
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
 				<div class="folder-list">
-					<h3 class="title" style="cursor: pointer;" onclick="cardbasiclist()">My Cards</h3>
 					<h3 class="title" style="cursor: pointer;" onclick="sharedcardlist()">Shared Cards</h3>
 					<h3 class="title" style="cursor: pointer;" onclick="favoritelist()">My Favorites</h3>
-					<h3 class="title">My Folders</h3>
-					<ul class="folder-list-wrapper folder_list">
+					<h3 class="title">My Folders <button class="add-btn"><span class="icon"></span> Add New</button></h3>
+					<div class="add-folder" style="display:none;">
+						<button id="folder_save" class="ui-btn ui-btn-submit ui-corner-all">Save</button>
+						<input type="text" name="folder_name" placeholder="Type folder name" id="folder_name" value=""/>
+					</div>
+					<ul class="folder-list-wrapper folder_list" id="folder_list">
 					</ul>
 				</div>
 			</div><!-- /content --> 
@@ -677,11 +639,11 @@
                 	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
-                <h1 class="title">Share My Card123</h1>
+                <h1 class="title">Share My Card</h1>
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
-				<!--<div class="loderimages cardlistloader"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages cardlistloader"><img src="images/ajax-loader-list.gif"></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 <div class="cards-list cardslistHtml">		
 					
@@ -715,14 +677,8 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">  
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="updateCardLink margintoten"></div>
+				<div class="updateCardLink"></div>
 			</div><!-- /content -->
             
             
@@ -739,104 +695,6 @@
 		</div><!-- /page --> 
 		
 		
-		
-		<div data-role="page" class="jqm-demos jqm-page jqm-list" id="basic-card-list" data-url="basic-card-list">
-        
-        	<div data-role="header" class="jqm-header">                
-                <div class="left-icon">
-                	<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
-                </div>
-                <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
-                	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
-                </div>
-                <h1 class="title">My Cards</h1>
-            </div><!-- /header -->
-
-			<div role="main" class="ui-content jqm-content"> 
-			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
-			
-				<!--<div class="loderimages basiccardlistloader"><img src="images/ajax-loader-list.gif"></div>-->
-                <div class="cards-list basiccardslistHtml" style="margin-top:10px;">		
-					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
-				</div>                
-			</div><!-- /content -->
-            
-			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
-                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
-                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
-                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
-				</ul>
-			</div>
-		</div><!-- /page -->
-		
-		
-		<div data-role="page" class="jqm-demos jqm-page jqm-dashboard" id="my-folderlist" data-url="my-folderlist">
-			
-			<div data-role="header" class="jqm-header">                
-				<div class="left-icon">
-					<a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
-				</div>
-				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
-					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
-				</div>
-				<h1 class="title">My Folders</h1>
-			</div><!-- /header -->
-			
-			<div role="main" class="ui-content jqm-content">
-			
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div> 
-				
-				<!--<div class="loderimages myfolderloader"><img src="images/ajax-loader-list.gif"></div>-->
-				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
-				<div class="folder-list">
-					<h3 class="title">My Folders <button class="add-btn"><span class="icon"></span> Add New</button></h3>
-					<div class="add-folder" style="display:none;">
-						<button id="folder_save" class="ui-btn ui-btn-submit ui-corner-all">Save</button>
-						<input type="text" name="folder_name" placeholder="Type folder name" id="folder_name" value=""/>
-					</div>
-					
-					<h3 class="title">My Folder List</h3>
-					<ul class="folder-list-wrapper folder_listadd">
-					</ul>
-				</div>
-			</div><!-- /content --> 
-			
-			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
-			</div><!-- /footer -->
-            
-			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
-                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
-                    <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
-                    <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
-				</ul>
-			</div>
-		</div><!-- /page -->
-		
-		
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="card-scroller" data-url="card-scroller">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
@@ -851,14 +709,8 @@
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">  
-				<div class="dashboard-link" style="border-bottom:0px;">
-					<a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a>
-					<a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a>				
-					<a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span> </a>
-					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
-				</div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<div class="updateCardScroller margintoten"></div>
+				<div class="updateCardScroller"></div>
 			</div><!-- /content -->            
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -871,9 +723,8 @@
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
 			</div>
-		</div><!-- /page -->  
-		 
-		 
+		</div><!-- /page --> 
+		
 		
 		<script src="js/index.js"></script>
 
