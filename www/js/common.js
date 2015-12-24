@@ -72,11 +72,6 @@
 							var cardImages = (row.banner)?row.banner:'';
 							if(cardImages){
 								var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-								var image = new Image(); 
-								image.src = cardImages;
-								if(image.width == 0) {
-									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-								}
 							} else {
 								var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 							}
@@ -148,17 +143,6 @@
 					getACard = firstRow.card.getacard_icon;
 					/*----------- card image check --------*/
 					var cardImages = firstRow.card.card_large_image_path+firstRow.card.banner;
-					if(cardImages){
-						var cardImages = cardImages;
-						var image = new Image(); 
-						image.src = cardImages;
-						if(image.width == 0) {
-							var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-						}
-					} else {
-						var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-					}
-					
 					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img"><img src="'+cardImages+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><a href="#shareCarddetails" data-rel="popup"><button class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
 				});
 		
@@ -265,11 +249,6 @@
 								var cardImages = (row.banner)?row.banner:'';
 								if(cardImages){
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-									var image = new Image(); 
-									image.src = cardImages;
-									if(image.width == 0) {
-										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-									}
 								} else {
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 								}
@@ -381,11 +360,6 @@
 							var cardImages = (row.banner)?row.banner:'';
 							if(cardImages){
 								var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-								var image = new Image(); 
-								image.src = cardImages;
-								if(image.width == 0) {
-									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-								}
 							} else {
 								var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 							}
@@ -454,11 +428,6 @@
 					var cardImages = firstRow.card.card_large_image_path+firstRow.card.banner;
 					if(cardImages){
 						var cardImages = cardImages;
-						var image = new Image(); 
-						image.src = cardImages;
-						if(image.width == 0) {
-							var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-						}
 					} else {
 						var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 					}
@@ -522,11 +491,6 @@
 						var cardImages = row.card.card_large_image_path+row.card.banner;
 						if(cardImages){
 							var cardImages = cardImages;
-							var image = new Image(); 
-							image.src = cardImages;
-							if(image.width == 0) {
-								var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-							}
 						} else {
 							var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 						}
@@ -698,7 +662,7 @@
 						$('.errorMsgShow-2').hide();
 						$('#share-email').val('');
 						$('#shareCarddetails2').popup('close');
-						$.mobile.changePage("#dashboard",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+						cardlist();
 					}, 4000);	
 					 
 				}
@@ -743,11 +707,6 @@
 							var photoUser = (row.photo)?row.photo:'';
 							if(photoUser){
 								var photoUser = 'https://www.nd2nosmart.cards/nd2no/upload/users/profile-photo/resized/'+photoUser+'';
-								var image = new Image(); 
-								image.src = photoUser;
-								if(image.width == 0) {
-									var photoUser = 'https://www.nd2nosmart.cards/nd2no/img/no-profile.png';
-								}
 							} else {
 								var photoUser = 'https://www.nd2nosmart.cards/nd2no/img/no-profile.png';
 							}
@@ -795,11 +754,6 @@
 						var photoUser = (row.photo)?row.photo:'';
 						if(photoUser){
 							var photoUser = 'https://www.nd2nosmart.cards/nd2no/upload/users/profile-photo/resized/'+photoUser+'';
-							var image = new Image(); 
-							image.src = photoUser;
-							if(image.width == 0) {
-								var photoUser = 'https://www.nd2nosmart.cards/nd2no/img/no-profile.png';
-							}
 						} else {
 							var photoUser = 'https://www.nd2nosmart.cards/nd2no/img/no-profile.png';
 						}
@@ -894,7 +848,6 @@
 							$(".errorMsgShow").addClass("success");
 							$(".errorMsgShow").text(dataMsg.success);
 							viewProfile();
-							//$.mobile.changePage("#dashboard");
 						}
 					}
 				)
@@ -952,11 +905,6 @@
 								var cardImages = (row.banner)?row.banner:'';
 								if(cardImages){
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-									var image = new Image(); 
-									image.src = cardImages;
-									if(image.width == 0) {
-										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-									}
 								} else {
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 								}
@@ -1007,8 +955,7 @@
 
 	/*--------- Card List-----------*/
 	function cardlist() {
-		$('.cardslistHtml').empty();	  
-		$('.foldercardlist').empty();
+		$('.card-list-new').remove();	  
 		user_id = localStorage.getItem('userid');
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
@@ -1021,28 +968,26 @@
 				  user_id: user_id,
 				},
 				function(cardlist,status){
+					var countid = 0;
 					$('.swipecardslistHtml').empty();
 					var cardlistArr = jQuery.parseJSON(cardlist);
 					if(!cardlistArr.error) {
 						$.each( cardlistArr, function(i, row1) {
-							$.each( row1, function(i, row) {
+							countdata = row1.length;
+							$.each( row1, function(j, row) {
 								var htmlidclass = ''
-								if(i==0){
+								countid++;
+								if(countid==countdata){
 									var htmlidclass = 'id="card-list" data-url="card-list"';
 								}
 								/*----------- card image check --------*/
 								var cardImages = (row.banner)?row.banner:'';
 								if(cardImages){
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-									var image = new Image(); 
-									image.src = cardImages;
-									if(image.width == 0) {
-										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-									}
 								} else {
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 								}
-								$('#card-scroller').after('<div data-role="page" class="jqm-demos jqm-page jqm-list card-list-new" '+htmlidclass+'><div data-role="header" class="jqm-header"><div class="left-icon"><a href="#dashboard" class="back-button"><img src="images/back-icon.png" alt=""></a><a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a></div><div class="right-icon"><a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a><a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a></div><h1 class="title">My Cards</h1></div><div role="main" class="ui-content jqm-content"><div class="dashboard-link" style="border-bottom:0px;"><a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a></div><div class="card-listnew"><div class="card-box"><div class="img"><img width="100%" alt="" src="'+cardImages+'"></div></div></div><div class="card-listnew2"><div data-role="controlgroup" data-type="vertical"><div class="bgbuttonnew"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+row.title+'\', null, \''+cardImages+'\', \''+cardImages+'\')" data-role="button" class="icon-share" data-icon="share">Share</a></div><div class="bgbuttonnew"><a href="javascript:void(0);" data-role="button" onClick="cartDetails('+row.id+')" class="icon-view" data-icon="view">View</a></div><div class="bgbuttonnew" onClick="showEditcard()"><a href="javascript:void(0);" data-role="button" class="icon-newedit" data-icon="newedit">Edit</a></div><a href="javascript:void(0);" onclick="editscroller('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Text Scroll</a><a href="javascript:void(0);" onclick="cardLink('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Links</a></div></div></div><div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer"><div class="rewards-line"><a href="">Refer a Business</a></div></div><div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay"><ul class="jqm-list ui-alt-icon ui-nodisc-icon"><li><a href="#dashboard">Dashboard</a></li><li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li><li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li><li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li><li><a href="#change-password" data-ajax="false">Change Password</a></li><li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li></ul></div></div>');
+								$('#card-scroller').after('<div data-role="page" class="jqm-demos jqm-page jqm-list card-list-new" '+htmlidclass+'><div data-role="header" class="jqm-header"><div class="left-icon"><a href="javascript:void(0)" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a><a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a></div><div class="right-icon"><a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a><a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a></div><h1 class="title">My Cards</h1></div><div role="main" class="ui-content jqm-content"><div class="dashboard-link" style="border-bottom:0px;"><a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myFolderShare()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a></div><div class="card-listnew"><div class="card-box"><div class="img"><img width="100%" alt="" src="'+cardImages+'"></div></div></div><div class="card-listnew2"><div data-role="controlgroup" data-type="vertical"><div class="bgbuttonnew"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+row.title+'\', null, \''+cardImages+'\', \''+cardImages+'\')" data-role="button" class="icon-share" data-icon="share">Share</a></div><div class="bgbuttonnew"><a href="javascript:void(0);" data-role="button" onClick="cartDetails('+row.id+')" class="icon-view" data-icon="view">View</a></div><div class="bgbuttonnew" onClick="showEditcard()"><a href="javascript:void(0);" data-role="button" class="icon-newedit" data-icon="newedit">Edit</a></div><a href="javascript:void(0);" onclick="editscroller('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Text Scroll</a><a href="javascript:void(0);" onclick="cardLink('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Links</a></div></div></div><div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer"><div class="rewards-line"><a href="">Refer a Business</a></div></div><div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay"><ul class="jqm-list ui-alt-icon ui-nodisc-icon"><li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li><li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li><li><a href="javascript:void(0);" onclick="cardlist()" data-ajax="false">My Cards</a></li><li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li><li><a href="#change-password" data-ajax="false">Change Password</a></li><li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li></ul></div></div>');
 							});
 						});
 						$.mobile.changePage("#card-list",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
@@ -1052,14 +997,12 @@
 						$(".errorMsgShow").show();
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(cardlistArr.error);
-						   $('.cardslistHtml').append('<p> Please <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\', \'_system\');" class="tick-button ui-link">Click here</a> to create your new card (Regular user) or <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae\', \'_system\');" class="tick-button ui-link">Click here</a> (Account Executive).</p>');
-						
+						$('.cardslistemptyHtml').append('<p> Please <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\', \'_system\');" class="tick-button ui-link">Click here</a> to create your new card (Regular user) or <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae\', \'_system\');" class="tick-button ui-link">Click here</a> (Account Executive).</p>');
+						$.mobile.changePage("#card-list-empty",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 					}
 				}
 			)
-		} else {
-			//$.mobile.changePage("#login");
-		}
+		} 
 	} 
 	
 	
@@ -1088,11 +1031,6 @@
 								var cardImages = (row.banner)?row.banner:'';
 								if(cardImages){
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-									var image = new Image(); 
-									image.src = cardImages;
-									if(image.width == 0) {
-										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-									}
 								} else {
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 								}
@@ -1211,7 +1149,7 @@
 							$('.errorMsgShow-2').hide();
 							$('#share-email').val('');
 							$('#movetofolder').popup('close');
-							$.mobile.changePage("#dashboard",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+							cardlist();
 						}, 4000);	
 						 
 					}
@@ -1336,11 +1274,6 @@
 								var cardImages = (row.banner)?row.banner:'';
 								if(cardImages){
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-									var image = new Image(); 
-									image.src = cardImages;
-									if(image.width == 0) {
-										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-									}
 								} else {
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 								}
@@ -1385,11 +1318,6 @@
 						var cardImages = row.card.card_large_image_path+row.card.banner;
 						if(cardImages){
 							var cardImages = cardImages;
-							var image = new Image(); 
-							image.src = cardImages;
-							if(image.width == 0) {
-								var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-							}
 						} else {
 							var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 						}
@@ -1501,7 +1429,6 @@
 					setTimeout(function() {
 						$('.errorMsgShow').hide();
 					}, 4000);
-					//$.mobile.changePage("#dashboard");
 				}
 			}
 		)
@@ -1528,11 +1455,6 @@
 						var cardImages = row.card.card_large_image_path+row.card.banner;
 						if(cardImages){
 							var cardImages = cardImages;
-							var image = new Image(); 
-							image.src = cardImages;
-							if(image.width == 0) {
-								var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-							}
 						} else {
 							var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 						}
@@ -1608,7 +1530,6 @@
 					setTimeout(function() {
 						$('.errorMsgShow').hide();
 					}, 4000);
-					//$.mobile.changePage("#dashboard");
 				}
 			}
 		)
@@ -1638,7 +1559,7 @@
 
 	$(document).ready(function(){
 		
-		$('div.ui-page').live("swiperight", function () {
+		$('div.ui-page').live("swipeleft", function () {
 			nextpage = $.mobile.activePage.next('.card-list-new');
 			if(nextpage.length != 0) {
  				$.mobile.changePage(nextpage, {
@@ -1648,7 +1569,7 @@
 			}
 		});
 		
-		$('div.ui-page').live("swipeleft", function () {
+		$('div.ui-page').live("swiperight", function () {
 			prevpage = $.mobile.activePage.prev('.card-list-new');
 			if (prevpage.length != 0) {
 				$.mobile.changePage(prevpage, {
@@ -1756,7 +1677,7 @@
 							}
 						}
 					);
-					$.mobile.changePage("#dashboard",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+					cardlist();
 				}
 			} else {
 				//$.mobile.changePage("#login");
@@ -1766,7 +1687,7 @@
 		
 		
 		/*--------- Page Before Show -----------*/
-		/*$(document).on('pagebeforeshow', '#dashboard', function(){ 
+		/*$(document).on('pagebeforeshow', '#1dashboard', function(){ 
 			user_id = localStorage.getItem('userid');
 			if(user_id==null || user_id==''){
 				user_id = localStorage.getItem('userid-2');
@@ -1791,7 +1712,7 @@
 							}
 					}
 				);			
-				$.mobile.changePage("#dashboard"),{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"};
+				$.mobile.changePage("#1dashboard"),{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"};
 			 } else {
 				//$.mobile.changePage("#login");
 			}
@@ -1960,11 +1881,6 @@
 									var cardImages = (row.banner)?row.banner:'';
 									if(cardImages){
 										var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/thumb/'+cardImages+'';
-										var image = new Image(); 
-										image.src = cardImages;
-										if(image.width == 0) {
-											var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-										}
 									} else {
 										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 									}
@@ -2018,11 +1934,6 @@
 								var cardImages = (row.banner)?row.banner:'';
 								if(cardImages){
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/upload/cards/large/'+cardImages+'';
-									var image = new Image(); 
-									image.src = cardImages;
-									if(image.width == 0) {
-										var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
-									}
 								} else {
 									var cardImages = 'https://www.nd2nosmart.cards/nd2no/img/card_images/no-card-pic.png';
 								}
@@ -2098,7 +2009,7 @@
 								$(".errorMsgShow-2").removeClass("error");
 								$(".errorMsgShow-2").addClass("success");
 								$(".errorMsgShow-2").text(dataMsg.success);
-								$.mobile.changePage("#dashboard",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+								cardlist();
 							}
 						}
 					)
