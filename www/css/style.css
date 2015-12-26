@@ -47,7 +47,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 }
 .rewards-line:before,
 .rewards-line:after{
-	content:"$";
+	/*content:"$";*/
 	font-size:30px;
 	font-weight:bold;
 	text-transform:uppercase;
@@ -784,4 +784,10 @@ img.responsimg {
 }
 .margintoten {
 	margin-top:10px;
+}
+.arrowiconleft {
+	opacity: 0.31; 
+}
+.arrowiconrigth {
+	opacity: 0.31;
 }

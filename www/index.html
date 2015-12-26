@@ -97,11 +97,11 @@
 			
 			<div data-role="header" class="jqm-header">                
 				<div class="left-icon">
-					<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
 				<h1 class="title">Dashboard</h1>
@@ -134,7 +134,7 @@
 			</div><!-- /content --> 
 			
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
 			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -154,11 +154,11 @@
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title" id="folderTitle"> Folder Cards</h1>
@@ -178,6 +178,10 @@
 					
 				</div>                
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -195,11 +199,11 @@
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">Cards Shared To Me</h1>
@@ -220,6 +224,10 @@
 					
 				</div>                
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -238,11 +246,11 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-notification" id="notification" data-url="notification">        
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">Notifications</h1>
@@ -262,7 +270,7 @@
 			</div><!-- /content -->
             
             <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-                <div class="rewards-line"><a href="">Refer a Business</a></div>
+                <div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
             </div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -282,11 +290,11 @@
  		<div data-role="page" class="jqm-demos jqm-page jqm-list" id="favorite-list" data-url="favorite-list">        
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">My Favorite</h1>
@@ -307,6 +315,10 @@
 					
 				</div>                
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -326,11 +338,11 @@
 		
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
                 	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""><span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">Change Password</h1>
@@ -356,6 +368,10 @@
 					<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 				</div>
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -374,11 +390,11 @@
 			
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-					<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
                 <h1 class="title">Card Detail</h1>
@@ -412,9 +428,9 @@
 				</div> 
 			</div><!-- /content -->
             
-            <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-            	<button>Get <span>a</span> <img src="images/btn-logo.png" alt=""> <span>Smart</span> Card</button>
-            </div><!-- /footer -->
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
 			
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -432,11 +448,11 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="my-profile" data-url="my-profile">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
-					<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
                 <h1 class="title">My Profile</h1>
@@ -451,6 +467,10 @@
 				</div>
 				<div class="ProfileUpdate margintoten"></div>
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -469,11 +489,11 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="update-profile" data-url="update-profile">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
-					<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="viewProfile()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
                 <h1 class="title">Edit Profile</h1>
@@ -490,7 +510,11 @@
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="EditProfileHtml margintoten">
 				</div>
-			</div><!-- /content -->            
+			</div><!-- /content -->   
+
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -509,11 +533,11 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="update-card" data-url="update-card">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
-					<a href="#card-list" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
                 <h1 class="title">Update Card</h1>
@@ -529,7 +553,10 @@
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="updateCard margintoten"></div>
 			</div><!-- /content -->
-            
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -548,11 +575,11 @@
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">Selected Cards</h1>
@@ -596,10 +623,13 @@
 			</div>
 			
             <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-            	<button onClick="moveTocard()">Move to</button>
-				<a href="#shareCarddetails2" data-rel="popup">Share with</a>
-            	<div class="or-text">or</div>            	
+            	<button class="sharecardImgdev" onClick="moveTocard()">Move to</button>
+				<div class="or-text">or</div>            	
             </div><!-- /footer -->
+			
+			<!--<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -619,11 +649,11 @@
 			
 			<div data-role="header" class="jqm-header">                
 				<div class="left-icon">
-					<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
 				<h1 class="title">My Folders /Shared Cards</h1>
@@ -650,7 +680,7 @@
 			</div><!-- /content --> 
 			
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
 			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -670,14 +700,14 @@
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
-                <h1 class="title">Share My Card123</h1>
+                <h1 class="title">Share My Card</h1>
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content"> 
@@ -687,6 +717,10 @@
 					
 				</div>                
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -704,14 +738,14 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="card-link" data-url="card-link">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
-					<a href="#card-list" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" id="backbuttoneditliinks" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
-                <h1 class="title">Card Link</h1>
+                <h1 class="title">Links</h1>
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">  
@@ -724,7 +758,10 @@
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="updateCardLink margintoten"></div>
 			</div><!-- /content -->
-            
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -744,11 +781,11 @@
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
                 	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">My Cards</h1>
@@ -768,6 +805,10 @@
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				</div>                
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -786,11 +827,11 @@
 			
 			<div data-role="header" class="jqm-header">                
 				<div class="left-icon">
-					<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
 				<h1 class="title">My Folders</h1>
@@ -821,7 +862,7 @@
 			</div><!-- /content --> 
 			
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >GET A CARD</a></div>
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
 			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
@@ -841,11 +882,11 @@
         
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
-                	<a href="javascript:void(0);" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a>
+                	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
                 	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
                 </div>
                 <div class="right-icon">
-                	<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+                	<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
                 	<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
                 </div>
                 <h1 class="title">My Cards</h1>
@@ -864,6 +905,10 @@
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 <div class="cards-list cardslistemptyHtml margintoten"></div>                
 			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
@@ -881,14 +926,14 @@
 		<div data-role="page" class="jqm-demos jqm-page jqm-card" id="card-scroller" data-url="card-scroller">        
 			<div data-role="header" class="jqm-header">                
                <div class="left-icon">
-					<a href="#card-list" class="back-button"><img src="images/back-icon.png" alt=""></a>
-					<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
+					<a href="javascript:void(0);" id="backbuttoneditcard" class="back-button"><img src="images/back-icon.png" alt=""></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
 				</div>
 				<div class="right-icon">
-					<a href="" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
+					<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>
 					<a href="" class="jqm-navmenu-link menu-button ui-link"><img src="images/menu-icon.png" alt=""></a>
 				</div>
-                <h1 class="title">Card Scroller</h1>
+                <h1 class="title">Text Scroll</h1>
             </div><!-- /header -->
 
 			<div role="main" class="ui-content jqm-content">  
@@ -900,7 +945,11 @@
 				</div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="updateCardScroller margintoten"></div>
-			</div><!-- /content -->            
+			</div><!-- /content -->  
+
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+				<div class="rewards-line"><a href="javascript:void(0);" onclick="window.open('https://www.nd2nosmart.cards/nd2no/ordermy','_system');" >Get a SmartCard</a></div>
+			</div><!-- /footer -->
             
 			<div data-role="panel" class="main-menu jqm-navmenu-panel" data-position="right" data-display="overlay">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
