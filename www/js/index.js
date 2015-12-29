@@ -24,15 +24,15 @@ $( document ).on( "pagecreate", ".jqm-demos", function( event ) {
 	$( ".jqm-version" ).html( text );
 
 	// Global navmenu panel
-	$( ".jqm-navmenu-panel ul" ).listview();
+	//$( ".jqm-navmenu-panel ul" ).listview();
 
 	$( document ).on( "panelopen", ".jqm-search-panel", function() {
 		$( this ).find( "input" ).focus();
 	})
 
-	$( ".jqm-navmenu-link" ).on( "click", function() {
+	/*$( ".jqm-navmenu-link" ).on( "click", function() {
 		page.find( ".jqm-navmenu-panel:not(.jqm-panel-page-nav)" ).panel( "open" );
-	});
+	});*/
 
 	// Turn off autocomplete / correct for demos search
 	$( this ).find( ".jqm-search input" ).attr( "autocomplete", "off" ).attr( "autocorrect", "off" );
