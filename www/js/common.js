@@ -1664,16 +1664,6 @@
 
 	$(document).ready(function(){
 		
-		var options = {
-		  date: new Date(),
-		  mode: 'date'
-		};
-
-		datePicker.show(options, function(date){
-		  alert("date result " + date);  
-		});
-		
-		
 		$('div.ui-page').live("swipeleft", function () {
 			nextpage = $.mobile.activePage.next('.card-list-new');
 			if(nextpage.length != 0) {
@@ -1693,6 +1683,16 @@
 				});
 			}
 		});  
+		
+		
+		/*var options = {
+		  date: new Date(),
+		  mode: 'date'
+		};
+
+		datePicker.show(options, function(date){
+		  //alert("date result " + date);  
+		});*/
 		
  
 		/*--------- Register -----------*/  
