@@ -8,9 +8,9 @@
 	
 	
 	function loading(showOrHide, delay) {
-	  setTimeout(function() {
+		setTimeout(function() {
 			$.mobile.loading(showOrHide);
-	  }, delay);
+		}, delay);
 	}
 	
 	function navigationOpen(){ 
@@ -41,6 +41,7 @@
 				} else {
 					if(dataArray.error){
 						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(dataArray.error);
 						setTimeout(function() {
@@ -50,9 +51,7 @@
 				}					
 			});					
 		});
-	}
-	
-	
+	} 
 	
 	/*---------- Display cards in folder ----------*/
 	function showFoldercards(folderId,folderName) {
@@ -83,8 +82,12 @@
 				} else {	
 					$('.folderviewloder').hide();
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
-					$(".errorMsgShow").text(cardlistArr.error);						
+					$(".errorMsgShow").text(cardlistArr.error);	
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);	
 				}
 			}
 		) 
@@ -108,8 +111,12 @@
 					showFoldercards(resultArr.folder_id,resultArr.folder_name);					
 				} else {						
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
-					$(".errorMsgShow").text(resultArr.error);						
+					$(".errorMsgShow").text(resultArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);	
 				}
 			}
 		) 
@@ -256,8 +263,12 @@
 					} else {
 						$('.sharelistloader').hide();
 						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").addClass("error");
-						$(".errorMsgShow").text(cardlistArr.error);						
+						$(".errorMsgShow").text(cardlistArr.error);	
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);	
 					}
 				}
 			)
@@ -284,8 +295,12 @@
 					sharedcardlist()
 				}else {						
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
-					$(".errorMsgShow").text(resultArr.error);						
+					$(".errorMsgShow").text(resultArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);	
 				}
 			}
 		) 
@@ -358,8 +373,12 @@
 					});
 				} else {
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
 					$(".errorMsgShow").text(cardlistArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);	
 				}
 			}
 		)
@@ -481,8 +500,12 @@
 					});
 				} else {
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
 					$(".errorMsgShow").text(profileArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);	
 				}
 				$.mobile.changePage("#update-card",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 			}
@@ -551,7 +574,7 @@
 							$(".errorMsgShow").text(dataMsg.success);
 							setTimeout(function() {
 								$('.errorMsgShow').hide();
-							}, 3000);	
+							}, 4000);	
 							editCard(dataMsg.card_id); 
 						}
 					}
@@ -596,8 +619,7 @@
 						$('.errorMsgShow-2').hide();
 						$('#share-email').val('');
 						$('#shareCarddetails').popup('close');
-					}, 4000);	
-					 
+					}, 4000);
 				}
 			}
 		);
@@ -688,8 +710,12 @@
 						});
 					} else {
 						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(profileArr.error);
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);
 					}
 					$.mobile.changePage("#my-profile",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 				}
@@ -755,8 +781,12 @@
 					});
 				} else {
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
 					$(".errorMsgShow").text(profileArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);	
 				}
 				$.mobile.changePage("#update-profile",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 			}
@@ -811,7 +841,11 @@
 							$(".errorMsgShow").removeClass("error");
 							$(".errorMsgShow").addClass("success");
 							$(".errorMsgShow").text(dataMsg.success);
-							viewProfile();
+							setTimeout(function() {
+								$('.errorMsgShow').hide();
+								viewProfile();
+							}, 4000);	
+							
 						}
 					}
 				)
@@ -873,8 +907,12 @@
 					} else {
 						$('.favoritelistloader').hide();
 						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(cardlistArr.error);
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);
 					}
 				}
 			) 
@@ -902,8 +940,12 @@
 					favoritelist()
 				}else {						
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
-					$(".errorMsgShow").text(resultArr.error);						
+					$(".errorMsgShow").text(resultArr.error);	
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);
 				}
 			}
 		) 
@@ -948,9 +990,13 @@
 					} else {
 						$('.cardlistloader').hide();	
 						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(cardlistArr.error);
 						$('.cardslistemptyHtml').append('<p> Please <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\', \'_system\');" class="tick-button ui-link">Click here</a> to create your new card (Regular user) or <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae\', \'_system\');" class="tick-button ui-link">Click here</a> (Account Executive).</p>');
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);
 						$.mobile.changePage("#card-list-empty",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 					}
 				}
@@ -1003,9 +1049,13 @@
 					} else {
 						$('.basiccardlistloader').hide();	
 						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(cardlistArr.error);
-						   $('.basiccardslistHtml').append('<p> Please <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\', \'_system\');" class="tick-button ui-link">Click here</a> to create your new card (Regular user) or <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae\', \'_system\');" class="tick-button ui-link">Click here</a> (Account Executive).</p>');
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);
+						$('.basiccardslistHtml').append('<p> Please <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\', \'_system\');" class="tick-button ui-link">Click here</a> to create your new card (Regular user) or <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae\', \'_system\');" class="tick-button ui-link">Click here</a> (Account Executive).</p>');
 						
 					}
 				}
@@ -1040,10 +1090,14 @@
 								$('.movetoHtml').append('<div><label><input id="folder_name_to" type="radio" checked="" value="'+row.id+'" name="folder_name_to">&nbsp;'+row.folder_name+'</label></div>');
 							});
 						});
-					} else {						
+					} else {
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").show();
 						$(".errorMsgShow").addClass("error");
-						$(".errorMsgShow").text(folderArr.error);						
+						$(".errorMsgShow").text(folderArr.error);	
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);
 					}
 				}
 			)
@@ -1097,8 +1151,7 @@
 							$('#share-email').val('');
 							$('#movetofolder').popup('close');
 							cardlist();
-						}, 4000);	
-						 
+						}, 4000);
 					}
 				}
 			);
@@ -1135,16 +1188,13 @@
 					}
 				);
 			}
-		} else {
-			//$.mobile.changePage("#login");
-		}
+		} 
 	}
 	
 	
-	
-	
 	/*--------- Shared Card List-----------*/
-	function myfolderList(){ 
+	function myfolderList(){
+		
 		user_id = localStorage.getItem('userid');
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
@@ -1224,8 +1274,8 @@
 						});
 						 $('.cardlistloader').hide();
 					} else {
-						
 						$('.cardlistloader').hide();	
+						$(".errorMsgShow").removeClass("success");
 						$(".errorMsgShow").show();
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(cardlistArr.error);
@@ -1233,9 +1283,7 @@
 					}
 				}
 			)
-		} else {
-			//$.mobile.changePage("#login");
-		}
+		}  
 	}
 
 
@@ -1293,9 +1341,13 @@
 					
 					});
 				} else {
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").show();
 					$(".errorMsgShow").addClass("error");
 					$(".errorMsgShow").text(profileArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);
 				}
 				$.mobile.changePage("#card-link",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 			}
@@ -1405,8 +1457,12 @@
 					});
 				} else {
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
 					$(".errorMsgShow").text(profileArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);
 				}
 				$.mobile.changePage("#card-scroller",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 			}
@@ -1500,8 +1556,13 @@
 				} else {
 					$('.cardticklistloader').hide();
 					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
 					$(".errorMsgShow").text(cardlistArr.error);
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);
+					
 				}
 			}
 		);
@@ -1512,7 +1573,7 @@
 	/*----------- Notifications List -----------*/
 		
 	function notificationList() {
-		
+				
 		user_id = localStorage.getItem('userid');
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
@@ -1543,10 +1604,14 @@
 						});
 						$('.notificationlistloader').hide();
 					} else {
+						$(".errorMsgShow").removeClass("success");
 						$('.notificationlistloader').hide();
 						$(".errorMsgShow").show();
 						$(".errorMsgShow").addClass("error");
 						$(".errorMsgShow").text(cardlistArr.error);
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);
 					}
 				}
 			)
@@ -1921,12 +1986,7 @@
 							}
 						}
 					)
-				} else {
-					//$.mobile.changePage("#login");	
-				}
+				}  
 			}
 		});
-		
-		
-
 	});
