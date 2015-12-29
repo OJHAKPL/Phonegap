@@ -732,7 +732,7 @@
 						var mobile = (row.mobile && row.mobile!='')?row.mobile:'';
 		 				var countryDropDown = '<select name="country_id" id="country_id" style="max-width:100%;" class="countryUpdate"><option id="countryUpdateSpan" value="">Select Country</option></select>';
 						
-						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input type="text" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"></div><button onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
+						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"></div><button onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
 						$(".EditProfileHtml").trigger("create");
 					 
 						$.post(
@@ -1599,6 +1599,14 @@
 
 	$(document).ready(function(){
 		
+		var options = {
+		  date: new Date(),
+		  mode: 'date'
+		};
+
+		datePicker.show(options, function(date){
+		  alert("date result " + date);  
+		});
 		
 		
 		$('div.ui-page').live("swipeleft", function () {
