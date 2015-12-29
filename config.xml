@@ -102,6 +102,7 @@
 	<plugin name="cordova-plugin-statusbar" spec="2.0.0" />
 	<plugin name="nl.x-services.plugins.socialsharing" source="pgb" spec="4.3.8" />
 	<!--<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />-->
+	<plugin name="com.plugin.datepicker" spec="0.4.0" source="pgb" />
 
   
  
