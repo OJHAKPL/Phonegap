@@ -1493,7 +1493,7 @@
 							var cardImages = (row.banner_thumb)?row.banner_thumb:'';
 							$('.ticked-list').append('<li><div class="card-option"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="removeSelected('+row.id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img src="'+cardImages+'" alt=""></div></li>');
 						});
-						$('.sharecardImgdev').after('<a class="sharecardremove ui-btn ui-shadow ui-corner-all" onclick="window.plugins.socialsharing.share(\'Cards To Share\', null,['+row1.shareimg+'],'+row1.shareimg+')" href="javascript:void(0);">Share with</a>');
+						$('.sharecardImgdev').after('<a class="sharecardremove ui-btn ui-shadow ui-corner-all" onclick="window.plugins.socialsharing.share(\'Cards To Share\', null,['+row1.shareimg+'],['+row1.shareimg+'])" href="javascript:void(0);">Share with</a>');
 					});
 					
 					$('.cardticklistloader').hide();
