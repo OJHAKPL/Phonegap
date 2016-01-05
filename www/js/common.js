@@ -1559,11 +1559,11 @@
 						$.each( row1.card, function(i, row) {
 							var cardImages = (row.banner_thumb)?row.banner_thumb:'';
 							$('.ticked-list').append('<li><div class="card-option"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="removeSelected('+row.id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img src="'+cardImages+'" alt=""></div></li>');
-							shareUrl += "'https://www.nd2nosmart.cards/nd2no/card/"+row.post_key+"-"+row.id+"/mobile',";
+							shareUrl += "'https://www.nd2nosmart.cards/nd2no/card/"+row.post_key+"-"+row.id+"/mobile'<br/><br/>";
 						});
-						if(shareUrl){
+						/*if(shareUrl){
 							shareUrl = shareUrl.substring(0,shareUrl.length - 1)
-						}
+						}*/
 						//alert(shareUrl);
 						$('.sharecardImgdev').after('<a class="sharecardremove ui-btn ui-shadow ui-corner-all" onclick="window.plugins.socialsharing.share(\'Cards To Share\', null, null, '+shareUrl+')" href="javascript:void(0);">Share with</a>');
 					});
