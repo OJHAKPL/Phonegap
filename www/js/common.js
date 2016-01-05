@@ -1565,7 +1565,7 @@
 							shareUrl = shareUrl.substring(0,shareUrl.length - 1)
 						}
 						//alert(shareUrl);
-						$('.sharecardImgdev').after('<a class="sharecardremove ui-btn ui-shadow ui-corner-all" onclick="window.plugins.socialsharing.share(\'Cards To Share\', null,null,['+shareUrl+'])" href="javascript:void(0);">Share with</a>');
+						$('.sharecardImgdev').after('<a class="sharecardremove ui-btn ui-shadow ui-corner-all" onclick="window.plugins.socialsharing.share(\'Cards To Share\', null, null, '+shareUrl+')" href="javascript:void(0);">Share with</a>');
 					});
 					
 					$('.cardticklistloader').hide();
