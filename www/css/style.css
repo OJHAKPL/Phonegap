@@ -786,9 +786,9 @@ img.responsimg {
 .margintoten {
 	margin-top:10px;
 }
-.arrowiconleft {
-	opacity: 0.31; 
+.arrowiconleft-back {
+	opacity: 0.65; /*0.31*/ 
 }
-.arrowiconrigth {
-	opacity: 0.31;
+.arrowiconrigth-back {
+	opacity: 0.65;
 }
