@@ -21,7 +21,7 @@
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
  
- <!--<gap:plugin name="org.apache.cordova.battery-status"/>
+<gap:plugin name="org.apache.cordova.battery-status"/>
   <gap:plugin name="org.apache.cordova.camera"/>
   <gap:plugin name="org.apache.cordova.media-capture"/>
   <gap:plugin name="org.apache.cordova.console"/>
@@ -34,11 +34,10 @@
   <gap:plugin name="org.apache.cordova.file-transfer"/>
   <gap:plugin name="org.apache.cordova.geolocation"/>
   <gap:plugin name="org.apache.cordova.globalization"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser"/>
   <gap:plugin name="org.apache.cordova.media"/>
   <gap:plugin name="org.apache.cordova.network-information"/>
   <gap:plugin name="org.apache.cordova.splashscreen"/>
- <gap:plugin name="org.apache.cordova.vibration"/>  -->
+ <gap:plugin name="org.apache.cordova.vibration"/> 
  
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
@@ -64,6 +63,7 @@
 	<plugin name="nl.x-services.plugins.socialsharing" source="pgb" spec="4.3.8" />
 	<!--<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />-->
 	<plugin name="com.plugin.datepicker" spec="0.4.0" source="pgb" />
+	<plugin name="nl.x-services.plugins.touchid" spec="1.0.0" source="pgb" />
 
   
  
