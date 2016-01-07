@@ -831,7 +831,9 @@
 				<!--<div class="loderimages myfolderloader"><img src="images/ajax-loader-list.gif"></div>-->
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
 				<div class="folder-list">
-				
+					<button onclick="window.plugins.touchid.isAvailable(function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + msg)})">Touch ID available?</button>
+<button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
+		
 					<h3 class="title" style="cursor: pointer;" onclick="cardbasiclist()">My Cards</h3>
 					<h3 class="title" style="cursor: pointer;" onclick="sharedcardlist()">Shared Cards</h3>
 					<h3 class="title">My Folders <button class="add-btn"><span class="icon"></span> Add New</button></h3>
