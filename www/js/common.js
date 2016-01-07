@@ -804,35 +804,51 @@
 			}
 		)
 	}
-	 
 	
+		
+ 
+	function onPhotoDataSuccess(imageData) {
+	  // Uncomment to view the base64-encoded image data
+		setTimeout(function() {
+			'test=>'+alert(imageData);
+		}, 0);
 
-	function uploadPhoto(imageURI) {
-		var options = new FileUploadOptions();
-		options.fileKey="file";
-		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-		options.mimeType="image/jpeg";
+		
 
-		var params = new Object();
-		params.value1 = "test";
-		params.value2 = "param";
+	  // Get image handle
+	  //
+	  var smallImage = document.getElementById('smallImage');
 
-		options.params = params;
-		options.chunkedMode = false;
+	  // Unhide image elements
+	  //
+	  smallImage.style.display = 'block';
 
-		var ft = new FileTransfer();
-		ft.upload(imageURI, "https://www.nd2nosmart.cards/nd2no/admin/user-photo", win, fail, options);
+	  // Show the captured photo
+	  // The in-line CSS rules are used to resize the image
+	  //
+	  smallImage.src = "data:image/jpeg;base64," + imageData;
 	}
 
-	function win(r) {
-		console.log("Code = " + r.responseCode);
-		console.log("Response = " + r.response);
-		console.log("Sent = " + r.bytesSent);
-		//alert(r.response);
-	}
+	// Called when a photo is successfully retrieved
+	//
+	function onPhotoURISuccess(imageURI) {
+	  // Uncomment to view the image file URI
+		setTimeout(function() {
+			'test=>'+alert(imageURI);
+		}, 0);
 
-	function fail(error) {
-		//alert("An error has occurred: Code = " = error.code);
+	  // Get image handle
+	  //
+	  var largeImage = document.getElementById('largeImage');
+
+	  // Unhide image elements
+	  //
+	  largeImage.style.display = 'block';
+
+	  // Show the captured photo
+	  // The in-line CSS rules are used to resize the image
+	  //
+	  largeImage.src = imageURI;
 	}
 	
 
@@ -840,14 +856,14 @@
 	//
 	function capturePhoto() {
 	  // Take picture using device camera and retrieve image as base64-encoded string
-	  navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
+	  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
 		destinationType: destinationType.DATA_URL });
 	}
 
 	// A button will call this function
 	function getPhoto(source) {
 	  // Retrieve image file location from specified source
-	  navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
+	  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
 		destinationType: destinationType.FILE_URI,
 		sourceType: source });
 	}
