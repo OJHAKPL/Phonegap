@@ -770,7 +770,7 @@
 						var mobile = (row.mobile && row.mobile!='')?row.mobile:'';
 		 				var countryDropDown = '<select name="country_id" id="country_id" style="max-width:100%;" class="countryUpdate"><option id="countryUpdateSpan" value="">Select Country</option></select>';
 						
-						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"><button type="button" onclick="capturePhoto();">Capture Photo</button><button type="button" onclick="capturePhotoEdit();">Capture Editable Photo</button><button  type="button" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><button type="button" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button></div><button type="button" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
+						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"><button type="button" onclick="capturePhoto();">Capture Photo</button><button type="button" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button></div><button type="button" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
 						$(".EditProfileHtml").trigger("create");
 					 
 						$.post(
@@ -804,83 +804,50 @@
 			}
 		)
 	}
+	 
 	
-		
-	var pictureSource;   // picture source
-	var destinationType; // sets the format of returned value
 
-	// Wait for device API libraries to load
-	//
-	document.addEventListener("deviceready",onDeviceReady,false);
+	function uploadPhoto(imageURI) {
+		var options = new FileUploadOptions();
+		options.fileKey="file";
+		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.mimeType="image/jpeg";
 
-	// device APIs are available
-	//
-	function onDeviceReady() {
-		pictureSource=navigator.camera.PictureSourceType;
-		destinationType=navigator.camera.DestinationType;
+		var params = new Object();
+		params.value1 = "test";
+		params.value2 = "param";
+
+		options.params = params;
+		options.chunkedMode = false;
+
+		var ft = new FileTransfer();
+		ft.upload(imageURI, "https://www.nd2nosmart.cards/nd2no/admin/user-photo", win, fail, options);
 	}
 
-	// Called when a photo is successfully retrieved
-	//
-	function onPhotoDataSuccess(imageData) {
-	  // Uncomment to view the base64-encoded image data
-	  // console.log(imageData);
-
-	  // Get image handle
-	  //
-	  var smallImage = document.getElementById('smallImage');
-
-	  // Unhide image elements
-	  //
-	  smallImage.style.display = 'block';
-
-	  // Show the captured photo
-	  // The in-line CSS rules are used to resize the image
-	  //
-	  smallImage.src = "data:image/jpeg;base64," + imageData;
+	function win(r) {
+		console.log("Code = " + r.responseCode);
+		console.log("Response = " + r.response);
+		console.log("Sent = " + r.bytesSent);
+		//alert(r.response);
 	}
 
-	// Called when a photo is successfully retrieved
-	//
-	function onPhotoURISuccess(imageURI) {
-	  // Uncomment to view the image file URI
-	  // console.log(imageURI);
-
-	  // Get image handle
-	  //
-	  var largeImage = document.getElementById('largeImage');
-
-	  // Unhide image elements
-	  //
-	  largeImage.style.display = 'block';
-
-	  // Show the captured photo
-	  // The in-line CSS rules are used to resize the image
-	  //
-	  largeImage.src = imageURI;
+	function fail(error) {
+		//alert("An error has occurred: Code = " = error.code);
 	}
+	
 
 	// A button will call this function
 	//
 	function capturePhoto() {
 	  // Take picture using device camera and retrieve image as base64-encoded string
-	  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+	  navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
 		destinationType: destinationType.DATA_URL });
 	}
 
 	// A button will call this function
-	//
-	function capturePhotoEdit() {
-	  // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-	  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-		destinationType: destinationType.DATA_URL });
-	}
-
-	// A button will call this function
-	//
 	function getPhoto(source) {
 	  // Retrieve image file location from specified source
-	  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+	  navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
 		destinationType: destinationType.FILE_URI,
 		sourceType: source });
 	}
@@ -890,8 +857,6 @@
 	function onFail(message) {
 	  //alert('Failed because: ' + message);
 	}
-
-	
 
 
 	function EditProfileSubmit(){
