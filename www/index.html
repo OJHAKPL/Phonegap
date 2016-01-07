@@ -21,7 +21,6 @@
 	
 		<div data-role="page" class="jqm-demos jqm-home" id="index" data-url="index">
 			<div role="main" class="ui-content jqm-content">			
-				<div class="card-shape"><img src="images/card-shape.png" alt="" /></div>
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
 				<div data-role="navbar" class="home-buttons">
 					<ul>
@@ -29,13 +28,11 @@
 						<li><a href="#register" data-transition="slide">Register</a></li>
 					</ul>
 				</div>
-				<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 			</div><!-- /content -->
 		</div><!-- /page -->		
 		
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="login" data-url="login">
 			<div role="main" class="ui-content jqm-content">
-				<div class="card-shape"><img src="images/card-shape.png" alt="" /></div>
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<p class="errorMsgShow-2" style="text-align:center; display:none;"></p>
@@ -45,7 +42,7 @@
 					<div class="forgot-link"><a href="#forgot-password">Forgot password?</a></div>
 					<div class="keeps-checkbox">
 						<input type="checkbox" name="keep_me_login" id="keep_me_login" value="" checked="">
-                        <label for="keep_me_login">Keep me sign in</label>
+                        <label for="keep_me_login">Keep me signed in</label>
 					</div>
 					<button onClick="homeLogin()" class="ui-btn ui-btn-submit ui-corner-all">Login</button>
 					<div class="other-link">Don't have account? <a href="#register" data-direction="reverse" data-transition="slide">Click here</a></div>
@@ -55,14 +52,12 @@
 		
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="forgot-password" data-url="forgot-password">
 			<div role="main" class="ui-content jqm-content">
-				<div class="card-shape"><img src="images/card-shape.png" alt="" /></div>
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				<div class="login-form">
 					<input type="text" name="text-basic" placeholder="Email ID" id="forgot-email" value=""/>
 					<button id="forgot-email-button" class="ui-btn ui-btn-submit ui-corner-all">Forgot Password</button>
 					<div class="other-link">Don't have account? <a href="#login" data-direction="reverse" data-transition="slide">Click here</a></div>
-					<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>
 				</div>
 			</div><!-- /content -->
 		</div><!-- /page -->
@@ -70,7 +65,6 @@
  		
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="register" data-url="register">
 			<div role="main" class="ui-content jqm-content">
-				<div class="card-shape"><img src="images/card-shape.png" alt="" /></div>
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
 				<div class="login-form register-form">
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
@@ -85,7 +79,6 @@
 						<button type="submit" class="ui-btn ui-btn-submit ui-corner-all">Register</button>
 					</form>
 					<div class="other-link">Already have account? <a href="#login" data-direction="reverse" data-transition="slide">Click here</a></div>
-					<!--<div class="rewards-line"><a href="">Get Rewards, Just Refer Your Friends</a></div>-->
 				</div>
 			</div><!-- /content -->
 		</div><!-- /page -->
@@ -123,8 +116,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -169,8 +162,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -215,8 +208,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -246,8 +239,7 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
-				<!--<div class="loderimages notificationlistloader"><img src="images/ajax-loader-list.gif"></div>-->
-                <p class="errorMsgShow" style="text-align:center; display:none;"></p> 
+				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				<ul class="notification-list margintoten">
                 </ul>                
 			</div><!-- /content -->
@@ -260,8 +252,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -308,8 +300,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -323,7 +315,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""><span class="counter counter-notify counter-notify-2">0</span></a>
+                	<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<!--<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>-->
@@ -362,8 +354,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -421,8 +413,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -462,8 +454,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -507,8 +499,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -550,8 +542,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -620,8 +612,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -673,8 +665,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -712,8 +704,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -754,8 +746,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -769,7 +761,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<!--<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>-->
@@ -802,8 +794,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -862,8 +854,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -876,7 +868,7 @@
         	<div data-role="header" class="jqm-header">                
                 <div class="left-icon">
                 	<a href="javascript:void(0);" onclick="onBackKeyDown()" class="back-button"><img src="images/back-icon.png" alt=""></a>
-                	<a href="" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify">0</span></a>
+					<a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a>
                 </div>
                 <div class="right-icon">
                 	<!--<a href="javascript:void(0);" onclick="selectcardShow()" class="tick-button"><img src="images/tick-icon.png" alt=""> <span class="counter counter-cardtick">0</span></a>-->
@@ -908,8 +900,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>
@@ -950,8 +942,8 @@
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
                     <li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li>
                     <li><a href="javascript:void(0);" rel="external" onClick="viewProfile()" data-ajax="false">My Profile</a></li>
-                    <li><a href="javascript:void(0);" onclick="cardbasiclist()" data-ajax="false">My Cards</a></li>
-                    <li><a href="javascript:void(0);" onclick="favoritelist()" data-ajax="false">Favorite Cards</a></li> 
+                    <li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li>
+                    <li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li>
                     <li><a href="#change-password" data-ajax="false">Change Password</a></li> 
                     <li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li>
 				</ul>

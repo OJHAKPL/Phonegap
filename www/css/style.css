@@ -24,7 +24,7 @@ body, input, select, textarea, button, .ui-btn, div, h1, h2, h3, h4, h5, h6{
 	text-align:center;
 }
 .home-logo img{
-	max-width:70%;
+	max-width:80%;
 }
 .home-buttons ul > li a.ui-btn{
 	font-size:18px;
