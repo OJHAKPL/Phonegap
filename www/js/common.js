@@ -9,27 +9,6 @@
 		}, delay);
 	}
 	
-	function availableCheck(url) {
-	
-		var scheme;
-
-		// Don't forget to add the cordova-plugin-device plugin for `device.platform`
-		scheme=url;
-
-		appAvailability.check(
-			scheme,       // URI Scheme or Package Name
-			function() {  // Success callback
-				console.log(scheme + ' is available :)');
-				alert(scheme + ' is available :)');
-			},
-			function() {  // Error callback
-				console.log(scheme + ' is not available :(');
-				alert(scheme + ' is not available :(');
-			}
-		);
-	
-	}
-	
 	function navigationOpen(){ 
 		$( ".jqm-navmenu-panel ul" ).listview();
 		$.mobile.activePage.find('.menu-new').panel("open") ;
@@ -175,6 +154,8 @@
 					$.each( row1.links, function(i, row2) {
 						if (row2.type=='Business Email'){
 							$('.card-icons').append('<a class="ui-link" href="mailto:'+row2.url+'" data-rel="external" ><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
+						} else if (row2.type=='Youtube'){
+							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else {
 							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						}
@@ -192,7 +173,9 @@
 						linktitle = (row2.title && row2.title!='')?row2.title:row2.type;
 						if (row2.type=='Business Email'){
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="mailto:'+row2.url+'" data-rel="external"  >'+linktitle+'</a></div></li></ul>');
-						} else {
+						}else if (row2.type=='Youtube'){
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" >'+linktitle+'</a></div></li></ul>');
+						}else {
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" >'+linktitle+'</a></div></li></ul>');
 						}
 					}); 
@@ -470,8 +453,11 @@
 		
 				$.each( cardDetailsArr, function(i, row1) {
 					$.each( row1.links, function(i, row2) {
+						//alert(row2.type);
 						if (row2.type=='Business Email'){
 							$('.card-icons').append('<a class="ui-link" href="mailto:'+row2.url+'" data-rel="external" ><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
+						}else if (row2.type=='Youtube'){
+							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else {
 							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						}
@@ -489,7 +475,9 @@
 						linktitle = (row2.title && row2.title!='')?row2.title:row2.type;
 						if (row2.type=='Business Email'){
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="mailto:'+row2.url+'" data-rel="external"  >'+linktitle+'</a></div></li></ul>');
-						} else {
+						}else if (row2.type=='Youtube'){
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" >'+linktitle+'</a></div></li></ul>');
+						}else {
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" >'+linktitle+'</a></div></li></ul>');
 						}
 					}); 
@@ -791,7 +779,7 @@
 						var mobile = (row.mobile && row.mobile!='')?row.mobile:'';
 		 				var countryDropDown = '<select name="country_id" id="country_id" style="max-width:100%;" class="countryUpdate"><option id="countryUpdateSpan" value="">Select Country</option></select>';
 						
-						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img id="cameraPic" src="'+photoUser+'" style="width:100%;height:200px;" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"><div id="camera"><button type="button" class="camera-control" onclick="capturePhoto();">Foto aufnehmen</button><button type="button" class="camera-control" onclick="getPhoto();">From Photo Library</button><br><div style="text-align:center;margin:20px;"></div></div></div><button type="button" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
+						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img id="cameraPic" src="'+photoUser+'" style="width:100%; height:200px;" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><small>Change Profile Photo</small><div id="camera" style="height: 60px;"><button class="camera-control ui-btn ui-shadow ui-corner-all" type="button" onclick="capturePhoto();" style="width: 50%; float: left;">Camera</button><button class="camera-control ui-btn ui-shadow ui-corner-all" type="button" onclick="getPhoto();" style="width: 50%; float: right;">Gallery</button></div><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"></div><button type="submit" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
 						$(".EditProfileHtml").trigger("create");
 					 
 						$.post(
@@ -833,15 +821,13 @@
 	document.addEventListener("deviceready", onDeviceReady, false);
 
 	function onDeviceReady() {
-	    pictureSource = navigator.camera.PictureSourceType;
+	    pictureSource   = navigator.camera.PictureSourceType;
 	    destinationType = navigator.camera.DestinationType;
 	}
 
 	function clearCache() {
 	    navigator.camera.cleanup();
-	}
-
-
+	} 
 
 
 	var sPicData; //store image data for image upload functionality
@@ -869,12 +855,17 @@
 	    var image = document.getElementById('cameraPic');
 	    image.src = imageData;
 	    sPicData  = imageData; //store image data in a variable
-	    console.log(sPicData);
+	
+		userId = $('#user_id').val();
+		//alert(userId);
+		photoUpload(userId);
+	
+	    //console.log(sPicData);
 	    //alert(sPicData);
 	}
 
 	function picOnFailure(message){
-	    alert('Failed because: ' + message);
+	    //alert('Failed because: ' + message);
 	}
 
 	// ----- upload image ------------
@@ -888,35 +879,31 @@
 	    var params = new Object();
 	    params.fileKey = "file";
 	    options.params = {}; // eig = params, if we need to send parameters to the server request
-
 	    ft = new FileTransfer();
-
 	    ft.upload(sPicData, "https://www.nd2nosmart.cards/nd2no/admin/user-photo/"+userId, win, fail, options);
 
 	}
 
 	function win(r){
+		
+		/*------------ Images upload -----------*/
 
+		
 	    //alert(r.response);
 	    //alert(r.responseCode);
 	    //alert(r.bytesSent);
-	    alert("image uploaded scuccesfuly");
+	    //alert("image uploaded scuccesfuly");
 	}
 
 	function fail(error){
-	   alert("An error has occurred: Code = " = error.code);
+	   //alert("An error has occurred: Code = " = error.code);
 	}
 
 	
 	
 	
 	function EditProfileSubmit(){
-		userId = $('#user_id').val();
-		//alert('hi');
-		//alert(userId);
 		
-		
-		photoUpload(userId);
 		/*--------- Edit Profile -----------*/  
 		$('#editprofile').validate({
 			rules: {
@@ -940,11 +927,10 @@
 				error.appendTo(element.parent().add());
 			},
 			submitHandler:function (form) {
+				
+				//alert('post');
 				//var formData = new FormData($(this)[0]);
 				//var formData = new FormData( this );
-				
-				/*------------ Images upload -----------*/
-				
 				
 				$.post(
 					"https://www.nd2nosmart.cards/nd2no/admin/web-update-profile",
@@ -978,8 +964,6 @@
 	}
 
 
-		
-		
 	/*----------- Logout -----------*/
 	function logout(){ 
 		window.localStorage.clear();
