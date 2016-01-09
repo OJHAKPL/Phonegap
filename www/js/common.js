@@ -718,7 +718,7 @@
 							var about_you   = (row.about_you)?row.about_you:'';
 							var mobile      = (row.mobile)?row.mobile:'';
 							
-							$('.ProfileUpdate').append('<div class="viewprofileremove"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><button onClick="changeProfile('+row.id+')" class="ui-btn ui-shadow ui-corner-all"><img src="images/edit-icon.png" width="24" alt=""></button><a title="Change Password" href="#change-password"><button class="ui-btn ui-shadow ui-corner-all" style="margin-top: 1px;"><img width="24" src="images/change-password-icon.png" alt=""></button></a></div><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p><p>'+mobile+'</p></div><div class="page-form"><h3 class="title">Other Details</h3><p><b>Dob: </b>'+dob+'</p><p><b>Gender: </b>'+genderUser+'</p><p><b>Address: </b>'+addressUser+'</p><p><b>About You: </b>'+about_you+'</p></div></div>');
+							$('.ProfileUpdate').append('<div class="viewprofileremove"><div class="main-img"><img src="'+photoUser+'" style="width:100%; height:200px;" alt=""></div><div class="card-header"><div class="pull-right"><button onClick="changeProfile('+row.id+')" class="ui-btn ui-shadow ui-corner-all"><img src="images/edit-icon.png" width="24" alt=""></button><a title="Change Password" href="#change-password"><button class="ui-btn ui-shadow ui-corner-all" style="margin-top: 1px;"><img width="24" src="images/change-password-icon.png" alt=""></button></a></div><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p><p>'+mobile+'</p></div><div class="page-form"><h3 class="title">Other Details</h3><p><b>Dob: </b>'+dob+'</p><p><b>Gender: </b>'+genderUser+'</p><p><b>Address: </b>'+addressUser+'</p><p><b>About You: </b>'+about_you+'</p></div></div>');
 						});
 					} else {
 						$(".errorMsgShow").show();
@@ -770,7 +770,7 @@
 						var mobile = (row.mobile && row.mobile!='')?row.mobile:'';
 		 				var countryDropDown = '<select name="country_id" id="country_id" style="max-width:100%;" class="countryUpdate"><option id="countryUpdateSpan" value="">Select Country</option></select>';
 						
-						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img src="'+photoUser+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"><button type="button" onclick="capturePhoto();">Capture Photo</button><button type="button" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button></div><button type="button" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
+						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img id="cameraPic" src="'+photoUser+'" style="width:100%;height:200px;" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"><div id="camera"><button type="button" class="camera-control" onclick="capturePhoto();">Foto aufnehmen</button><button type="button" class="camera-control" onclick="getPhoto();">From Photo Library</button><br><div style="text-align:center;margin:20px;"></div></div></div><button type="button" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
 						$(".EditProfileHtml").trigger("create");
 					 
 						$.post(
@@ -809,94 +809,93 @@
 	var pictureSource;   // picture source
 	var destinationType; // sets the format of returned value
 
-	// Wait for device API libraries to load
-		
-	document.addEventListener("deviceready",onDeviceReady,false);
-	// device APIs are available
+	document.addEventListener("deviceready", onDeviceReady, false);
+
 	function onDeviceReady() {
-		pictureSource=navigator.camera.PictureSourceType;
-		destinationType=navigator.camera.DestinationType;
+	    pictureSource = navigator.camera.PictureSourceType;
+	    destinationType = navigator.camera.DestinationType;
 	}
 
-	// Called when a photo is successfully retrieved
-	function onPhotoDataSuccess(imageData) {
-		
-		// Uncomment to view the base64-encoded image data
-		// console.log(imageData);
+	function clearCache() {
+	    navigator.camera.cleanup();
+	}
 
-		// Get image handle
-		setTimeout(function() {
-			alert(imageData);
-		}, 0);
-		var smallImage = document.getElementById('smallImage');
+
+
+
+	var sPicData; //store image data for image upload functionality
+
+	function capturePhoto(){
+	    navigator.camera.getPicture(picOnSuccess, picOnFailure, {
+	                                quality: 20,
+	                                destinationType: destinationType.FILE_URI,
+	                                sourceType: pictureSource.CAMERA,
+	                                correctOrientation: true
+	                                });
+	}
+
+	function getPhoto(){
+	    navigator.camera.getPicture(picOnSuccess, picOnFailure, {
+	                                quality: 20,
+	                                destinationType: destinationType.FILE_URI,
+	                                sourceType: pictureSource.SAVEDPHOTOALBUM,
+	                                correctOrientation: true
+	                                });
+	}
+
+	function picOnSuccess(imageData){
+
+	    var image = document.getElementById('cameraPic');
+	    image.src = imageData;
+	    sPicData  = imageData; //store image data in a variable
+	    console.log(sPicData);
+	    //alert(sPicData);
+	}
+
+	function picOnFailure(message){
+	    alert('Failed because: ' + message);
+	}
+
+	// ----- upload image ------------
+	function photoUpload(userId) {
+	    var options = new FileUploadOptions();
+	    options.fileKey = "file";
+	    options.fileName = sPicData.substr(sPicData.lastIndexOf('/') + 1);
+	    options.mimeType = "image/jpeg";
+	    options.chunkedMode = false;
+
+	    var params = new Object();
+	    params.fileKey = "file";
+	    options.params = {}; // eig = params, if we need to send parameters to the server request
+
+	    ft = new FileTransfer();
+
+	    ft.upload(sPicData, "https://www.nd2nosmart.cards/nd2no/admin/user-photo/"+userId, win, fail, options);
+
+	}
+
+	function win(r){
+
+	    //alert(r.response);
+	    //alert(r.responseCode);
+	    //alert(r.bytesSent);
+	    alert("image uploaded scuccesfuly");
+	}
+
+	function fail(error){
+	   alert("An error has occurred: Code = " = error.code);
+	}
+
 	
-		// Unhide image elements
-		smallImage.style.display = 'block';
-
-		// Show the captured photo
-		// The in-line CSS rules are used to resize the image
-		smallImage.src = "data:image/jpeg;base64," + imageData;
-	}
-
-	// Called when a photo is successfully retrieved
 	
-	function onPhotoURISuccess(imageURI) {
-		// Uncomment to view the image file URI
-		// console.log(imageURI);
-		
-		setTimeout(function() {
-			alert(imageURI);
-		}, 0);
-
-		// Get image handle
-		//
-		var largeImage = document.getElementById('largeImage');
-
-		// Unhide image elements
-		//
-		largeImage.style.display = 'block';
-
-		// Show the captured photo
-		// The in-line CSS rules are used to resize the image
-		//
-		largeImage.src = imageURI;
-	}
-
-	// A button will call this function
 	
-	function capturePhoto() {
-		// Take picture using device camera and retrieve image as base64-encoded string
-		navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-		destinationType: destinationType.DATA_URL });
-	}
-
-	// A button will call this function
-	
-	function capturePhotoEdit() {
-		// Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-		navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-		destinationType: destinationType.DATA_URL });
-	}
-
-	// A button will call this function
-	
-	function getPhoto(source) {
-		// Retrieve image file location from specified source
-		navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-		destinationType: destinationType.FILE_URI,
-		sourceType: source });
-	}
-
-	// Called if something bad happens.
-	function onFail(message) {
-		setTimeout(function() {
-			alert('Failed because: ' + message);
-		}, 0);
-		//alert('Failed because: ' + message);
-	} 
-
 	function EditProfileSubmit(){
-
+		userId = $('#user_id').val();
+		//alert('hi');
+		//alert(userId);
+		
+		
+		photoUpload(userId);
 		/*--------- Edit Profile -----------*/  
 		$('#editprofile').validate({
 			rules: {
@@ -922,7 +921,10 @@
 			submitHandler:function (form) {
 				//var formData = new FormData($(this)[0]);
 				//var formData = new FormData( this );
-
+				
+				/*------------ Images upload -----------*/
+				
+				
 				$.post(
 					"https://www.nd2nosmart.cards/nd2no/admin/web-update-profile",
 					$("#editprofile").serialize(),
