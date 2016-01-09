@@ -43,7 +43,7 @@
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <access origin="*"/>
 	<!--<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />-->
-	
+	<gap:plugin name="com.ohh2ahh.plugins.appavailability" />
 	<plugin name="cordova-plugin-inappbrowser" spec="1.1.1" />
 	<plugin name="cordova-plugin-statusbar" spec="2.0.0" />
 	<plugin name="nl.x-services.plugins.socialsharing" source="pgb" spec="4.3.8" />

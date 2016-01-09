@@ -9,6 +9,30 @@
 		}, delay);
 	}
 	
+	function availableCheck() {
+	
+		var scheme;
+
+		// Don't forget to add the cordova-plugin-device plugin for `device.platform`
+		if(device.platform === 'iOS') {
+			scheme = 'fb://';
+		}
+		else if(device.platform === 'Android') {
+			scheme = 'com.twitter.android';
+		}
+
+		appAvailability.check(
+			scheme,       // URI Scheme or Package Name
+			function() {  // Success callback
+				console.log(scheme + ' is available :)');
+			},
+			function() {  // Error callback
+				console.log(scheme + ' is not available :(');
+			}
+		);
+	
+	}
+	
 	function navigationOpen(){ 
 		$( ".jqm-navmenu-panel ul" ).listview();
 		$.mobile.activePage.find('.menu-new').panel("open") ;
