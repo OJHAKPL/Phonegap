@@ -8,6 +8,35 @@
 			$.mobile.loading(showOrHide);
 		}, delay);
 	}
+
+	
+	function pushNotify() {
+		  var push = PushNotification.init({
+            "ios": {
+              "sound": true,
+              "vibration": true,
+              "badge": true,
+              "clearBadge": true
+            }
+        });
+
+        push.on('registration', function(data) {
+            // send data.registrationId to push service
+			alert(data.registrationId+'sent');
+        });
+
+
+        push.on('notification', function(data) {
+            // do something with the push data
+            // then call finish to let the OS know we are done
+            push.finish(function() {
+			alert(data.registrationId+'ok');
+                console.log("processing of push data is finished");
+            });
+        });
+		
+		
+	}
 	
 	function navigationOpen(){ 
 		$( ".jqm-navmenu-panel ul" ).listview();
@@ -163,20 +192,20 @@
 				});
 				
 				if (userRole == 3 || userRole == 4) {
-				$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
+					$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
 				} else {
-				$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
+					$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
 				}
 				
 				$.each( cardDetailsArr, function(i, row1) {
 					$.each( row1.links, function(i, row2) {
 						linktitle = (row2.title && row2.title!='')?row2.title:row2.type;
 						if (row2.type=='Business Email'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="mailto:'+row2.url+'" data-rel="external"  >'+linktitle+'</a></div></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="mailto:'+row2.url+'" data-rel="external"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else if (row2.type=='Youtube'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" >'+linktitle+'</a></div></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else {
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" >'+linktitle+'</a></div></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}
 					}); 
 				}); 
@@ -434,7 +463,15 @@
 					$.each(firstRow.scrollers, function(i, row5) {
 						scroll_title = (row5.title)?row5.title:'';
 						scroll_url   = (row5.url)?row5.url:'';
-						marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_system\');">'+scroll_title+'</a>&nbsp;&nbsp;';
+						if(scroll_url && scroll_url!=''){
+							if(scroll_url.indexOf("youtu") >= 0){
+								marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_blank\',location=\'yes\');">'+scroll_title+'</a>&nbsp;&nbsp;';
+							} else {
+								marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_system\');">'+scroll_title+'</a>&nbsp;&nbsp;';
+							}
+						} else {
+							marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);">'+scroll_title+'</a>&nbsp;&nbsp;';
+						}
 					});
 					if(marqueeList){
 						marqueeList = '<div class="marquee-text"><marquee onmouseover="this.setAttribute(\'scrollamount\', 0, 0);" onmouseout="this.setAttribute(\'scrollamount\', 6, 0);" direction="left">'+marqueeList+'</marquee></div>';
@@ -474,11 +511,11 @@
 					$.each( row1.links, function(i, row2) {
 						linktitle = (row2.title && row2.title!='')?row2.title:row2.type;
 						if (row2.type=='Business Email'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="mailto:'+row2.url+'" data-rel="external"  >'+linktitle+'</a></div></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="mailto:'+row2.url+'" data-rel="external"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else if (row2.type=='Youtube'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" >'+linktitle+'</a></div></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else {
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" >'+linktitle+'</a></div></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}
 					}); 
 				}); 
@@ -1546,11 +1583,14 @@
 				if(!profileArr.error) { 
 					
 					$.each( profileArr, function(i, row) {
-						
+						scrollChaek = '';
+						if(row.scrollers && row.scrollers!=''){
+							scrollChaek = (row.scrollers[0].status)?'checked="checked"':'';
+						}
 						var title   = row.card.title;
 						var cardImages = row.card.banner;
 						var banner_html	= ''; 
-						var editcard='<div class="editscrollerremove"><div class="main-img"><img src="'+cardImages+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+title+'</h3></div><form name="card_edit_scroller" id="card_edit_scroller" enctype="multipart/form-data" method="post"><div class="page-form addnewscroller"><input type="hidden" name="add_cardval_scroller" id="add_cardval_scroller" value="0"><input type="hidden" name="card_id" id="card_id" value="'+cardId+'">'+banner_html +' <label>Check to ACTIVATE Scroller on this card <input style="z-index: 3;" type="checkbox" name="status" id="status"></label> ';
+						var editcard='<div class="editscrollerremove"><div class="main-img"><img src="'+cardImages+'" width="100%" alt=""></div><div class="card-header"><h3 class="title">'+title+'</h3></div><form name="card_edit_scroller" id="card_edit_scroller" enctype="multipart/form-data" method="post"><div class="page-form addnewscroller"><input type="hidden" name="add_cardval_scroller" id="add_cardval_scroller" value="0"><input type="hidden" name="card_id" id="card_id" value="'+cardId+'">'+banner_html +' <label>Check to ACTIVATE Scroller on this card <input style="z-index: 3;" '+scrollChaek+' type="checkbox" name="status" id="status"></label> ';
 						var obj=[];
 						$.each( row.scrollers, function(i, row2) {
 							var scroller_title_link = (row2.title)?row2.title:'';							
