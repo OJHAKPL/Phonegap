@@ -34,14 +34,11 @@
 			var htmlStr='';
 			$.each(dataArray, function(i, field){
 				
-				
-				
-				
+				alert (field.success);
 				if(field.success){
-					alert (field.success+'-'+ field.output);
 					
 				} else {
-						alert (field.error +'-'+ field.output);	
+							
 				}					
 			});					
 		});
@@ -1165,7 +1162,7 @@
 								/*----------- card image check --------*/
 								var cardImages = (row.banner)?row.banner:'';
 								shareUrl = "https://www.nd2nosmart.cards/nd2no/card/"+row.post_key+"-"+row.id+"/mobile";
-								$('#card-scroller').after('<div data-role="page" class="jqm-demos jqm-page jqm-list card-list-new" '+htmlidclass+'><div data-role="header" class="jqm-header"><div class="left-icon"><a href="javascript:void(0)" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a><a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a></div><div class="right-icon"><a href="javascript:void(0);" onclick="navigationOpen()" class="jqm-navmenu-link1 menu-button ui-link"><img src="images/menu-icon.png" alt=""></a></div><h1 class="title">My Cards</h1></div><div role="main" class="ui-content jqm-content"><div class="dashboard-link" style="border-bottom:0px;"><a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="selectcardShow()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a></div><div class="card-listnew"><div class="card-box"><div  style="margin-top: -25px;" class="img"><a href="javascript:void(0);" onclick="previewslide()" class="ui-icon-arrow-l ui-btn-icon-left arrowiconleft"></a><a onclick="nextslide()" href="javascript:void(0);" class="ui-icon-arrow-r ui-btn-icon-right arrowiconrigth"></a><img width="100%" alt="" src="'+cardImages+'"></div></div></div><div class="card-listnew2"><div data-role="controlgroup" data-type="vertical"><div class="bgbuttonnew"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+row.title+'\', null, \''+cardImages+'\', \''+shareUrl+'\')" data-role="button" class="icon-share" data-icon="share">Share</a></div><div class="bgbuttonnew"><a href="javascript:void(0);" data-role="button" onClick="cartDetails('+row.id+')" class="icon-view" data-icon="view">View</a></div><div class="bgbuttonnew" onClick="showEditcard()"><a href="javascript:void(0);" data-role="button" class="icon-newedit" data-icon="newedit">Edit</a></div><a href="javascript:void(0);" onclick="editscroller('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Text Scroll</a><a href="javascript:void(0);" onclick="cardLink('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Links</a></div></div></div><div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer"><div class="rewards-line"><a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\',\'_system\');" >Get a SmartCard</a></div></div><div data-role="panel" class="menu-new main-menu jqm-navmenu-panel" data-position="right" data-display="overlay"><ul class="jqm-list ui-alt-icon ui-nodisc-icon"><li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li><li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li><li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li><li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li><li><a href="#change-password" data-ajax="false">Change Password</a></li><li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li></ul></div></div>');
+								$('#card-scroller').after('<div data-role="page" class="jqm-demos jqm-page jqm-list card-list-new" '+htmlidclass+'><div data-role="header" class="jqm-header"><div class="left-icon"><a href="javascript:void(0)" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a><a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a></div><div class="right-icon"><a href="javascript:void(0);" onclick="navigationOpen()" class="jqm-navmenu-link1 menu-button ui-link"><img src="images/menu-icon.png" alt=""></a></div><h1 class="title">My Cards</h1></div><div role="main" class="ui-content jqm-content"><div class="dashboard-link" style="border-bottom:0px;"><a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="selectcardShow()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a></div><div class="card-listnew"><div class="card-box"><div  style="margin-top: -25px;" class="img"><a href="javascript:void(0);" onclick="previewslide()" class="ui-icon-arrow-l ui-btn-icon-left arrowiconleft"></a><a onclick="nextslide()" href="javascript:void(0);" class="ui-icon-arrow-r ui-btn-icon-right arrowiconrigth"></a><img width="100%" alt="" src="'+cardImages+'"></div></div></div><div class="card-listnew2"><div data-role="controlgroup" data-type="vertical"><div class="bgbuttonnew"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+row.title+'\', null, \''+cardImages+'\', \''+shareUrl+'\')" data-role="button" class="icon-share" data-icon="share">Share</a></div><div class="bgbuttonnew"><a href="javascript:void(0);" data-role="button" onClick="cartDetails('+row.id+')" class="icon-view" data-icon="view">View</a></div><div class="bgbuttonnew" onClick="showEditcard()"><a href="javascript:void(0);" data-role="button" class="icon-newedit" data-icon="newedit">Edit</a></div><a href="javascript:void(0);" onclick="editscroller('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Text Scroll</a><a href="javascript:void(0);" onclick="cardLink('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Links</a><a href="javascript:void(0);" onclick="createAddnewcontact()" class="ui-btn editshow-icon" style="display:none;">Add Contact</a></div></div></div><div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer"><div class="rewards-line"><a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\',\'_system\');" >Get a SmartCard</a></div></div><div data-role="panel" class="menu-new main-menu jqm-navmenu-panel" data-position="right" data-display="overlay"><ul class="jqm-list ui-alt-icon ui-nodisc-icon"><li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li><li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li><li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li><li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li><li><a href="#change-password" data-ajax="false">Change Password</a></li><li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li></ul></div></div>');
 							});
 						});
 						$.mobile.changePage("#card-list",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
@@ -1858,6 +1855,43 @@
 		$(".editshow-icon").toggle();
 		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
 	}
+	
+	
+	
+	
+	function onSuccesscon(contact) {
+	    alert("Save Success");
+		alert(contact.nickname);
+	};
+
+	function onErrorcom(contactError) {
+	    alert("Error = " + contactError.code);
+	};
+	
+	function createAddnewcontact() {
+		alert('add');
+		// create a new contact object
+		var contact = navigator.contacts.create();
+		contact.displayName = "Plumber";
+		contact.nickname = "Nickname";            // specify both to support all devices
+		
+		// var phoneNumbers = [];
+		// phoneNumbers[0] = new ContactField('work', '212-555-1234', false);
+	    // phoneNumbers[1] = new ContactField('mobile', '917-555-5432', true); // preferred number
+	    // phoneNumbers[2] = new ContactField('home', '203-555-7890', false);
+	    // contact.phoneNumbers = phoneNumbers;
+	
+	    contact.phoneNumbers = '1234567890';
+
+		// populate some fields
+		// var name = new ContactName();
+		// name.givenName = "Jane";
+		// ame.familyName = "Doe";
+		// contact.name = name;
+
+		// save to device
+		contact.save(onSuccesscon,onErrorcom);
+   }
 	
 	
 	

@@ -44,9 +44,8 @@
 						<input type="checkbox" name="keep_me_login" id="keep_me_login" value="" checked="">
                         <label for="keep_me_login">Keep me signed in</label>
 					</div>
-					
-					<button type="submit" onClick="homeLogin()" class="ui-btn ui-btn-submit ui-corner-all">Login</button>
-					<div class="other-link"><h3 class="title" style="cursor: pointer;" onclick="pushNotify()">Push</h3> Don't have account? <a href="#register" data-direction="reverse" data-transition="slide">Click here</a></div>
+					<button onClick="homeLogin()" class="ui-btn ui-btn-submit ui-corner-all">Login</button>
+					<div class="other-link">Don't have account? <a href="#register" data-direction="reverse" data-transition="slide">Click here</a></div>
 				</div>
 			</div><!-- /content -->
 		</div><!-- /page -->		
@@ -831,9 +830,6 @@
 				<!--<div class="loderimages myfolderloader"><img src="images/ajax-loader-list.gif"></div>-->
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
 				<div class="folder-list">
-				
-				<h3 class="title" style="cursor: pointer;" onclick="pushNotify()">Push</h3>
-				
 				
 					<h3 class="title" style="cursor: pointer;" onclick="cardbasiclist()">My Cards</h3>
 					<h3 class="title" style="cursor: pointer;" onclick="sharedcardlist()">Shared Cards</h3>
