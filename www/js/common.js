@@ -34,11 +34,14 @@
 			var htmlStr='';
 			$.each(dataArray, function(i, field){
 				
-				alert (field.success);
+				
+				
+				
 				if(field.success){
+					alert (field.success+'-'+ field.output);
 					
 				} else {
-							
+						alert (field.error +'-'+ field.output);	
 				}					
 			});					
 		});
