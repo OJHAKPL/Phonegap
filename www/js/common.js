@@ -34,8 +34,8 @@
 			var htmlStr='';
 			$.each(dataArray, function(i, field){
 				
-				alert (field.success);
-				if(field.success){
+				alert (field);
+				if(field){
 					
 				} else {
 							
@@ -68,6 +68,12 @@
                 console.log("processing of push data is finished");
             });
         });
+		
+		
+		push.on('error', function(e) {
+			alert(e.message+ 'error');
+			console.log(e.message);
+		});
 		
 		
 	}
@@ -1872,16 +1878,16 @@
 		alert('add');
 		// create a new contact object
 		var contact = navigator.contacts.create();
-		contact.displayName = "Plumber";
-		contact.nickname = "Nickname";            // specify both to support all devices
+		contact.displayName = "Dev Girishas";
+		contact.name = "Dev";
+		contact.nickname = "Girishas";            // specify both to support all devices
 		
-		// var phoneNumbers = [];
+		var phoneNumbers = [];
 		// phoneNumbers[0] = new ContactField('work', '212-555-1234', false);
-	    // phoneNumbers[1] = new ContactField('mobile', '917-555-5432', true); // preferred number
+	    phoneNumbers[0] = new ContactField('mobile', '917-555-5432', true); // preferred number
 	    // phoneNumbers[2] = new ContactField('home', '203-555-7890', false);
-	    // contact.phoneNumbers = phoneNumbers;
-	
-	    contact.phoneNumbers = '1234567890';
+	    contact.phoneNumbers = phoneNumbers;
+	   
 
 		// populate some fields
 		// var name = new ContactName();
