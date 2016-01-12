@@ -1883,22 +1883,19 @@
 		//contact.name = {givenName: employee.firstName, familyName: employee.lastName};
 		contact.name = {givenName: 'Dev', familyName: 'Girishas'};
 		contact.nickname = "Girishas";            // specify both to support all devices
-		contact.emails = "dev.girishas@gmail.com";            // specify both to support all devices
-		contact.photos = "https://www.nd2nosmart.cards/nd2no//upload/users/profile-photo/resized/160111045641_8911.jpg";            // specify both to support all devices
 		
 		var phoneNumbers = [];
-		// phoneNumbers[0] = new ContactField('work', '212-555-1234', false);
-	    phoneNumbers[0] = new ContactField('mobile', '917-555-5432', true); // preferred number
-	    // phoneNumbers[2] = new ContactField('home', '203-555-7890', false);
+		phoneNumbers[0] = new ContactField('mobile', '917-555-5432', true); // preferred number
 	    contact.phoneNumbers = phoneNumbers;
-	   
-
-		// populate some fields
-		// var name = new ContactName();
-		// name.givenName = "Jane";
-		// ame.familyName = "Doe";
-		// contact.name = name;
-
+		
+		var emailId = [];
+		emailId[0] = new ContactField('emails', 'dev.girishas@gmail.com', true); // preferred email
+	    contact.emailId = emailId;
+		
+		var photoName = [];
+		photoName[0] = new ContactField('photos', 'https://www.nd2nosmart.cards/nd2no//upload/users/profile-photo/resized/160111045641_8911.jpg', true); // preferred photos
+	    contact.photoName = photoName;
+ 
 		// save to device
 		contact.save(onSuccesscon,onErrorcom);
    }
