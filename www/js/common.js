@@ -1878,9 +1878,13 @@
 		alert('add');
 		// create a new contact object
 		var contact = navigator.contacts.create();
-		contact.displayName = "Dev Girishas";
-		contact.name = "Dev";
+		//contact.displayName = "Dev Girishas";
+		//contact.name = "Dev";
+		//contact.name = {givenName: employee.firstName, familyName: employee.lastName};
+		contact.name = {givenName: 'Dev', familyName: 'Girishas'};
 		contact.nickname = "Girishas";            // specify both to support all devices
+		contact.emails = "dev.girishas@gmail.com";            // specify both to support all devices
+		contact.photos = "https://www.nd2nosmart.cards/nd2no//upload/users/profile-photo/resized/160111045641_8911.jpg";            // specify both to support all devices
 		
 		var phoneNumbers = [];
 		// phoneNumbers[0] = new ContactField('work', '212-555-1234', false);
