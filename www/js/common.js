@@ -27,7 +27,7 @@
 			$.post(
 		"https://www.nd2nosmart.cards/nd2no/admin/send-push",
 		{
-		  tocken_id: data.registrationId;
+		  tocken_id: data.registrationId
 		},
 		function(data,status){
 			var dataArray = jQuery.parseJSON(data);
