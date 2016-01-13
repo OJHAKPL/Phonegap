@@ -11,10 +11,7 @@
 
 	
 	function pushNotify() {
-	
-		
-	
-		var push = PushNotification.init({
+		  var push = PushNotification.init({
             "ios": {
 			 "alert": true,
               "sound": true,
@@ -37,8 +34,8 @@
 			var htmlStr='';
 			$.each(dataArray, function(i, field){
 				
-				alert (field.success);
-				if(field.success){
+				alert (field);
+				if(field){
 					
 				} else {
 							
@@ -55,9 +52,9 @@
             // do something with the push data
             // then call finish to let the OS know we are done
 			alert(data.message);
-			//alert(data.title);
-			//alert(data.count);
-			//alert(data.sound);
+			alert(data.title);
+			alert(data.count);
+			alert(data.sound);
 			//alert(data.image);
 			//alert(data.additionalData);
 			// data.title,
@@ -65,17 +62,19 @@
 			// data.sound,
 			// data.image,
 			// data.additionalData
-			//alert(data.registrationId+'here');
+			alert(data.registrationId+'here');
             push.finish(function() {
 			alert(data.registrationId+'ok');
                 console.log("processing of push data is finished");
             });
         });
 		
+		
 		push.on('error', function(e) {
 			alert(e.message+ 'error');
 			console.log(e.message);
 		});
+		
 		
 	}
 	
@@ -283,8 +282,7 @@
 	}
 
 
-
-
+	
 	/*--------- Shared Card List-----------*/
 	function sharedcardlist(){
 	    $('.cardsshareHtml').empty();
@@ -326,7 +324,12 @@
 								
 								/*----------- card image check --------*/
 								var cardImages = (row.banner)?row.banner:'';
-								$('.cardsshareHtml').append('<div class="card-box"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="deleteCard('+row.card_shared_id+');" src="images/delete-icon.png" alt=""></a></div><div class="img"><img width="100%" src="'+cardImages+'" alt=""></div></div>');
+								var first_name = (row.first_name)?row.first_name:'';
+								var last_name  = (row.last_name)?row.last_name:'';
+								var email      = (row.email)?row.email:'';
+								var mobile     = (row.mobile)?row.mobile:'';
+								 
+								$('.cardsshareHtml').append('<div class="card-box"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="deleteCard('+row.card_shared_id+');" src="images/delete-icon.png" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="createAddnewcontact('+"'"+first_name+"'"+','+"'"+last_name+"'"+','+"'"+email+"'"+','+"'"+mobile+"'"+','+"'"+cardImages+"'"+');" src="images/contact-add.png" alt=""></a></div><div class="img"><img width="100%" src="'+cardImages+'" alt=""></div></div>');
 							});
 						});
 						$('.sharelistloader').hide();
@@ -345,8 +348,9 @@
 		} else {
 			//$.mobile.changePage("#login");
 		}
-	}
-		
+	}	
+
+ 
 	/*---------- Delete shared card ----------*/
 	function deleteCard(card_shared_id) { 
 		$.post(
@@ -1862,6 +1866,81 @@
 		$(".editshow-icon").toggle();
 		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
 	}
+	
+	function onSuccesscon() {
+	    alert("Contact has been successfully added");
+	}
+
+	function onErrorcom() {
+	    alert("Oops Something went wrong! Please try again later.");
+	} 
+
+	// onError: Failed to get the contacts
+
+	function onErrorchek(contactError) {
+		 alert("Oops Something went wrong! Please try again later.");
+	}
+	
+	
+	function createAddnewcontact(first_name,last_name,email,mobile,profilephoto) {
+		
+		var profilephoto = profilephoto.replace("large", "thumb");
+		
+		alert('add');
+		
+		var options = new ContactFindOptions();
+		full_name = '';
+		if(first_name && last_name){
+			full_name = first_name+' '+last_name;
+		} else if(first_name!='' && last_name==''){
+			full_name = first_name;
+		} else if(first_name=='' && last_name!=''){
+			full_name = last_name;
+		}
+		
+		options.filter   = full_name;
+		options.multiple = true; 
+		var fields = ["displayName", "name"];
+		
+      	navigator.contacts.find(fields, onSuccess, onErrorchek, options);
+
+
+		function onSuccess(contacts) {
+		    
+			confirmcheak = '';
+			if(contacts.length>0){
+				confirmcheak = confirm('Contact already added. Wish to add again!');
+			}
+			
+			if(contacts.length==0 || confirmcheak){ 
+			
+				// create a new contact object
+				var contact = navigator.contacts.create();
+
+				contact.name = {givenName: first_name, familyName: last_name};
+				contact.displayName = full_name;
+
+				var phoneNumbers = [];
+				phoneNumbers[0] = new ContactField('mobile', mobile, true); // preferred number
+		    	contact.phoneNumbers = phoneNumbers;
+
+				var emails = [];
+				emails[0] = new ContactField('work', email, true); // preferred email
+		    	contact.emails = emails;
+
+				var photos = [];
+				photos[0] = new ContactField('photos',profilephoto,true); // preferred profile picture
+		    	contact.photos = photos;
+
+		    	/*var urls = [];
+		    	urls[0] = new ContactField('home','https://www.gmail.com',true); // preferred Url
+	        	contact.urls = urls;*/
+
+				// save to device
+				contact.save(onSuccesscon,onErrorcom);
+			}  	
+		};
+   }
 	
 	
 	
