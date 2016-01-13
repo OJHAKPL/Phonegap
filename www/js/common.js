@@ -1867,8 +1867,9 @@
 		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
 	}
 	
-	function onSuccesscon() {
-	    alert("Contact has been successfully added");
+	function onSuccesscon(full_name) {
+		full_name = (full_name)?full_name:'Card'; 
+	    alert(full_name+" has been added to your contacts!");
 	}
 
 	function onErrorcom() {
@@ -1885,8 +1886,6 @@
 	function createAddnewcontact(first_name,last_name,email,mobile,profilephoto) {
 		
 		var profilephoto = profilephoto.replace("large", "thumb");
-		
-		alert('add');
 		
 		var options = new ContactFindOptions();
 		full_name = '';
@@ -1937,7 +1936,7 @@
 	        	contact.urls = urls;*/
 
 				// save to device
-				contact.save(onSuccesscon,onErrorcom);
+				contact.save(onSuccesscon(full_name),onErrorcom);
 			}  	
 		};
    }
