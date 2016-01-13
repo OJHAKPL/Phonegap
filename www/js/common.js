@@ -23,7 +23,7 @@
 
         push.on('registration', function(data) {
             // send data.registrationId to push service
-			alert(data.registrationId+'sent');
+			//alert(data.registrationId+'sent');
 			$.post(
 		"https://www.nd2nosmart.cards/nd2no/admin/send-push",
 		{
@@ -52,9 +52,9 @@
             // do something with the push data
             // then call finish to let the OS know we are done
 			alert(data.message);
-			alert(data.title);
-			alert(data.count);
-			alert(data.sound);
+			//alert(data.title);
+			//alert(data.count);
+			//alert(data.sound);
 			//alert(data.image);
 			//alert(data.additionalData);
 			// data.title,
@@ -62,9 +62,9 @@
 			// data.sound,
 			// data.image,
 			// data.additionalData
-			alert(data.registrationId+'here');
+			//alert(data.registrationId+'here');
             push.finish(function() {
-			alert(data.registrationId+'ok');
+			//alert(data.registrationId+'ok');
                 console.log("processing of push data is finished");
             });
         });
