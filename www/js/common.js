@@ -646,10 +646,11 @@
 			  var values1=	$("input[name^='obj']")
               .map(function(){return $(this).attr("id");}).get();
 			alert(values1);*/
-	
+			
+				card_id = jQuery('#edit_card').find('input[name="card_id"]').val();
+				alert(card_id);
 				$.post(
-					"https://www.nd2nosmart.cards/nd2no/admin/web-update-card",{
-						card_id: jQuery('#edit_card').find('input[name="card_id"]').val(),
+					"https://www.nd2nosmart.cards/nd2no/admin/web-update-card/"+card_id+"",{
 						title: jQuery('#edit_card').find('input[name="title"]').val(),
 						links: values, 
 						
@@ -2066,7 +2067,7 @@
 							}
 						}
 					);
-					pushNotify();
+					//pushNotify();
 					cardlist();
 				}
 			}  
@@ -2109,7 +2110,6 @@
 								$('.errorMsgShow').hide();
 							}, 4000);							
 						}
-						
 						
 						$("#folder_name").val('');
 						$.post(
