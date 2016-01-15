@@ -41,29 +41,7 @@
 			});
         }); 
 		
-		push.on('error', function(e) {
-			alert(e.message+ 'error');
-			console.log(e.message);
-		});
-		
-		
-	}	
-	
-	
-	
-	function pushNotifySend() {
-		
-		  var push = PushNotification.init({
-            "ios": {
-			 "alert": true,
-              "sound": true,
-              "vibration": true,
-              "badge": true,
-              "clearBadge": true
-            }
-        }); 
-
-        push.on('notification', function(data) {
+		  push.on('notification', function(data) {
             // do something with the push data
             // then call finish to let the OS know we are done
 			alert(data.message);
@@ -87,10 +65,10 @@
 		push.on('error', function(e) {
 			alert(e.message+ 'error');
 			console.log(e.message);
-		}); 
+		});
 		
-	}
-	
+		
+	}	 
 	
 	
 	
@@ -2088,6 +2066,7 @@
 							}
 						}
 					);
+					pushNotify();
 					cardlist();
 				}
 			}  
@@ -2223,7 +2202,31 @@
 						if(cardCount.notify){
                             alert(cardCount.notify);
 							if(cardCount.success) {
+								
+								
 								$.post(
+									"https://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
+									{
+									  user_id: user_id
+									},
+									function(folderlist,status){							
+										$('.folder_listadd').empty();
+										var folderlistArr = jQuery.parseJSON(folderlist);	
+								
+									if (folderlistArr.success){		
+										$.each( folderlistArr, function(i, row1) {
+											$.each( row1, function(i, row) {
+												$('.folder_listadd').append('<li><a href="javascript:void(0);" onClick="showFoldercards('+row.id+',\''+row.folder_name+'\');"  class="folderhyper">'+row.folder_name+'<span class="counter">('+row.cards+')</span></a></li>');
+											});
+										});
+									}
+									}
+								);
+								
+								
+								
+								
+								/*$.post(
 									"https://www.nd2nosmart.cards/nd2no/admin/web-notification-save",
 									{
 									  user_id: user_id
@@ -2233,7 +2236,7 @@
 								);
                                 alert('Ok');
 								
-								pushNotifySend();
+								pushNotifySend();*/
 							}
 						}
 					}
