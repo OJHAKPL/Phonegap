@@ -117,7 +117,8 @@
 						localStorage.setItem('userid', field.id);
 					} else {
 						localStorage.setItem('userid-2', field.id);
-					}				
+					}
+					pushNotify();
 					cardlist();
 				} else {
 					if(dataArray.error){
@@ -2231,6 +2232,7 @@
 									}
 								);
                                 alert('Ok');
+								
 								pushNotifySend();
 							}
 						}
