@@ -11,6 +11,7 @@
 
 	
 	function pushNotify() {
+		
 		  var push = PushNotification.init({
             "ios": {
 			 "alert": true,
@@ -23,52 +24,22 @@
 
         push.on('registration', function(data) {
             // send data.registrationId to push service
-			//alert(data.registrationId+'sent');
+			alert(data.registrationId+'sent');
 			$.post(
-		"https://www.nd2nosmart.cards/nd2no/admin/send-push",
-		{
-		  tocken_id: data.registrationId
-		},
-		function(data,status){
-			var dataArray = jQuery.parseJSON(data);
-			var htmlStr='';
-			$.each(dataArray, function(i, field){
-				
+			"https://www.nd2nosmart.cards/nd2no/admin/web-device-tocken",
+			{
+				tocken_id: data.registrationId, //'adjadkdjkalskjsaaldkSAJKLD',
+				user_id: localStorage.getItem('userid')
+			},
+			function(data,status){
+				var dataArray = jQuery.parseJSON(data);
+				var htmlStr='';
+				$.each(dataArray, function(i, field){
 				alert (field);
-				if(field){
-					
-				} else {
-							
-				}					
-			});					
-		});
-			
-			
-			
-        });
-
-
-        push.on('notification', function(data) {
-            // do something with the push data
-            // then call finish to let the OS know we are done
-			alert(data.message);
-			//alert(data.title);
-			//alert(data.count);
-			//alert(data.sound);
-			//alert(data.image);
-			//alert(data.additionalData);
-			// data.title,
-			// data.count,
-			// data.sound,
-			// data.image,
-			// data.additionalData
-			//alert(data.registrationId+'here');
-            push.finish(function() {
-			//alert(data.registrationId+'ok');
-                console.log("processing of push data is finished");
-            });
-        });
-		
+									
+				});					
+			});
+        }); 
 		
 		push.on('error', function(e) {
 			alert(e.message+ 'error');
@@ -76,7 +47,52 @@
 		});
 		
 		
+	}	
+	
+	
+	
+	function pushNotifySend() {
+		
+		  var push = PushNotification.init({
+            "ios": {
+			 "alert": true,
+              "sound": true,
+              "vibration": true,
+              "badge": true,
+              "clearBadge": true
+            }
+        }); 
+
+        push.on('notification', function(data) {
+            // do something with the push data
+            // then call finish to let the OS know we are done
+			alert(data.message);
+			alert(data.title);
+			alert(data.count);
+			alert(data.sound);
+			//alert(data.image);
+			//alert(data.additionalData);
+			// data.title,
+			// data.count,
+			// data.sound,
+			// data.image,
+			// data.additionalData
+			alert(data.registrationId+'here');
+            push.finish(function() {
+			alert(data.registrationId+'ok');
+                console.log("processing of push data is finished");
+            });
+        }); 
+		
+		push.on('error', function(e) {
+			alert(e.message+ 'error');
+			console.log(e.message);
+		}); 
+		
 	}
+	
+	
+	
 	
 	function navigationOpen(){ 
 		$( ".jqm-navmenu-panel ul" ).listview();
@@ -2185,13 +2201,16 @@
 			} else {
 			var itemcount =localStorage.cartcount;
 			}
+			
 			$('.counter-cardtick').text(itemcount);
 			
 			user_id = localStorage.getItem('userid');
 			if(user_id==null || user_id==''){
 				user_id = localStorage.getItem('userid-2');
 			}
+			
 			if(user_id){
+				
 				$.post(
 					"https://www.nd2nosmart.cards/nd2no/admin/web-notification-total",
 					{
@@ -2200,6 +2219,21 @@
 					function(countcard,status){
 						var cardCount = jQuery.parseJSON(countcard);
 						$('.counter-notify').text(cardCount.success);
+						if(cardCount.notify){
+                            alert(cardCount.notify);
+							if(cardCount.success) {
+								$.post(
+									"https://www.nd2nosmart.cards/nd2no/admin/web-notification-save",
+									{
+									  user_id: user_id
+									},
+									function(savenotification,status){
+									}
+								);
+                                alert('Ok');
+								pushNotifySend();
+							}
+						}
 					}
 				);
 			} else {
