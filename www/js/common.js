@@ -42,7 +42,14 @@
 		push.on('notification', function(data) {
             // do something with the push data
             // then call finish to let the OS know we are done
-			showAlert(data.message)
+			navigator.notification.alert(
+            data.message,
+            alertDismissed,
+            'ND2NO',
+            'Ok'
+        );
+			alert(data.message)
+			//showAlert(data.message)
 			//alert(data.message);
 			//alert(data.title);
 			//alert(data.sound);
