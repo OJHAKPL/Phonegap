@@ -48,7 +48,7 @@
             'ND2NO',
             'Ok'
         );
-			alert(data.message)
+			//alert(data.message)
 			//showAlert(data.message)
 			//alert(data.message);
 			//alert(data.title);
