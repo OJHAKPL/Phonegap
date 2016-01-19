@@ -1064,11 +1064,19 @@
 			},
 			submitHandler:function (form) {
 				
-	 			$.post(
-					"https://www.nd2nosmart.cards/nd2no/admin/web-update-profile",
-					$("#editprofile").serialize(),
-					function(registerData,status){
-						var dataMsg = jQuery.parseJSON(registerData);	
+				$.ajax({
+					type: 'POST',
+					url: 'https://www.nd2nosmart.cards/nd2no/admin/web-update-profile',
+					beforeSend: function(){
+						$('.loader_useredit').show();
+					},
+					complete: function(){
+						$('.loader_useredit').hide();
+					},
+					data : $('#editprofile').serialize(),
+					success: function(updateProfile){ 
+					
+						var dataMsg = jQuery.parseJSON(updateProfile);	
 						if(dataMsg.error){
 							$(".errorMsgShow").show();
 							$(".errorMsgShow").removeClass("success");
@@ -1086,11 +1094,11 @@
 							setTimeout(function() {
 								$('.errorMsgShow').hide();
 								viewProfile();
-							}, 4000);	
-							
+							}, 4000);
 						}
-					}
-				)
+					},
+					dataType: 'html'
+				});
 			}
 		});
 	}
@@ -1195,6 +1203,7 @@
 	/*--------- Card List-----------*/
 	function cardlist() {
 		
+		$.mobile.changePage("#card-list-loader",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 	 	$('.card-list-new').remove();
 		$('.cardslistemptyHtml').empty();	  
 		user_id = localStorage.getItem('userid');
@@ -1202,13 +1211,19 @@
 			user_id = localStorage.getItem('userid-2');
 		}
 		if(user_id){
-			$('.cardlistloader').show();
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-user-cards",
-				{
-				  user_id: user_id,
+			
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-shared-cards',
+				beforeSend: function(){
+					$('.loader_cardlist').show();
 				},
-				function(cardlist,status){
+				complete: function(){
+					$('.loader_cardlist').hide();
+				},
+				data: { "user_id": user_id },
+				success: function(cardlist){ 
+				
 					var countid = 0;
 					var cardlistArr = jQuery.parseJSON(cardlist);
 					if(!cardlistArr.error) {
@@ -1241,8 +1256,9 @@
 						}, 4000);
 						$.mobile.changePage("#card-list-empty",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 					}
-				}
-			)
+				},
+				dataType: 'html'
+			});
 		} 
 	} 
 	
@@ -1315,7 +1331,7 @@
 	} 
 	
 
-	/*--------- Move Card-----------*/
+	/*--------- Move Folder Lists -----------*/
 	function moveTocard(){
 		
 		user_id = localStorage.getItem('userid');
@@ -1324,12 +1340,19 @@
 		}
 		if(user_id){	
 			$('#movetofolder').popup('open');
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-folder-list",
-				{
-				  user_id: user_id,
+			
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-folder-list',
+				beforeSend: function(){
+					$('.loader_movefolderlist').show();
 				},
-				function(folderlist,status){
+				complete: function(){
+					$('.loader_movefolderlist').hide();
+				},
+				data: { "user_id": user_id },
+				success: function(folderlist){ 
+				
 					$('.movetoHtml').empty();
 					var folderArr = jQuery.parseJSON(folderlist);
 					if(!folderArr.error) {
@@ -1347,11 +1370,10 @@
 							$('.errorMsgShow').hide();
 						}, 4000);
 					}
-				}
-			)
-		} else {
-			//$.mobile.changePage("#login");
-		}
+				},
+				dataType: 'html'
+			});
+		}  
 	}
 		
 		
@@ -1403,9 +1425,7 @@
 					}
 				}
 			);
-		} else {
-			//$.mobile.changePage("#login");
-		}
+		} 
 	}
 
 
