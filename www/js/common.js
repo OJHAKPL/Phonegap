@@ -1,5 +1,5 @@
  	$(document).on('pagebeforecreate', '[data-role="page"]', function() {
-		loading('show', 1);
+		//loading('show', 1);
 	});
 	 
 	 
@@ -76,37 +76,45 @@
 	
 	/*--------- Login -----------*/  
 	function homeLogin() {
-		$.post(
-		"https://www.nd2nosmart.cards/nd2no/admin/web-login",
-		{
-		  email: $("#login-email").val(),
-		  password: $("#login-password").val()
-		},
-		function(data,status){
-			var dataArray = jQuery.parseJSON(data);
-			var htmlStr='';
-			$.each(dataArray, function(i, field){
-				if(field.email){
-					if($('#keep_me_login').is(":checked")) {
-						localStorage.setItem('email', field.email);
-						localStorage.setItem('userid', field.id);
+		
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-login',
+			beforeSend: function(){
+				$('.loader_login').show();
+			},
+			complete: function(){
+				$('.loader_login').hide();
+			},
+			data: {  email: $("#login-email").val(), password: $("#login-password").val() },
+			success: function(logindata){
+				
+				var dataArray = jQuery.parseJSON(logindata);
+				var htmlStr='';
+				$.each(dataArray, function(i, field){
+					if(field.email){
+						if($('#keep_me_login').is(":checked")) {
+							localStorage.setItem('email', field.email);
+							localStorage.setItem('userid', field.id);
+						} else {
+							localStorage.setItem('userid-2', field.id);
+						}
+						pushNotify();
+						cardlist();
 					} else {
-						localStorage.setItem('userid-2', field.id);
-					}
-					pushNotify();
-					cardlist();
-				} else {
-					if(dataArray.error){
-						$(".errorMsgShow").show();
-						$(".errorMsgShow").removeClass("success");
-						$(".errorMsgShow").addClass("error");
-						$(".errorMsgShow").text(dataArray.error);
-						setTimeout(function() {
-						$('.errorMsgShow').hide();
-						}, 3000);
-					}		
-				}					
-			});					
+						if(dataArray.error){
+							$(".errorMsgShow").show();
+							$(".errorMsgShow").removeClass("success");
+							$(".errorMsgShow").addClass("error");
+							$(".errorMsgShow").text(dataArray.error);
+							setTimeout(function() {
+							$('.errorMsgShow').hide();
+							}, 3000);
+						}		
+					}					
+				});
+			},
+			dataType: 'html'
 		});
 	} 
 	
@@ -118,12 +126,19 @@
 	 	
 		$.mobile.changePage("#folder-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 		$("#folderTitle").text(folderName);
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-folder-cards",
-			{
-			  folder_id: folderId,
+		
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-folder-cards',
+			beforeSend: function(){
+				$('.loader_foldercardlist').show();
 			},
-			function(cardlist,status){
+			complete: function(){
+				$('.loader_foldercardlist').hide();
+			},
+			data: { "folder_id": folderId },
+			success: function(cardlist){
+				
 				var cardlistArr = jQuery.parseJSON(cardlist);
 				var folderName='';
 				if(!cardlistArr.error) {
@@ -146,8 +161,9 @@
 						$('.errorMsgShow').hide();
 					}, 4000);	
 				}
-			}
-		) 
+			},
+			dataType: 'html'
+		});
 	}
 	
 	
@@ -183,20 +199,25 @@
 	/*----------- card details from notification----------*/
 	function cartDetailsNotification(cardId) {
 		
-		
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-cards-detail",
-			{
-			  id: cardId
+		$.mobile.changePage("#card-details",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-cards-detail',
+			beforeSend: function(){
+				$('.loader_carddetails').show();
 			},
-			function(cardDetails,status){
+			complete: function(){
+				$('.loader_carddetails').hide();
+			},
+			data: { "id": cardId },
+			success: function(cardnotifydetails){
 				
 				var iconUrl='';
 				var uid='';
 				var userRole='';
 				var getACard='';
 				$('#folder_list').empty();
-				var cardDetailsArr = jQuery.parseJSON(cardDetails);
+				var cardDetailsArr = jQuery.parseJSON(cardnotifydetails);
 				
 				$(".card-link-details").empty();
 				$(".card-icons").empty();
@@ -243,152 +264,32 @@
 				}); 
 				
 				if (userRole == 3 || userRole == 4) {
-				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
+					$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
 				} else {
-				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
+					$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
 				}
-			
-			}
-		);
-		
-		
-		user_id = localStorage.getItem('userid');
-		if(user_id==null || user_id==''){
-			user_id = localStorage.getItem('userid-2');
-		}	
-		if(user_id){
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-reset-notification",
-				{
-					card_id: cardId,
-					user_id: user_id
-				},
-				function(result, status){
-					
-				}
-			); 
-			$.mobile.changePage("#card-details",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-		} else {
-			//$.mobile.changePage("#login");
-		}
-	}
-	
-	
-	
-	
-	
-	
-	/*----------- card notification details ----------*/
-	function cartDetailsNotification(cardId) {
-		$('.cardDetails').show();
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-cards-detail",
-			{
-			  id: cardId
+	 
 			},
- 			function(cardDetails,status){
-				var iconUrl='';
-				var uid='';
-				var userRole='';
-				var getACard='';
-				$('#folder_list').empty();
-				var cardDetailsArr = jQuery.parseJSON(cardDetails);
-				
-				$(".card-link-details").empty();
-				$(".card-icons").empty();
-				$(".allsociallink").empty();
-				
-				$.each(cardDetailsArr, function(i, firstRow) {	
-					$('.marquee-text').remove();
-					$('.mainimgremove').remove();
-					marqueeList = '';
-					$.each(firstRow.scrollers, function(i, row5) {
-						scroll_title = (row5.title)?row5.title:'';
-						scroll_url   = (row5.url)?row5.url:'';
-						if(scroll_url && scroll_url!=''){
-							if(scroll_url.indexOf("youtu") >= 0){
-								marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_blank\',location=\'yes\');">'+scroll_title+'</a>&nbsp;&nbsp;';
-							} else {
-								marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_system\');">'+scroll_title+'</a>&nbsp;&nbsp;';
-							}
-						} else {
-							marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);">'+scroll_title+'</a>&nbsp;&nbsp;';
-						}
-					});
-					if(marqueeList){
-						marqueeList = '<div class="marquee-text"><marquee onmouseover="this.setAttribute(\'scrollamount\', 0, 0);" onmouseout="this.setAttribute(\'scrollamount\', 6, 0);" direction="left">'+marqueeList+'</marquee></div>';
-					}
-					
-					iconUrl = firstRow.card.icon_url_path;
-					uid = firstRow.card.uid;
-					userRole = firstRow.card.role_id;
-					getACard = firstRow.card.getacard_icon;
-					
-					
-					shareUrl = "https://www.nd2nosmart.cards/nd2no/card/"+firstRow.card.post_key+"-"+cardId+"/mobile";
-					var cardImages = firstRow.card.banner;
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img mainimgremove"><img src="'+cardImages+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+cardImages+'\', \''+shareUrl+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
-				});
-		
-				$.each( cardDetailsArr, function(i, row1) {
-					$.each( row1.links, function(i, row2) {
-						if(row2.type=='Business Email'){
-							$('.card-icons').append('<a class="ui-link" href="mailto:'+row2.url+'" data-rel="external" ><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
-						} else if(row2.type=='Youtube'){
-							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
-						} else {
-							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
-						}
-					});
-				});
-				
-				if(userRole == 3 || userRole == 4) {
-					$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
-				} else {
-					$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
-				}
-				
-				$.each( cardDetailsArr, function(i, row1) {
-					$.each( row1.links, function(i, row2) {
-						linktitle = (row2.title && row2.title!='')?row2.title:row2.type;
-						if (row2.type=='Business Email'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="mailto:'+row2.url+'" data-rel="external"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
-						}else if (row2.type=='Youtube'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
-						}else {
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
-						}
-					}); 
-				}); 
-				
-				if (userRole == 3 || userRole == 4) {
-				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
-				} else {
-				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
-				}
-				$('.cardDetails').hide();
-			}
-		);
+			dataType: 'html'
+		});
 		
 		
 		user_id = localStorage.getItem('userid');
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
 		}	
-		if(user_id){
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-reset-notification",
-				{
-					card_id: cardId,
-					user_id: user_id
+		if(user_id){		
+		
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-reset-notification',
+				data: { card_id: cardId, user_id: user_id },
+				success: function(cardlist){
 				},
-				function(result, status){
-					
-				}
-			); 
-			$.mobile.changePage("#card-details",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-		}  
-	}
+				dataType: 'html'
+			});	
+		}
+	}	
 	
 	
 	
@@ -402,6 +303,7 @@
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
 		}
+		
 		if(user_id){
 			
 			$.mobile.changePage("#shared-card-list",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
@@ -463,58 +365,7 @@
 		 
 				},
 				dataType: 'html'
-			});	 
-			
-			/*$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-shared-cards",
-				{
-				  user_id: user_id,
-				},
-				function(cardlist,status){
-					
-					var cardlistArr = jQuery.parseJSON(cardlist);
-					if(!cardlistArr.error) {
-						$.each( cardlistArr, function(i, row1) {
-							$.each( row1, function(i, row) {
-								
-								tickiconImg = 'images/tick-icon-black.png'
-								alredyexist = false;
-								if(localStorage.cartitem){
-									var strVale = localStorage.cartitem;
-									arrCheak = strVale.split(',');
-									for(i=0; i < arrCheak.length; i++){
-										if(arrCheak[i]==row.id){
-											alredyexist = true;
-										}
-									}
-								}
-								if(alredyexist){
-									tickiconImg = 'images/tick-icon-black1.png';
-								}
-								
-								/*----------- card image check --------*/
-								/*var cardImages = (row.banner)?row.banner:'';
-								var first_name = (row.first_name)?row.first_name:'';
-								var last_name  = (row.last_name)?row.last_name:'';
-								var email      = (row.email)?row.email:'';
-								var mobile     = (row.mobile)?row.mobile:'';
-								 
-								$('.cardsshareHtml').append('<div class="card-box"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="deleteCard('+row.card_shared_id+');" src="images/delete-icon.png" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="createAddnewcontact('+"'"+first_name+"'"+','+"'"+last_name+"'"+','+"'"+email+"'"+','+"'"+mobile+"'"+','+"'"+cardImages+"'"+');" src="images/contact-add.png" alt=""></a></div><div class="img"><img width="100%" src="'+cardImages+'" alt=""></div></div>');
-							});
-						});
-						$('.sharelistloader').hide();
-					} else {
-						$('.sharelistloader').hide();
-						$(".errorMsgShow").show();
-						$(".errorMsgShow").removeClass("success");
-						$(".errorMsgShow").addClass("error");
-						$(".errorMsgShow").text(cardlistArr.error);	
-						setTimeout(function() {
-							$('.errorMsgShow').hide();
-						}, 4000);	
-					}
-				}
-			) */
+			});
 		}  
 	}	
 
@@ -580,8 +431,8 @@
 			
 		$('.counter-cardtick').text(localStorage.cartcount);
 	}
-			
-				
+
+
 	/*---------- Remove card selected ----------*/
 	function removeSelected(cardId) {
 
@@ -591,18 +442,31 @@
 		localStorage.cartcount --;
 		
 		if (!localStorage.cartitem){
-		var items = '';
+			var items = '';
 		} else {
-		var items =localStorage.cartitem;
+			var items =localStorage.cartitem;
 		}
-
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-selected-cards",
-			{
-			  selected_card_ids: items
+		
+		if (!localStorage.cartcount){
+		var itemcount = 0;
+		} else {
+		var itemcount =localStorage.cartcount;
+		}
+		$('.counter-cardtick').text(itemcount);
+		$.mobile.changePage("#selected-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$('.ticked-list').empty();
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-selected-cards',
+			beforeSend: function(){
+				$('.loader_cardselectlist').show();
 			},
-			function(cardlist,status){
-				$('.ticked-list').empty();
+			complete: function(){
+				$('.loader_cardselectlist').hide();
+			},
+			data: { "selected_card_ids": items },
+			success: function(cardlist){
+				
 				$('.sharecardremove').remove();
 				var cardlistArr = jQuery.parseJSON(cardlist);
 				if(!cardlistArr.error) {
@@ -635,29 +499,29 @@
 						$('.errorMsgShow').hide();
 					}, 4000);	
 				}
-			}
-		)
-		
-		if (!localStorage.cartcount){
-		var itemcount = 0;
-		} else {
-		var itemcount =localStorage.cartcount;
-		}
-		$('.counter-cardtick').text(itemcount);
-		$.mobile.changePage("#selected-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-
+			},
+			dataType: 'html'
+		});
 	}
 
 
 	/*----------- card details ----------*/
 	function cartDetails(cardId) {
+		
 		$('.cardDetails').show();
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-cards-detail",
-			{
-			  id: cardId
+		$.mobile.changePage("#card-details",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-cards-detail',
+			beforeSend: function(){
+				$('.loader_carddetails').show();
 			},
- 			function(cardDetails,status){
+			complete: function(){
+				$('.loader_carddetails').hide();
+			},
+			data: { "id": cardId },
+			success: function(cardDetails){
+				
 				var iconUrl='';
 				var uid='';
 				var userRole='';
@@ -698,7 +562,8 @@
 					
 					shareUrl = "https://www.nd2nosmart.cards/nd2no/card/"+firstRow.card.post_key+"-"+cardId+"/mobile";
 					var cardImages = firstRow.card.banner;
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img mainimgremove"><img src="'+cardImages+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+cardImages+'\', \''+shareUrl+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
+					var cardthumbimage = cardImages.replace("large", "thumb");
+					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img mainimgremove"><img src="'+cardImages+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+cardthumbimage+'\', \''+shareUrl+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
 				});
 		
 				$.each( cardDetailsArr, function(i, row1) {
@@ -738,20 +603,33 @@
 				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
 				}
 				$('.cardDetails').hide();
-			}
-		);
-		$.mobile.changePage("#card-details",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+				
+				
+	 
+			},
+			dataType: 'html'
+		});
 	}
 
 
 
 	/*----------- card details ----------*/
 	function editCard(cardId){
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-update-card/"+cardId+"",
-			function(profiledetails, status){
-				$('.updateCard').empty();
+		
+		$.mobile.changePage("#update-card",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-update-card/'+cardId+'',
+			beforeSend: function(){
+				$('.loader_cardupdate').show();
+			},
+			complete: function(){
+				$('.loader_cardupdate').hide();
+			},
+			data: { },
+			success: function(profiledetails){
 				
+				$('.updateCard').empty();
 				var profileArr = jQuery.parseJSON(profiledetails);
 				if(!profileArr.error) {
 					$.each( profileArr, function(i, row) {
@@ -776,9 +654,9 @@
 						$('.errorMsgShow').hide();
 					}, 4000);	
 				}
-				$.mobile.changePage("#update-card",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-			}
-		)
+			},
+			dataType: 'html'
+		});	
 	}
 	
 	
@@ -946,12 +824,20 @@
 			user_id = localStorage.getItem('userid-2');
 		}
 		if(user_id){
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-user-info",
-				{
-				  id: user_id,
+			
+			$.mobile.changePage("#my-profile",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-user-info',
+				beforeSend: function(){
+					$('.loader_userupdate').show();
 				},
-				function(profiledetails,status){
+				complete: function(){
+					$('.loader_userupdate').hide();
+				},
+				data: { "id": user_id },
+				success: function(profiledetails){
+					
 					$('.viewprofileremove').remove();
 					var profileArr = jQuery.parseJSON(profiledetails);
 					if(!profileArr.error) {
@@ -987,22 +873,28 @@
 							$('.errorMsgShow').hide();
 						}, 4000);
 					}
-					$.mobile.changePage("#my-profile",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-				}
-			)
-		} else {
-			//$.mobile.changePage("#login");
-		}
+				},
+				dataType: 'html'
+			});
+		}  
 	}
 
 
 	function changeProfile(id){
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-user-info",
-			{
-			  id: id,
+		
+		$.mobile.changePage("#update-profile",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-user-info',
+			beforeSend: function(){
+				$('.loader_useredit').show();
 			},
-			function(profiledetails,status){
+			complete: function(){
+				$('.loader_useredit').hide();
+			},
+			data: { "id": id },
+			success: function(profiledetails){
+				
 				$('.cahngeprofileremove').remove();
 				var profileArr = jQuery.parseJSON(profiledetails);
 				if(!profileArr.error) {
@@ -1016,7 +908,7 @@
 						var genderFemale 	= (row.gender==2)?'selected':'';
 					
 						var photoUser = (row.photo)?row.photo:'';
-					 	var country_id_val 	= row.country_id;
+						var country_id_val 	= row.country_id;
 						var country_name_val= row.name;
 						var dob = (row.dob && row.dob!='')?row.dob:'';
 						var street_1 = (row.street_1 && row.street_1!='')?row.street_1:'';
@@ -1026,7 +918,7 @@
 						var state = (row.state && row.state!='')?row.state:'';
 						var phone = (row.phone && row.phone!='')?row.phone:'';
 						var mobile = (row.mobile && row.mobile!='')?row.mobile:'';
-		 				var countryDropDown = '<select name="country_id" id="country_id" style="max-width:100%;" class="countryUpdate"><option id="countryUpdateSpan" value="">Select Country</option></select>';
+						var countryDropDown = '<select name="country_id" id="country_id" style="max-width:100%;" class="countryUpdate"><option id="countryUpdateSpan" value="">Select Country</option></select>';
 						
 						$('.EditProfileHtml').append('<div class="cahngeprofileremove"><div class="main-img"><img id="cameraPic" src="'+photoUser+'" style="width:100%;" alt=""></div><div class="card-header"><h3 class="title">'+row.uid.toUpperCase()+' – '+nameUser+'</h3><p>'+row.email+'</p></div><form name="editprofile" id="editprofile" enctype="multipart/form-data" method="post"><div class="page-form"><small>Change Profile Photo</small><div id="camera" style="height: 60px;"><button class="camera-control ui-btn ui-shadow ui-corner-all" type="button" onclick="capturePhoto();" style="width: 50%; float: left;">Camera</button><button class="camera-control ui-btn ui-shadow ui-corner-all" type="button" onclick="getPhoto();" style="width: 50%; float: right;">Gallery</button></div><input type="hidden" name="user_id" id="user_id" value="'+row.id+'"><input type="text" name="first_name" placeholder="First Name" id="first_name" value="'+firstName+'"><input type="text" name="middle_name" placeholder="Middle Name" id="middle_name" value="'+middleName+'"><input type="text" name="last_name" placeholder="Last Name" id="last_name" value="'+lastName+'"><input data-role="date" data-date-format="yy-mm-dd" type="date" name="dob" placeholder="YYYY-MM-DD" id="dob" value="'+dob+'"><select name="gender" id="gender"><option '+genderMale+' value="1">Male</option><option '+genderFemale+' value="2">Female</option></select><input type="text" name="street1" placeholder="Street" id="street1" value="'+street_1+'"><input type="text" name="street2" placeholder="Landmark" id="street2" value="'+street_2+'"><input type="text" name="city" placeholder="City" id="city" value="'+city+'"><input type="text" name="zip" placeholder="Zip / Postal Code" id="zip" value="'+zip+'"><input type="text" name="state" placeholder="State" id="state" value="'+state+'">'+ countryDropDown +'<input type="text" name="phone" placeholder="Phone" id="phone" value="'+phone+'"><input type="text" name="mobile" placeholder="Mobile" id="mobile" value="'+mobile+'"></div><button type="submit" onClick="EditProfileSubmit()" class="ui-btn ui-btn-submit ui-corner-all">Edit Profile</button></form></div>');
 						$(".EditProfileHtml").trigger("create");
@@ -1058,9 +950,9 @@
 						$('.errorMsgShow').hide();
 					}, 4000);	
 				}
-				$.mobile.changePage("#update-profile",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-			}
-		)
+			},
+			dataType: 'html'
+		});
 	}
 	
 	
@@ -1330,8 +1222,9 @@
 								}
 								/*----------- card image check --------*/
 								var cardImages = (row.banner)?row.banner:'';
+								var cardthumbimage = cardImages.replace("large", "thumb");
 								shareUrl = "https://www.nd2nosmart.cards/nd2no/card/"+row.post_key+"-"+row.id+"/mobile";
-								$('#card-scroller').after('<div data-role="page" class="jqm-demos jqm-page jqm-list card-list-new" '+htmlidclass+'><div data-role="header" class="jqm-header"><div class="left-icon"><a href="javascript:void(0)" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a><a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a></div><div class="right-icon"><a href="javascript:void(0);" onclick="navigationOpen()" class="jqm-navmenu-link1 menu-button ui-link"><img src="images/menu-icon.png" alt=""></a></div><h1 class="title">My Cards</h1></div><div role="main" class="ui-content jqm-content"><div class="dashboard-link" style="border-bottom:0px;"><a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="selectcardShow()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a></div><div class="card-listnew"><div class="card-box"><div  style="margin-top: -25px;" class="img"><a href="javascript:void(0);" onclick="previewslide()" class="ui-icon-arrow-l ui-btn-icon-left arrowiconleft"></a><a onclick="nextslide()" href="javascript:void(0);" class="ui-icon-arrow-r ui-btn-icon-right arrowiconrigth"></a><img width="100%" alt="" src="'+cardImages+'"></div></div></div><div class="card-listnew2"><div data-role="controlgroup" data-type="vertical"><div class="bgbuttonnew"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+row.title+'\', null, \''+cardImages+'\', \''+shareUrl+'\')" data-role="button" class="icon-share" data-icon="share">Share</a></div><div class="bgbuttonnew"><a href="javascript:void(0);" data-role="button" onClick="cartDetails('+row.id+')" class="icon-view" data-icon="view">View</a></div><div class="bgbuttonnew" onClick="showEditcard()"><a href="javascript:void(0);" data-role="button" class="icon-newedit" data-icon="newedit">Edit</a></div><a href="javascript:void(0);" onclick="editscroller('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Text Scroll</a><a href="javascript:void(0);" onclick="cardLink('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Links</a></div></div></div><div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer"><div class="rewards-line"><a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\',\'_system\');" >Get a SmartCard</a></div></div><div data-role="panel" class="menu-new main-menu jqm-navmenu-panel" data-position="right" data-display="overlay"><ul class="jqm-list ui-alt-icon ui-nodisc-icon"><li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li><li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li><li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li><li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li><li><a href="#change-password" data-ajax="false">Change Password</a></li><li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li></ul></div></div>');
+								$('#card-scroller').after('<div data-role="page" class="jqm-demos jqm-page jqm-list card-list-new" '+htmlidclass+'><div data-role="header" class="jqm-header"><div class="left-icon"><a href="javascript:void(0)" onclick="cardlist()" class="back-button"><img src="images/back-icon.png" alt=""></a><a href="javascript:void(0);" onclick="notificationList()" class="bell-button"><img src="images/bell-icon.png" alt=""> <span class="counter counter-notify counter-notify-2">0</span></a></div><div class="right-icon"><a href="javascript:void(0);" onclick="navigationOpen()" class="jqm-navmenu-link1 menu-button ui-link"><img src="images/menu-icon.png" alt=""></a></div><h1 class="title">My Cards</h1></div><div role="main" class="ui-content jqm-content"><div class="dashboard-link" style="border-bottom:0px;"><a class="ui-link" href="javascript:void(0);" onclick="cardlist()"><span class="img"><img class="responsimg" src="images/dashboard.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="viewProfile()"><span class="img"><img class="responsimg" src="images/profile-icon.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="selectcardShow()"><span class="img"><img class="responsimg" src="images/share.png" alt=""></span></a><a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a></div><div class="card-listnew"><div class="card-box"><div  style="margin-top: -25px;" class="img"><a href="javascript:void(0);" onclick="previewslide()" class="ui-icon-arrow-l ui-btn-icon-left arrowiconleft"></a><a onclick="nextslide()" href="javascript:void(0);" class="ui-icon-arrow-r ui-btn-icon-right arrowiconrigth"></a><img width="100%" alt="" src="'+cardImages+'"></div></div></div><div class="card-listnew2"><div data-role="controlgroup" data-type="vertical"><div class="bgbuttonnew"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+row.title+'\', null, \''+cardthumbimage+'\', \''+shareUrl+'\')" data-role="button" class="icon-share" data-icon="share">Share</a></div><div class="bgbuttonnew"><a href="javascript:void(0);" data-role="button" onClick="cartDetails('+row.id+')" class="icon-view" data-icon="view">View</a></div><div class="bgbuttonnew" onClick="showEditcard()"><a href="javascript:void(0);" data-role="button" class="icon-newedit" data-icon="newedit">Edit</a></div><a href="javascript:void(0);" onclick="editscroller('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Text Scroll</a><a href="javascript:void(0);" onclick="cardLink('+row.id+')" class="ui-btn editshow-icon" style="display:none;">Links</a></div></div></div><div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer"><div class="rewards-line"><a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\',\'_system\');" >Get a SmartCard</a></div></div><div data-role="panel" class="menu-new main-menu jqm-navmenu-panel" data-position="right" data-display="overlay"><ul class="jqm-list ui-alt-icon ui-nodisc-icon"><li><a href="javascript:void(0);" onclick="cardlist()">Dashboard</a></li><li><a href="javascript:void(0);" onClick="viewProfile()" data-ajax="false">My Profile</a></li><li><a href="javascript:void(0);" onclick="selectcardShow()" data-ajax="false">Share</a></li><li><a href="javascript:void(0);" onclick="myfolderList()" data-ajax="false">My Folders</a></li><li><a href="#change-password" data-ajax="false">Change Password</a></li><li><a href="javascript:void(0);" onClick="logout();" data-ajax="false">Logout</a></li></ul></div></div>');
 							});
 						});
 						$.mobile.changePage("#card-list",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
@@ -1356,21 +1249,29 @@
 	
 	/*--------- Basic Card List-----------*/
 	function cardbasiclist() {
+		
 		$('.basiccardslistHtml').empty();	  
 		$('.foldercardlist').empty();
+		
 		user_id = localStorage.getItem('userid');
 		if(user_id==null || user_id==''){
 			user_id = localStorage.getItem('userid-2');
 		}
 		if(user_id){
-			$('.basiccardlistloader').show();
+			
 			$.mobile.changePage("#basic-card-list",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-user-cards",
-				{
-				  user_id: user_id,
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-user-cards',
+				beforeSend: function(){
+					$('.loader_basiccardlist').show();
 				},
-				function(cardlist,status){
+				complete: function(){
+					$('.loader_basiccardlist').hide();
+				},
+				data: { "user_id": user_id },
+				success: function(cardlist){
+					
 					var cardlistArr = jQuery.parseJSON(cardlist);
 					if(!cardlistArr.error) {
 						$.each( cardlistArr, function(i, row1) {
@@ -1407,14 +1308,12 @@
 						$('.basiccardslistHtml').append('<p> Please <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy\', \'_system\');" class="tick-button ui-link">Click here</a> to create your new card (Regular user) or <a href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae\', \'_system\');" class="tick-button ui-link">Click here</a> (Account Executive).</p>');
 						
 					}
-				}
-			)
-		} else {
-			//$.mobile.changePage("#login");
-		}
+				},
+				dataType: 'html'
+			}); 
+		} 
 	} 
 	
-		
 
 	/*--------- Move Card-----------*/
 	function moveTocard(){
@@ -1552,12 +1451,19 @@
 			$.mobile.changePage("#my-folderlist",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 			$('.myfolderloader').show();
 			if(localStorage.getItem('email')) {
-				$.post(
-					"https://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
-					{
-					  user_id: user_id
+				
+				$.ajax({
+					type: 'POST',
+					url: 'https://www.nd2nosmart.cards/nd2no/admin/web-show-folders',
+					beforeSend: function(){
+						$('.loader_folderlist').show();
 					},
-					function(folderlist,status){
+					complete: function(){
+						$('.loader_folderlist').hide();
+					},
+					data: { "user_id": user_id },
+					success: function(folderlist){
+						
 						$('.folder_listadd').empty();
 						var folderlistArr = jQuery.parseJSON(folderlist);
 						if(folderlistArr.success){															
@@ -1570,8 +1476,10 @@
 						} else {
 							$('.myfolderloader').hide();
 						}
-					}
-				);
+			 
+					},
+					dataType: 'html'
+				});
 			}
 		} 
 	}
@@ -1639,14 +1547,21 @@
 	/*--------- Shared Card List-----------*/
 	function cardLink(cardId){ 
 	
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-link-card",{
-				card_id: cardId,
+		$.mobile.changePage("#card-link",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-link-card',
+			beforeSend: function(){
+				$('.loader_cardlinklist').show();
 			},
-			function(profiledetails, status){
-				$('.cardlinkremove').remove();
+			complete: function(){
+				$('.loader_cardlinklist').hide();
+			},
+			data: { "card_id": cardId },
+			success: function(cardlink){
 				
-				var profileArr = jQuery.parseJSON(profiledetails);
+				$('.cardlinkremove').remove();
+				var profileArr = jQuery.parseJSON(cardlink);
 				if(!profileArr.error) { 
 					
 					$.each( profileArr, function(i, row) {
@@ -1698,9 +1613,9 @@
 						$('.errorMsgShow').hide();
 					}, 4000);
 				}
-				$.mobile.changePage("#card-link",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-			}
-		)
+			},
+			dataType: 'html'
+		}); 
 	}
 	
 	
@@ -1775,17 +1690,25 @@
 	/*--------- Shared Card List-----------*/
 	function editscroller(cardId){ 
 	
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-scroller-card",{
-				card_id: cardId,
+		$.mobile.changePage("#card-scroller",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-scroller-card',
+			beforeSend: function(){
+				$('.loader_cardscroller').show();
 			},
-			function(profiledetails, status){
+			complete: function(){
+				$('.loader_cardscroller').hide();
+			},
+			data: { "card_id": cardId },
+			success: function(cardscroller){
+				
 				$('.editscrollerremove').remove();
 				
-				var profileArr = jQuery.parseJSON(profiledetails);
-				if(!profileArr.error) { 
+				var cardscrollerArr = jQuery.parseJSON(cardscroller);
+				if(!cardscrollerArr.error) { 
 					
-					$.each( profileArr, function(i, row) {
+					$.each( cardscrollerArr, function(i, row) {
 						scrollChaek = '';
 						if(row.scrollers && row.scrollers!=''){
 							scrollChaek = (row.scrollers[0].status)?'checked="checked"':'';
@@ -1811,14 +1734,14 @@
 					$(".errorMsgShow").show();
 					$(".errorMsgShow").removeClass("success");
 					$(".errorMsgShow").addClass("error");
-					$(".errorMsgShow").text(profileArr.error);
+					$(".errorMsgShow").text(cardscrollerArr.error);
 					setTimeout(function() {
 						$('.errorMsgShow').hide();
 					}, 4000);
 				}
-				$.mobile.changePage("#card-scroller",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-			}
-		)
+			},
+			dataType: 'html'
+		});
 	}
 	
 	
@@ -1885,14 +1808,21 @@
 		} else {
 			var items =localStorage.cartitem;
 		}
-	
-		$.post(
-			"https://www.nd2nosmart.cards/nd2no/admin/web-selected-cards",
-			{
-			  selected_card_ids: items
+		
+		$.mobile.changePage("#selected-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+		$('.ticked-list').empty();
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-selected-cards',
+			beforeSend: function(){
+				$('.loader_cardselectlist').show();
 			},
-			function(cardlist,status){
-				$('.ticked-list').empty();
+			complete: function(){
+				$('.loader_cardselectlist').hide();
+			},
+			data: { "selected_card_ids": items },
+			success: function(cardlist){
+				
 				$('.sharecardremove').remove();
 				var cardlistArr = jQuery.parseJSON(cardlist);
 				if(!cardlistArr.error) {
@@ -1927,10 +1857,11 @@
 						$('.errorMsgShow').hide();
 					}, 4000);
 					
-				}
-			}
-		);
-		$.mobile.changePage("#selected-cards",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+				} 
+			},
+			dataType: 'html'
+		});
+		
 	}
 	
 	
@@ -1943,17 +1874,23 @@
 			user_id = localStorage.getItem('userid-2');
 		}
 		if(user_id){
-			$('.notificationlistloader').show();
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-notification-list",
-				{
-				  user_id: user_id,
+			$.mobile.changePage("#notification",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+			$('.notification-list').empty();
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-notification-list',
+				beforeSend: function(){
+					$('.loader_notifactionlist').show();
 				},
-				function(cardlist,status){
-					$('.notification-list').empty();
-					var cardlistArr = jQuery.parseJSON(cardlist);
-					if(!cardlistArr.error) {
-						$.each( cardlistArr, function(i, row1) {
+				complete: function(){
+					$('.loader_notifactionlist').hide();
+				},
+				data: { "user_id": user_id },
+				success: function(notifylist){
+					
+					var notifylistArr = jQuery.parseJSON(notifylist);
+					if(!notifylistArr.error) {
+						$.each( notifylistArr, function(i, row1) {
 							$.each( row1, function(i, row) {
 
 								/*----------- card image check --------*/
@@ -1972,14 +1909,14 @@
 						$('.notificationlistloader').hide();
 						$(".errorMsgShow").show();
 						$(".errorMsgShow").addClass("error");
-						$(".errorMsgShow").text(cardlistArr.error);
+						$(".errorMsgShow").text(notifylistArr.error);
 						setTimeout(function() {
 							$('.errorMsgShow').hide();
 						}, 4000);
 					}
-				}
-			)
-			$.mobile.changePage("#notification",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+				},
+				dataType: 'html'
+			});	
 		} 
 	}
 	
@@ -2140,8 +2077,46 @@
 				contact.save(onSuccesscon(full_name),onErrorcom);
 			}  	
 		};
-   }
-	
+    }
+
+
+	/*------------- Forgot Password ---------------*/	
+	function forgotPassword(){
+		
+		$.ajax({
+			type: 'POST',
+			url: 'https://www.nd2nosmart.cards/nd2no/admin/web-forget-password',
+			beforeSend: function(){
+				$('.loader_forgotpass').show();
+			},
+			complete: function(){
+				$('.loader_forgotpass').hide();
+			},
+			data: { email: $("#forgot-email").val() },
+			success: function(forgotData){ 
+			
+				var dataMsg = jQuery.parseJSON(forgotData);
+				if(dataMsg.error){
+					$(".errorMsgShow").show();
+					$(".errorMsgShow").removeClass("success");
+					$(".errorMsgShow").addClass("error");
+					$(".errorMsgShow").text(dataMsg.error);							
+					setTimeout(function() {
+						$('.errorMsgShow').hide();
+					}, 4000);
+				}
+				if(dataMsg.success){
+					$(".errorMsgShow-2").show();
+					$(".errorMsgShow-2").removeClass("error");
+					$(".errorMsgShow-2").addClass("success");
+					$(".errorMsgShow-2").text(dataMsg.success);
+					$("#forgot-email").val('');
+					$.mobile.changePage("#login",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+				}
+			},
+			dataType: 'html'
+		});
+	}
 	
 	
 
@@ -2215,11 +2190,20 @@
 			errorPlacement: function (error, element) {
 				error.appendTo(element.parent().add());
 			},
-			submitHandler:function (form) {				
-				$.post(
-					"https://www.nd2nosmart.cards/nd2no/admin/web-register",
-					$("#register_form").serialize(),
-					function(registerData,status){
+			submitHandler:function (form) {	
+
+				$.ajax({
+					type: 'POST',
+					url: 'https://www.nd2nosmart.cards/nd2no/admin/web-register',
+					beforeSend: function(){
+						$('.loader_registeradd').show();
+					},
+					complete: function(){
+						$('.loader_registeradd').hide();
+					},
+					data : $('#register_form').serialize(),
+					success: function(registerData){ 
+					
 						var dataMsg = jQuery.parseJSON(registerData);	
 						if(dataMsg.error){
 							$(".errorMsgShow").show();
@@ -2239,45 +2223,13 @@
 							window.localStorage.clear();
 							$.mobile.changePage("#login",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 						}
-					}
-				)
+					},
+					dataType: 'html'
+				});
 			}
-		});	
-				
+		});		
 		
-		/*--------- Page Before Show -----------*/
-		/*$(document).on('pagebeforeshow', '#index', function(){ 
-			alert('hello');
-			user_id = localStorage.getItem('userid');
-			if(user_id==null || user_id==''){
-				user_id = localStorage.getItem('userid-2');
-			}
-			if(user_id){
-				if(localStorage.getItem('email')) {
-					$.post(
-						"https://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
-						{
-						  user_id: user_id
-						},
-						function(folderlist,status){
-							$('#folder_list').empty();
-							var folderlistArr = jQuery.parseJSON(folderlist);	
-							
-							if (folderlistArr.success){
-																
-								$.each( folderlistArr, function(i, row1) {
-									$.each( row1, function(i, row) {
-										$('#folder_list').append('<li><a href="javascript:void(0);" onClick="showFoldercards('+row.id+',\''+row.folder_name+'\');"  class="folderhyper">'+row.folder_name+'<span class="counter">('+row.cards+')</span></a></li>');
-									});
-								});
-							}
-						}
-					);
-					//pushNotify();
-					cardlist();
-				}
-			}  
-		}); */
+		 
 
 		/*--------- Folder Save-----------*/
 		$("#folder_save").click(function(){	
@@ -2344,37 +2296,7 @@
 		});
 		
 		
-		
-		/*----------- Forgot Password -----------*/
-		$("#forgot-email-button").click(function(){
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-forget-password",
-				{
-				  email: $("#forgot-email").val(),
-				},
-				function(forgotData,status){
-					var dataMsg = jQuery.parseJSON(forgotData);
-					if(dataMsg.error){
-						$(".errorMsgShow").show();
-						$(".errorMsgShow").removeClass("success");
-						$(".errorMsgShow").addClass("error");
-						$(".errorMsgShow").text(dataMsg.error);							
-						setTimeout(function() {
-							$('.errorMsgShow').hide();
-						}, 4000);
-						
-					}
-					if(dataMsg.success){
-						$(".errorMsgShow-2").show();
-						$(".errorMsgShow-2").removeClass("error");
-						$(".errorMsgShow-2").addClass("success");
-						$(".errorMsgShow-2").text(dataMsg.success);
-						$("#forgot-email").val('');
-						$.mobile.changePage("#login",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-					}
-				}
-			)
-		});
+		 
 		
  		
 		/*----------- Notifications Count -----------*/
@@ -2429,9 +2351,7 @@
 						}
 					}
 				);
-			} else {
-				//$.mobile.changePage("#login");
-			}
+			} 
 		});
 
 		
@@ -2468,16 +2388,24 @@
 				if(user_id==null || user_id==''){
 					user_id = localStorage.getItem('userid-2');
 				}
-				if(user_id){		
-					$.post(
-						"https://www.nd2nosmart.cards/nd2no/admin/web-cahnge-password",
-						{
-						  current_password: $("#current_password").val(),
-						  password: $("#new_password").val(),
-						  password_confirmation: $("#password_confirmation").val(),
-						  user_id: user_id
+				if(user_id){
+
+					$.ajax({
+						type: 'POST',
+						url: 'https://www.nd2nosmart.cards/nd2no/admin/web-cahnge-password',
+						beforeSend: function(){
+							$('.loader_changepass').show();
 						},
-						function(passwordData,status){
+						complete: function(){
+							$('.loader_changepass').hide();
+						},
+						data: { 
+							current_password: $("#current_password").val(),
+							password: $("#new_password").val(),
+							password_confirmation: $("#password_confirmation").val(),
+							user_id: user_id 
+						},
+						success: function(passwordData){ 
 							var dataMsg = jQuery.parseJSON(passwordData);
 							if(dataMsg.error){
 								$(".errorMsgShow").show();
@@ -2493,8 +2421,9 @@
 								$(".errorMsgShow-2").text(dataMsg.success);
 								cardlist();
 							}
-						}
-					)
+						},
+						dataType: 'html'
+					});
 				}  
 			}
 		});

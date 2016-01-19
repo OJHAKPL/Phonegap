@@ -42,14 +42,7 @@
 		push.on('notification', function(data) {
             // do something with the push data
             // then call finish to let the OS know we are done
-			navigator.notification.alert(
-            data.message,
-            alertDismissed,
-            'ND2NO',
-            'Ok'
-        );
-			//alert(data.message)
-			//showAlert(data.message)
+			showAlert(data.message)
 			//alert(data.message);
 			//alert(data.title);
 			//alert(data.sound);
@@ -399,13 +392,9 @@
 	
 	
 	
-	
-	
-
-
-	
 	/*--------- Shared Card List-----------*/
 	function sharedcardlist(){
+		
 	    $('.cardsshareHtml').empty();
 		$('.foldercardlist').empty();
 		
@@ -414,14 +403,19 @@
 			user_id = localStorage.getItem('userid-2');
 		}
 		if(user_id){
+			
 			$.mobile.changePage("#shared-card-list",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
-			$('.sharelistloader').show();
-			$.post(
-				"https://www.nd2nosmart.cards/nd2no/admin/web-shared-cards",
-				{
-				  user_id: user_id,
+			$.ajax({
+				type: 'POST',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-shared-cards',
+				beforeSend: function(){
+					$('.loader_sharelist').show();
 				},
-				function(cardlist,status){
+				complete: function(){
+					$('.loader_sharelist').hide();
+				},
+				data: { "user_id": user_id },
+				success: function(cardlist){
 					
 					var cardlistArr = jQuery.parseJSON(cardlist);
 					if(!cardlistArr.error) {
@@ -464,11 +458,64 @@
 							$('.errorMsgShow').hide();
 						}, 4000);	
 					}
+					
+					
+		 
+				},
+				dataType: 'html'
+			});	 
+			
+			/*$.post(
+				"https://www.nd2nosmart.cards/nd2no/admin/web-shared-cards",
+				{
+				  user_id: user_id,
+				},
+				function(cardlist,status){
+					
+					var cardlistArr = jQuery.parseJSON(cardlist);
+					if(!cardlistArr.error) {
+						$.each( cardlistArr, function(i, row1) {
+							$.each( row1, function(i, row) {
+								
+								tickiconImg = 'images/tick-icon-black.png'
+								alredyexist = false;
+								if(localStorage.cartitem){
+									var strVale = localStorage.cartitem;
+									arrCheak = strVale.split(',');
+									for(i=0; i < arrCheak.length; i++){
+										if(arrCheak[i]==row.id){
+											alredyexist = true;
+										}
+									}
+								}
+								if(alredyexist){
+									tickiconImg = 'images/tick-icon-black1.png';
+								}
+								
+								/*----------- card image check --------*/
+								/*var cardImages = (row.banner)?row.banner:'';
+								var first_name = (row.first_name)?row.first_name:'';
+								var last_name  = (row.last_name)?row.last_name:'';
+								var email      = (row.email)?row.email:'';
+								var mobile     = (row.mobile)?row.mobile:'';
+								 
+								$('.cardsshareHtml').append('<div class="card-box"><div class="card-option-open"><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="cartDetails('+row.id+');" src="images/eye-icon.png" alt=""></a><a href="javascript:void(0);" onClick="addCart('+row.id+');" class="tick-button ui-link"><img class="cardclass_'+row.id+'" src="'+tickiconImg+'" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="deleteCard('+row.card_shared_id+');" src="images/delete-icon.png" alt=""></a><a href="javascript:void(0);" class="tick-button ui-link"><img onClick="createAddnewcontact('+"'"+first_name+"'"+','+"'"+last_name+"'"+','+"'"+email+"'"+','+"'"+mobile+"'"+','+"'"+cardImages+"'"+');" src="images/contact-add.png" alt=""></a></div><div class="img"><img width="100%" src="'+cardImages+'" alt=""></div></div>');
+							});
+						});
+						$('.sharelistloader').hide();
+					} else {
+						$('.sharelistloader').hide();
+						$(".errorMsgShow").show();
+						$(".errorMsgShow").removeClass("success");
+						$(".errorMsgShow").addClass("error");
+						$(".errorMsgShow").text(cardlistArr.error);	
+						setTimeout(function() {
+							$('.errorMsgShow').hide();
+						}, 4000);	
+					}
 				}
-			)
-		} else {
-			//$.mobile.changePage("#login");
-		}
+			) */
+		}  
 	}	
 
  
@@ -2005,11 +2052,10 @@
             'ND2NO',
             'Ok'
         );
-    } 
-	
+    }
 
 
-	function createAddnewcontact(first_name,last_name,email,mobile,profilephoto) {
+ 	function createAddnewcontact(first_name,last_name,email,mobile,profilephoto) {
 		
 		var profilephoto = profilephoto.replace("large", "thumb");
 		
@@ -2032,12 +2078,42 @@
 
 		function onSuccess(contacts) {
 			
-            if(contacts.length>0){
-                confirmcheak = confirm('Contact already added. Wish to add again!');
+           if(contacts.length>0){
+                // already exists cheak
+                navigator.notification.confirm(
+                    'Contact already added. Wish to add again!',  // message
+                    function (button) {
+                        if(button==1){
+                                  
+                            var contact = navigator.contacts.create();
+                                              
+                            contact.name = {givenName: first_name, familyName: last_name};
+                            contact.displayName = full_name;
+                                               
+                            var phoneNumbers = [];
+                            phoneNumbers[0] = new ContactField('mobile', mobile, true); // preferred number
+                            contact.phoneNumbers = phoneNumbers;
+                                               
+                            var emails = [];
+                            emails[0] = new ContactField('work', email, true); // preferred email
+                            contact.emails = emails;
+                                               
+                            var photos = [];
+                            photos[0] = new ContactField('photos',profilephoto,true); // preferred profile picture
+                            contact.photos = photos;
+                                               
+                            // save to device
+                           contact.save(onSuccesscon(full_name),onErrorcom);
+                        }
+                    },              // callback to invoke with index of button pressed
+                    'ND2NO',            // title
+                    'OK,Cancel'          // buttonLabels
+                );
+                //confirmcheak = confirm('Contact already added. Wish to add again!','ND2NO');
             }
             
-            if(contacts.length==0 || confirmcheak){
-         
+            if(contacts.length==0){
+                
                 // create a new contact object
 				var contact = navigator.contacts.create();
 
@@ -2070,6 +2146,18 @@
 	
 
 	$(document).ready(function(){
+ 
+		/*------------ Cheak Login -------------*/
+		user_id = localStorage.getItem('userid');
+		if(user_id==null || user_id==''){
+			user_id = localStorage.getItem('userid-2');
+		}
+		if(user_id){
+			if(localStorage.getItem('email')) {
+				cardlist();
+			}
+		}
+		/*------------ End cheak login -------------*/
 		
 		$('div.ui-page').live("swipeleft", function () {
 			nextpage = $.mobile.activePage.next('.card-list-new');
@@ -2154,18 +2242,17 @@
 					}
 				)
 			}
-		});
-		
+		});	
+				
 		
 		/*--------- Page Before Show -----------*/
-		$(document).on('pagebeforeshow', '#login', function(){ 
-		
+		/*$(document).on('pagebeforeshow', '#index', function(){ 
+			alert('hello');
 			user_id = localStorage.getItem('userid');
 			if(user_id==null || user_id==''){
 				user_id = localStorage.getItem('userid-2');
 			}
 			if(user_id){
-			
 				if(localStorage.getItem('email')) {
 					$.post(
 						"https://www.nd2nosmart.cards/nd2no/admin/web-show-folders",
@@ -2190,7 +2277,7 @@
 					cardlist();
 				}
 			}  
-		}); 
+		}); */
 
 		/*--------- Folder Save-----------*/
 		$("#folder_save").click(function(){	

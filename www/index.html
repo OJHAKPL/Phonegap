@@ -34,8 +34,8 @@
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="login" data-url="login">
 			<div role="main" class="ui-content jqm-content">
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
+				<div class="loderimages loader_login"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
-				<p class="errorMsgShow-2" style="text-align:center; display:none;"></p>
 				<div class="login-form">
 					<input type="text" name="text-basic" placeholder="Email ID" id="login-email" value="">
 					<input type="password" name="text-basic" placeholder="Password" id="login-password" value="">
@@ -53,10 +53,11 @@
 		<div data-role="page" class="jqm-demos jqm-home jqm-login" id="forgot-password" data-url="forgot-password">
 			<div role="main" class="ui-content jqm-content">
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
+				<div class="loderimages loader_forgotpass"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				<div class="login-form">
 					<input type="text" name="text-basic" placeholder="Email ID" id="forgot-email" value=""/>
-					<button id="forgot-email-button" class="ui-btn ui-btn-submit ui-corner-all">Forgot Password</button>
+					<button id="forgot-email-button" onclick="forgotPassword();" class="ui-btn ui-btn-submit ui-corner-all">Forgot Password</button>
 					<div class="other-link">Don't have account? <a href="#login" data-direction="reverse" data-transition="slide">Click here</a></div>
 				</div>
 			</div><!-- /content -->
@@ -67,6 +68,7 @@
 			<div role="main" class="ui-content jqm-content">
 				<div class="home-logo"><img src="images/logo.png" alt="" /></div>
 				<div class="login-form register-form">
+					<div class="loderimages loader_registeradd"><img src="images/loader-page.gif"><p>Loading...</p></div>
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 					<form id="register_form">
 						<input type="text" name="email" placeholder="Email ID" id="email" value="">
@@ -147,7 +149,7 @@
 					
 				</div>
 				
-				<!--<div class="loderimages folderviewloder"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages loader_foldercardlist"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
                 <div class="cards-list myfolderDetailsHtml" style="margin-top: 10px;">
 				
@@ -239,6 +241,7 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				<div class="loderimages loader_notifactionlist"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				<ul class="notification-list margintoten">
                 </ul>                
@@ -333,6 +336,8 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				
+				<div class="loderimages loader_changepass"><img src="images/loader-page.gif"><p>Loading...</p></div>
 			
 				<div class="changepassword-form margintoten">
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
@@ -387,6 +392,8 @@
 					
 				</div>
                 
+				
+				<div class="loderimages loader_carddetails"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<div class="card-link-details margintoten"></div>
 				<div class="card-icons"></div>
 				<div class="card-link-details3"></div>
@@ -443,6 +450,8 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				
+				<div class="loderimages loader_userupdate"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<div class="ProfileUpdate margintoten"></div>
 			</div><!-- /content -->
 			
@@ -486,6 +495,7 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				<div class="loderimages loader_useredit"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="EditProfileHtml margintoten">
 				</div>
@@ -530,6 +540,7 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				<div class="loderimages loader_cardupdate"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="updateCard margintoten"></div>
 			</div><!-- /content -->
@@ -574,6 +585,7 @@
 					
 				</div>
                 <!--<div class="loderimages cardticklistloader"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages loader_cardselectlist"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
                 <ul class="ticked-list margintoten">
 				</ul>                
@@ -734,6 +746,7 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				<div class="loderimages loader_cardlinklist"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="updateCardLink margintoten"></div>
 			</div><!-- /content -->
@@ -780,7 +793,7 @@
 					
 				</div>
 			
-				<!--<div class="loderimages basiccardlistloader"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages loader_basiccardlist"><img src="images/loader-page.gif"><p>Loading...</p></div>
                 <div class="cards-list basiccardslistHtml" style="margin-top:10px;">		
 					<p class="errorMsgShow" style="text-align:center; display:none;"></p> 
 				</div>
@@ -828,6 +841,7 @@
 					
 				</div>  
 				<!--<div class="loderimages myfolderloader"><img src="images/ajax-loader-list.gif"></div>-->
+				<div class="loderimages loader_folderlist"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
 				<div class="folder-list">
                     
@@ -929,6 +943,7 @@
 					<a class="ui-link" href="javascript:void(0);" onclick="myfolderList()"><span class="img"><img class="responsimg" src="images/my-folder.png" alt=""></span></a>
 					
 				</div>
+				<div class="loderimages loader_cardscroller"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>
 				<div class="updateCardScroller margintoten"></div>
 			</div><!-- /content -->  
