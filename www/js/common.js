@@ -199,6 +199,7 @@
 	/*----------- card details from notification----------*/
 	function cartDetailsNotification(cardId) {
 		
+		$('.cardDetails').show();
 		$.mobile.changePage("#card-details",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 		$.ajax({
 			type: 'POST',
@@ -210,31 +211,55 @@
 				$('.loader_carddetails').hide();
 			},
 			data: { "id": cardId },
-			success: function(cardnotifydetails){
+			success: function(cardDetails){
 				
 				var iconUrl='';
 				var uid='';
 				var userRole='';
 				var getACard='';
 				$('#folder_list').empty();
-				var cardDetailsArr = jQuery.parseJSON(cardnotifydetails);
+				var cardDetailsArr = jQuery.parseJSON(cardDetails);
 				
 				$(".card-link-details").empty();
 				$(".card-icons").empty();
 				$(".allsociallink").empty();
 				
-				$.each( cardDetailsArr, function(i, firstRow) {	
+				$.each(cardDetailsArr, function(i, firstRow) {	
+					$('.marquee-text').remove();
+					$('.mainimgremove').remove();
+					marqueeList = '';
+					$.each(firstRow.scrollers, function(i, row5) {
+						scroll_title = (row5.title)?row5.title:'';
+						scroll_url   = (row5.url)?row5.url:'';
+						if(scroll_url && scroll_url!=''){
+							if(scroll_url.indexOf("youtu") >= 0){
+								marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_blank\',location=\'yes\');">'+scroll_title+'</a>&nbsp;&nbsp;';
+							} else {
+								marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);" onclick="window.open(\''+scroll_url+'\', \'_system\');">'+scroll_title+'</a>&nbsp;&nbsp;';
+							}
+						} else {
+							marqueeList += '<a class="ui-link" style="text-decoration: none;" href="javascript:void(0);">'+scroll_title+'</a>&nbsp;&nbsp;';
+						}
+					});
+					if(marqueeList){
+						marqueeList = '<div class="marquee-text"><marquee onmouseover="this.setAttribute(\'scrollamount\', 0, 0);" onmouseout="this.setAttribute(\'scrollamount\', 6, 0);" direction="left">'+marqueeList+'</marquee></div>';
+					}
+					
 					iconUrl = firstRow.card.icon_url_path;
 					uid = firstRow.card.uid;
 					userRole = firstRow.card.role_id;
 					getACard = firstRow.card.getacard_icon;
+					
+					
+					shareUrl = "https://www.nd2nosmart.cards/nd2no/card/"+firstRow.card.post_key+"-"+cardId+"/mobile";
 					var cardImages = firstRow.card.banner;
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img"><img src="'+cardImages+'" width="100%" alt=""></div><div class="card-header"><div class="pull-right"><a href="#shareCarddetails" data-rel="popup"><button class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
+					var cardthumbimage = cardImages.replace("large", "thumb");
+					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img mainimgremove"><img src="'+cardImages+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+cardthumbimage+'\', \''+shareUrl+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
 				});
 		
 				$.each( cardDetailsArr, function(i, row1) {
 					$.each( row1.links, function(i, row2) {
-						if (row2.type=='Business Email'){
+						if(row2.type=='Business Email'){
 							$('.card-icons').append('<a class="ui-link" href="mailto:'+row2.url+'" data-rel="external" ><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else if (row2.type=='Youtube'){
 							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
@@ -244,7 +269,7 @@
 					});
 				});
 				
-				if (userRole == 3 || userRole == 4) {
+				if(userRole == 3 || userRole == 4) {
 					$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
 				} else {
 					$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');"><img src="'+iconUrl+getACard+'" alt=""></a>');
@@ -256,7 +281,7 @@
 						if (row2.type=='Business Email'){
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="mailto:'+row2.url+'" data-rel="external"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else if (row2.type=='Youtube'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else {
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}
@@ -264,14 +289,17 @@
 				}); 
 				
 				if (userRole == 3 || userRole == 4) {
-					$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
+				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy-ae/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
 				} else {
-					$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
+				$('.card-link-details3').append('<ul class="card-details allsociallink"><li><div class="img"><img src="'+iconUrl+getACard+'" alt=""></div><div class="title"><a class="ui-link" href="javascript:void(0);" onclick="window.open(\'https://www.nd2nosmart.cards/nd2no/ordermy/'+uid+'\', \'_system\');" >Get A Card</a></div></li></ul>');
 				}
+				$('.cardDetails').hide();
+				
+				
 	 
 			},
 			dataType: 'html'
-		});
+		}); 
 		
 		
 		user_id = localStorage.getItem('userid');
@@ -1214,7 +1242,7 @@
 			
 			$.ajax({
 				type: 'POST',
-				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-shared-cards',
+				url: 'https://www.nd2nosmart.cards/nd2no/admin/web-user-cards',
 				beforeSend: function(){
 					$('.loader_cardlist').show();
 				},
@@ -1912,7 +1940,6 @@
 					if(!notifylistArr.error) {
 						$.each( notifylistArr, function(i, row1) {
 							$.each( row1, function(i, row) {
-
 								/*----------- card image check --------*/
 								var cardImages = (row.banner)?row.banner:'';
 								if (row.is_share_notify==1){

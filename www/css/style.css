@@ -726,7 +726,7 @@ color:#FFF;
 }
 
 .loderimages {	
-	opacity: 0.46; border-radius: 2.25em; width: 100%; top: 0px; left: 0px; text-align: center; position: fixed; height: 45px; margin-top: 50%; padding: 0px;	display:none;
+	/*opacity: 0.46;*/ z-index:100; border-radius: 2.25em; width: 100%; top: 0px; left: 0px; text-align: center; position: fixed; height: 45px; margin-top: 50%; padding: 0px;	display:none;
 }
 .loderimages img {
 	border-radius:33px;
