@@ -591,7 +591,7 @@
 					shareUrl = "https://www.nd2nosmart.cards/nd2no/card/"+firstRow.card.post_key+"-"+cardId+"/mobile";
 					var cardImages = firstRow.card.banner;
 					var cardthumbimage = cardImages.replace("large", "thumb");
-					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img mainimgremove"><img src="'+cardImages+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\', null, \''+cardthumbimage+'\', \''+shareUrl+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
+					$('.card-link-details').append('<input type="hidden" name="sharecard_id" id="sharecard_id" value="'+cardId+'"><div class="main-img mainimgremove"><img src="'+cardImages+'" width="100%" alt=""></div>'+marqueeList+'<div class="card-header"><div class="pull-right"><a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\''+firstRow.card.title+'\\n\', null, \''+cardthumbimage+'\', \''+shareUrl+'\')"><button type="button" class="ui-btn ui-shadow ui-corner-all"><img src="images/share-icon.png" alt=""></button></a></div><h3 class="title">'+firstRow.card.title+'</h3></div>');
 				});
 		
 				$.each( cardDetailsArr, function(i, row1) {
