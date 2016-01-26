@@ -12,7 +12,59 @@
 	
 	function pushNotify() {
 		
-		 alert('test');
+	 var push = PushNotification.init({ 
+		 "android": 
+		 {"senderID": "977822357172"}
+          } );
+
+   push.on('registration', function(data) {
+            // send data.registrationId to push service
+			alert(data.registrationId+'sent');
+			$.post(
+		"https://www.nd2no.com/admin/send-push",
+		{
+		  tocken_id: data.registrationId
+		},
+		function(data,status){
+			var dataArray = jQuery.parseJSON(data);
+			var htmlStr='';
+			$.each(dataArray, function(i, field){
+				
+				alert (field);
+								
+			});					
+		});
+			
+			
+			
+        });
+
+
+        push.on('notification', function(data) {
+            // do something with the push data
+            // then call finish to let the OS know we are done
+			alert(data.message);
+			//alert(data.title);
+			//alert(data.count);
+			//alert(data.sound);
+			//alert(data.image);
+			//alert(data.additionalData);
+			// data.title,
+			// data.count,
+			// data.sound,
+			// data.image,
+			// data.additionalData
+			//alert(data.registrationId+'here');
+            push.finish(function() {
+			alert(data.registrationId+'ok');
+                console.log("processing of push data is finished");
+            });
+        });
+		
+		push.on('error', function(e) {
+			alert(e.message+ 'error');
+			console.log(e.message);
+		});
 		
 	}	 
 	
@@ -2212,12 +2264,15 @@
 						}
 						if(dataMsg.success){
 							$("#register_form").trigger('reset');
-							$(".errorMsgShow-2").show();
-							$(".errorMsgShow-2").removeClass("error");
-							$(".errorMsgShow-2").addClass("success");
-							$(".errorMsgShow-2").text(dataMsg.success);
+							$(".errorMsgShow").show();
+							$(".errorMsgShow").removeClass("error");
+							$(".errorMsgShow").addClass("success");
+							$(".errorMsgShow").text(dataMsg.success);
 							window.localStorage.clear();
+							setTimeout(function() {
 							$.mobile.changePage("#login",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
+							}, 4000);
+							
 						}
 					},
 					dataType: 'html'
