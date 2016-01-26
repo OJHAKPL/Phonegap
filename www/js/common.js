@@ -19,25 +19,20 @@
 
    push.on('registration', function(data) {
             // send data.registrationId to push service
-			alert(data.registrationId+'sent');
 			$.post(
-		"https://www.nd2no.com/admin/send-push",
-		{
-		  tocken_id: data.registrationId
-		},
-		function(data,status){
-			var dataArray = jQuery.parseJSON(data);
-			var htmlStr='';
-			$.each(dataArray, function(i, field){
-				
-				alert (field);
-								
-			});					
-		});
-			
-			
-			
-        });
+			"https://www.nd2no.com/admin/web-device-tocken",
+			{
+				tocken_id: data.registrationId, //'adjadkdjkalskjsaaldkSAJKLD',
+				user_id: localStorage.getItem('userid')
+			},
+			function(data,status){
+				var dataArray = jQuery.parseJSON(data);
+				var htmlStr='';
+				$.each(dataArray, function(i, field){
+					
+				});					
+			});
+        }); 
 
 
         push.on('notification', function(data) {
@@ -56,14 +51,13 @@
 			// data.additionalData
 			//alert(data.registrationId+'here');
             push.finish(function() {
-			alert(data.registrationId+'ok');
-                console.log("processing of push data is finished");
+				console.log("processing of push data is finished");
             });
-        });
+        }); 
 		
 		push.on('error', function(e) {
-			alert(e.message+ 'error');
-			console.log(e.message);
+			showAlert(e.message+ 'error');
+			//console.log(e.message);
 		});
 		
 	}	 
