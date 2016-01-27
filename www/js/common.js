@@ -29,7 +29,7 @@
 				var dataArray = jQuery.parseJSON(data);
 				var htmlStr='';
 				$.each(dataArray, function(i, field){
-					
+					alert(field+' registered');
 				});					
 			});
         }); 
