@@ -29,7 +29,8 @@
 				var dataArray = jQuery.parseJSON(data);
 				var htmlStr='';
 				$.each(dataArray, function(i, field){
-					alert(field+' registered');
+					alert(data.registrationId+' id');
+					
 				});					
 			});
         }); 
@@ -642,7 +643,7 @@
 		$.mobile.changePage("#update-card",{allowSamePageTransition:false,reloadPage:false,changeHash:true,transition:"slide"});
 		$.ajax({
 			type: 'POST',
-			url: 'https://www.nd2no.com/admin/web-update-card/'+cardId+'',
+			url: 'https://www.nd2no.com/admin/web-update-card-andro/'+cardId+'',
 			beforeSend: function(){
 				$('.loader_cardupdate').show();
 			},
@@ -722,7 +723,7 @@
 			
 				card_id = jQuery('#edit_card').find('input[name="card_id"]').val();
 				$.post(
-					"https://www.nd2no.com/admin/web-update-card/"+card_id+"",{
+					"https://www.nd2no.com/admin/web-update-card-andro/"+card_id+"",{
 						title: jQuery('#edit_card').find('input[name="title"]').val(),
 						links: values, 
 						
@@ -1702,7 +1703,7 @@
 	function cardLinkSubmit(){
 		card_id = $('#card_id').val();
 		$.post(
-			"https://www.nd2no.com/admin/web-update-link",
+			"https://www.nd2no.com/admin/web-update-link-andro",
 			$("#card_edit_link").serialize(),
 			function(linkData,status){
 				var dataMsg = jQuery.parseJSON(linkData);	
@@ -1812,7 +1813,7 @@
 	function cardScrollerSubmit(){
 		card_id = $('#card_id').val();
 		$.post(
-			"https://www.nd2no.com/admin/web-update-scroller",
+			"https://www.nd2no.com/admin/web-update-scroller-andro",
 			$("#card_edit_scroller").serialize(),
 			function(linkData,status){
 				var dataMsg = jQuery.parseJSON(linkData);	
