@@ -18,19 +18,25 @@
           } );
 
    push.on('registration', function(data) {
+			var loginid='';
+			if (localStorage.getItem('userid')){
+				loginid = localStorage.getItem('userid');
+			} else{
+				loginid = localStorage.getItem('userid-2');
+			} 
+				
             // send data.registrationId to push service
 			$.post(
 			"https://www.nd2no.com/admin/web-device-tocken",
 			{
 				tocken_id: data.registrationId, //'adjadkdjkalskjsaaldkSAJKLD',
-				user_id: localStorage.getItem('userid')
+				user_id: loginid
 			},
 			function(data,status){
 				var dataArray = jQuery.parseJSON(data);
 				var htmlStr='';
 				$.each(dataArray, function(i, field){
-					alert(data.registrationId+' id');
-					
+									
 				});					
 			});
         }); 
