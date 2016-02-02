@@ -223,6 +223,7 @@
 				var cardDetailsArr = jQuery.parseJSON(cardDetails);
 				
 				$(".card-link-details").empty();
+				$(".card-link-details3").empty();
 				$(".card-icons").empty();
 				$(".allsociallink").empty();
 				
@@ -264,7 +265,9 @@
 						if(row2.type=='Business Email'){
 							$('.card-icons').append('<a class="ui-link" href="mailto:'+row2.url+'" data-rel="external" ><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else if (row2.type=='Youtube'){
-							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
+							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
+						} else if (row2.type=='Phone Number'){
+							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else {
 							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						}
@@ -283,7 +286,9 @@
 						if (row2.type=='Business Email'){
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="mailto:'+row2.url+'" data-rel="external"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else if (row2.type=='Youtube'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
+						}else if (row2.type=='Phone Number'){
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+row2.url+'</div></a></li></ul>');
 						}else {
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}
@@ -560,6 +565,7 @@
 				var cardDetailsArr = jQuery.parseJSON(cardDetails);
 				
 				$(".card-link-details").empty();
+				$(".card-link-details3").empty();
 				$(".card-icons").empty();
 				$(".allsociallink").empty();
 				
@@ -601,7 +607,9 @@
 						if(row2.type=='Business Email'){
 							$('.card-icons').append('<a class="ui-link" href="mailto:'+row2.url+'" data-rel="external" ><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else if (row2.type=='Youtube'){
-							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
+							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
+						} else if (row2.type=='Phone Number'){
+							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						} else {
 							$('.card-icons').append('<a class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');"><img src="'+iconUrl+row2.icon_image+'" alt=""></a>');
 						}
@@ -620,7 +628,9 @@
 						if (row2.type=='Business Email'){
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="mailto:'+row2.url+'" data-rel="external"><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}else if (row2.type=='Youtube'){
-							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_blank\',location=\'yes\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
+						}else if (row2.type=='Phone Number'){
+							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+row2.url+'</div></a></li></ul>');
 						}else {
 							$('.card-link-details3').append('<ul class="card-details allsociallink"><li><a style="text-decoration: none; font-weight: normal; color: rgb(55, 55, 55);" class="ui-link" href="javascript:void(0);" onclick="window.open(\''+row2.url+'\', \'_system\');" ><div class="img"><img src="'+iconUrl+row2.icon_image+'" alt=""></div><div class="title">'+linktitle+'</div></a></li></ul>');
 						}
