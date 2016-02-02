@@ -1,12 +1,12 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.nd2nosmartcards.nd2no" version="1.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.nd2nosmartcards.nd2no" version="2.0.2">
   <name>ND2NO</name>
   <description>ND2NO</description>
-  <author href="https://www.nd2no.com/" email="dev.girishas@gmail.com">GISLLP Team</author>
+  <author href="https://www.nd2nosmart.cards/nd2no/" email="dev.girishas@gmail.com">GISLLP Team</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
-  <preference name="fullscreen" value="false"/>
+  <preference name="fullscreen" value="true"/>
   <preference name="webviewbounce" value="true"/>
   <preference name="prerendered-icon" value="true"/>
   <preference name="stay-in-webview" value="false"/>
@@ -24,20 +24,33 @@
 
  
   <icon src="icon.png"/>
-	<icon src="res/icons/android/Icon-ldpi.png" platform="android" qualifier="ldpi" />
-	<icon src="res/icons/android/Icon-mdpi.png" platform="android" qualifier="mdpi" />
-	<icon src="res/icons/android/Icon-hdpi.png" platform="android" qualifier="hdpi" />
-	<icon src="res/icons/android/Icon-xhdpi.png" platform="android" qualifier="xhdpi" />
-	<icon src="res/icons/android/Icon-xxhdpi.png" platform="android" qualifier="xxhdpi" />
-	<icon src="res/icons/android/Icon-xxxhdpi.png" platform="android" qualifier="xxxhdpi" />
+  <icon src="res/icons/ios/icon-60-3x.png" platform="ios" width="180" height="180" />
+  <icon src="res/icons/ios/icon-60.png" platform="ios" width="60" height="60" />
+  <icon src="res/icons/ios/icon-60-2x.png" platform="ios" width="120" height="120" />
+  <icon src="res/icons/ios/icon-76.png" platform="ios" width="76" height="76" />
+  <icon src="res/icons/ios/icon-76-2x.png" platform="ios" width="152" height="152" />
+  <icon src="res/icons/ios/icon-40.png" platform="ios" width="40" height="40" />
+  <icon src="res/icons/ios/icon-40-2x.png" platform="ios" width="80" height="80" />
+  <icon src="res/icons/ios/icon.png" platform="ios" width="57" height="57" />
+  <icon src="res/icons/ios/icon-2x.png" platform="ios" width="114" height="114" />
+  <icon src="res/icons/ios/icon-72.png" platform="ios" width="72" height="72" />
+  <icon src="res/icons/ios/icon-72-2x.png" platform="ios" width="144" height="144" />
+  <icon src="res/icons/ios/icon-120.png" platform="ios" width="120" height="120" />
+  <icon src="res/icons/ios/icon-152.png" platform="ios" width="152" height="152" />
+  <icon src="res/icons/ios/icon-small.png" platform="ios" width="29" height="29" />
+  <icon src="res/icons/ios/icon-small-2x.png" platform="ios" width="58" height="58" />
+  <icon src="res/icons/ios/icon-50.png" platform="ios" width="50" height="50" />
+  <icon src="res/icons/ios/icon-50-2x.png" platform="ios" width="100" height="100" />
   <splash src="splash.png" />
-	<splash src="res/screens/android/screen-ldpi-portrait.png" platform="android" qualifier="ldpi" />
-	<splash src="res/screens/android/screen-mdpi-portrait.png" platform="android" qualifier="mdpi" />
-	<splash src="res/screens/android/screen-hdpi-portrait.png" platform="android" qualifier="hdpi" />
-	<splash src="res/screens/android/screen-xhdpi-portrait.png" platform="android" qualifier="xhdpi" />
+  <splash src="res/screens/ios/screen-ipad-portrait.png" platform="ios" width="768" height="1024"/>
+  <splash src="res/screens/ios/screen-iphone-portrait.png" platform="ios" width="320" height="480"/>
+  <splash src="res/screens/ios/screen-iphone-portrait-2x.png" platform="ios" width="640" height="960"/>
+  <splash src="res/screens/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136"/>
+  <splash src="res/screens/ios/screen-ipad-portrait.png" platform="ios" width="768" height="1024"/>
+  
+  <access origin="*"/>
+	<!--<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />-->
 	
-   <access origin="*"/>
-	 <plugin name="cordova-plugin-whitelist" version="1"/>
 	<plugin name="cordova-plugin-inappbrowser" spec="1.1.1" />
 	<plugin name="cordova-plugin-statusbar" spec="2.0.0" />
 	<plugin name="nl.x-services.plugins.socialsharing" source="pgb" spec="4.3.8" />
@@ -60,8 +73,7 @@
 	<plugin name="org.apache.cordova.splashscreen" source="pgb" spec="1.0.0" />
 	<plugin name="org.apache.cordova.vibration" source="pgb" spec="0.3.13" />
 	<plugin name="com.ohh2ahh.plugins.appavailability" source="pgb" spec="0.3.1" />
-	<gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3" />
-	
+	<plugin name="phonegap-plugin-push" spec="1.4.2" source="pgb" />
  
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
@@ -69,7 +81,6 @@
   <allow-intent href="sms:*"/>
   <allow-intent href="mailto:*"/>
   <allow-intent href="geo:*"/>
-  <allow-navigation href="*" />
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform>
