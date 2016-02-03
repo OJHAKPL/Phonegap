@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>ND2NO</title>
 		<link rel="shortcut icon" href="favicon.ico">
@@ -794,13 +793,6 @@
 				<div class="loderimages loader_folderlist"><img src="images/loader-page.gif"><p>Loading...</p></div>
 				<p class="errorMsgShow" style="text-align:center; display:none;"></p>				 
 				<div class="folder-list">
-				
-				<!-- Want to share a prefilled SMS text? -->
-				<button onclick="window.plugins.socialsharing.shareViaSMS('My cool message https://www.nd2nosmart.cards/nd2no/card/cruz-4582/mobile', null /* see the note below */, function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
-				<!-- Want to prefill some phonenumbers as well? Pass this instead of null. Important notes: For stable usage of shareViaSMS on Android 4.4 and up you require to add at least one phonenumber! Also, on Android make sure you use v4.0.3 or higher of this plugin, otherwise sharing multiple numbers to non-Samsung devices will fail -->
-				<button onclick="window.plugins.socialsharing.shareViaSMS('My cool message www.nd2nosmart.cards/nd2no/card/cruz-4582/mobile', '0612345678,0687654321', function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
-				<!-- Need a subject and even image sharing? It's only supported on iOS for now and falls back to just message sharing on Android -->
-				<button onclick="window.plugins.socialsharing.shareViaSMS({'message':'My cool message <a href=\'https://www.nd2nosmart.cards/nd2no/card/cruz-4582/mobile \'> https://www.nd2nosmart.cards/nd2no/card/cruz-4582/mobile</a>', 'subject':'The subject', 'image':'https://www.google.nl/images/srpr/logo4w.png'}, '0612345678,0687654321', function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
 				
                      <h3 class="title" style="cursor: pointer;" onclick="cardbasiclist()">My Cards</h3>
 					<h3 class="title" style="cursor: pointer;" onclick="sharedcardlist()">Shared Cards</h3>
